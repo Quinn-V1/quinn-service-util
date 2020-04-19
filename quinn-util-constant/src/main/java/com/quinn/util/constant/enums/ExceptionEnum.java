@@ -9,7 +9,7 @@ import static com.quinn.util.constant.BusinessExceptionConstants.ParamName.*;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public enum ExceptionEnums {
+public enum ExceptionEnum {
 
     // 授权：开发许可未获取
     LICENCE_EXCEPTION(DESC_LICENCE_EXCEPTION, EXCEPTION_TYPE),
@@ -80,7 +80,7 @@ public enum ExceptionEnums {
      *
      * @param defaultDesc 默认描述
      */
-    ExceptionEnums(String defaultDesc, String... paramNames) {
+    ExceptionEnum(String defaultDesc, String... paramNames) {
         this.defaultDesc = defaultDesc;
         this.paramNames = paramNames;
     }

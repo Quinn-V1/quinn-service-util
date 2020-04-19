@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.constant.enums.ExceptionEnums;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 /**
  * 数据样式不匹配异常
@@ -11,7 +11,7 @@ import com.quinn.util.constant.enums.ExceptionEnums;
 public class DataStyleNotMatchException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnums.DATA_STYLE_NOT_MATCHED.name(), 1, 1);
+        buildParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.name(), 1, 1);
     }
 
     public DataStyleNotMatchException() {

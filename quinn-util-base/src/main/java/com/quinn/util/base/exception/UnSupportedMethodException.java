@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.constant.enums.ExceptionEnums;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 /**
  * 不支持的方法
@@ -11,7 +11,7 @@ import com.quinn.util.constant.enums.ExceptionEnums;
 public class UnSupportedMethodException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnums.METHOD_NOT_SUPPORTED.name(), 2, 0);
+        buildParam(ExceptionEnum.METHOD_NOT_SUPPORTED.name(), 2, 0);
     }
 
     public UnSupportedMethodException() {

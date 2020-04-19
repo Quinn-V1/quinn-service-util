@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.constant.enums.ExceptionEnums;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 /**
  * 开发许可未授权
@@ -11,7 +11,7 @@ import com.quinn.util.constant.enums.ExceptionEnums;
 public class LicenceException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnums.LICENCE_EXCEPTION.name(), 0, 1);
+        buildParam(ExceptionEnum.LICENCE_EXCEPTION.name(), 0, 1);
     }
 
     public LicenceException() {

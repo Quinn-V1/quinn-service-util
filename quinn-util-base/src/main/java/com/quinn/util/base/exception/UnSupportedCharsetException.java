@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.constant.enums.ExceptionEnums;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 /**
  * 不支持的方法
@@ -11,7 +11,7 @@ import com.quinn.util.constant.enums.ExceptionEnums;
 public class UnSupportedCharsetException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnums.CHARSET_NOT_SUPPORTED.name(), 1, 0);
+        buildParam(ExceptionEnum.CHARSET_NOT_SUPPORTED.name(), 1, 0);
     }
 
     public UnSupportedCharsetException() {

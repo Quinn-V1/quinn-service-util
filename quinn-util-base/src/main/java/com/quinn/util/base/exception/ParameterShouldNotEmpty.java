@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.constant.enums.ExceptionEnums;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 /**
  * 参数不可为空异常
@@ -11,7 +11,7 @@ import com.quinn.util.constant.enums.ExceptionEnums;
 public class ParameterShouldNotEmpty extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnums.PARAM_SHOULD_NOT_NULL.name(), 1, 0);
+        buildParam(ExceptionEnum.PARAM_SHOULD_NOT_NULL.name(), 1, 0);
     }
 
     public ParameterShouldNotEmpty() {

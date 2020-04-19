@@ -81,6 +81,11 @@ public interface ConfigConstant {
     String MODULE_DEFINITION_METADATA = "classpath*:META-INF/meta-quinn-module*.properties";
 
     /**
+     * 各功能模块添加资源的预留配置接口
+     */
+    String MODULE_DEFINITION_SDK = "classpath*:META-INF/sdk-quinn-module*.properties";
+
+    /**
      * 功能模块扫描路径-名称（配置文件中对应的key）
      */
     String PACKAGE_NAME_MODULES_BEAN = "module.bean.basePackages";
@@ -151,7 +156,7 @@ public interface ConfigConstant {
     String PROP_KEY_OF_LICENCE_PATH = "com.quinn-service.licence.path";
 
     /**
-     * Redis部署方式 - Cluster
+     * 默认许可证路径
      */
     String DEFAULT_LICENCE_PATH = "licence/licence.lic";
 
