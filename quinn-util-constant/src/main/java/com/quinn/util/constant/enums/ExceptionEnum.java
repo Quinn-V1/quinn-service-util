@@ -1,7 +1,7 @@
 package com.quinn.util.constant.enums;
 
-import static com.quinn.util.constant.BusinessExceptionConstants.*;
-import static com.quinn.util.constant.BusinessExceptionConstants.ParamName.*;
+import static com.quinn.util.constant.MessageTempConstants.*;
+import static com.quinn.util.constant.MessageTempConstants.ParamName.*;
 
 /**
  * 系统错误枚举类

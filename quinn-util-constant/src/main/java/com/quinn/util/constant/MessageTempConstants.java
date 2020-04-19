@@ -6,7 +6,7 @@ package com.quinn.util.constant;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public interface BusinessExceptionConstants {
+public interface MessageTempConstants {
 
     /**
      * 分页参数没有提供
@@ -106,6 +106,11 @@ public interface BusinessExceptionConstants {
      * 文件删除失败
      */
     String DESC_FILE_DELETE_FAIL = "文件【${" + ParamName.PARAM_FILE_PATH + "}】删除失败";
+
+    /**
+     * 文件删除失败
+     */
+    String DESC_ALL_DATA_PASSED = "所有数据处理成功";
 
     /**
      * 占位参数

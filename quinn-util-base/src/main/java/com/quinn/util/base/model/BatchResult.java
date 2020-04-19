@@ -1,6 +1,7 @@
 package com.quinn.util.base.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.enums.MessageLevelEnum;
@@ -269,6 +270,10 @@ public class BatchResult<T> {
         public BatchItems(int size) {
             this.successItems = new ArrayList<>(size);
             this.failItems = new ArrayList<>(0);
+        }
+
+        public boolean allSuccess() {
+            return CollectionUtil.isEmpty(failItems);
         }
     }
 

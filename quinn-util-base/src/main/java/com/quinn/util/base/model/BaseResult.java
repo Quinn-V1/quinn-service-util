@@ -226,10 +226,32 @@ public class BaseResult<T> {
      * @param message   新消息
      */
     public void appendMessage(String message) {
+        if (StringUtil.isEmpty(message)) {
+            return;
+        }
+
         if (StringUtil.isNotEmpty(message)) {
             this.message = message;
         } else {
             this.message = this.message + CharConstant.LINE_BREAK + message;
+        }
+    }
+
+    /**
+     * 凭借前一个结果（一般用于错误消息传递）
+     *
+     * @param prev
+     */
+    public void appendPrev(BaseResult prev) {
+        if (!prev.isSuccess()) {
+            setSuccess(false);
+        }
+
+        appendMessage(prev.getMessage());
+        if (messageProp != null) {
+            messageProp.ofPrevProp(prev.getMessageProp());
+        } else {
+            messageProp = prev.getMessageProp();
         }
     }
 
