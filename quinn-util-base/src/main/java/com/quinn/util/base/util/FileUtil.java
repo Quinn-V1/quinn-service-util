@@ -233,11 +233,10 @@ public final class FileUtil {
         }
 
         File baseFile = new File(basePath);
-        if (baseFile.exists()) {
-            baseFile.delete();
+        if (!baseFile.exists()) {
+            baseFile.mkdirs();
         }
 
-        baseFile.mkdirs();
         Map<Integer, String> res = new HashMap<>();
         if (useNio) {
             FileChannel resultFileChannel = null;
@@ -251,7 +250,6 @@ public final class FileUtil {
 
                 while ((blk.read(bbf)) > 0) {
                     fileNum++;
-//                    System.out.println(fileNum + "-len-name:" + blk.position());
 
                     bbf.flip();
                     long nameLen = bbf.getLong();
@@ -259,7 +257,6 @@ public final class FileUtil {
                     byte[] nameByte = new byte[(int) nameLen];
                     ByteBuffer nameWrap = ByteBuffer.wrap(nameByte);
                     readCount = blk.read(nameWrap);
-//                    System.out.println(fileNum + "-name:" + blk.position());
                     if (readCount <= 0) {
                         return BaseResult.fail("文件格式不匹配");
                     }
@@ -267,7 +264,6 @@ public final class FileUtil {
 
                     bbf.clear();
                     readCount = blk.read(bbf);
-//                    System.out.println(fileNum + "-len-content:" + blk.position());
                     if (readCount <= 0) {
                         return BaseResult.fail("文件格式不匹配");
                     }
@@ -279,13 +275,16 @@ public final class FileUtil {
                     }
 
                     File filePart = new File(baseFile, fileNum + "");
+                    if (filePart.exists()) {
+                        filePart.delete();
+                    }
+
                     res.put(fileNum, name);
                     FileOutputStream outputStream = new FileOutputStream(filePart, false);
                     resultFileChannel = outputStream.getChannel();
                     bbf.clear();
 
                     resultFileChannel.transferFrom(blk, resultFileChannel.size(), contentLen);
-//                    System.out.println(fileNum + "-content:" + blk.position());
 
                     resultFileChannel.close();
                 }
@@ -443,4 +442,24 @@ public final class FileUtil {
             StreamUtil.closeQuietly(input, output);
         }
     }
+
+    /**
+     * 删除文件级文件夹
+     *
+     * @param dir 文件路径
+     * @return 是否成功
+     */
+    public static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
+
 }

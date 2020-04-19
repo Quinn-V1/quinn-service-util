@@ -1,7 +1,6 @@
 package com.quinn.util.base.factory;
 
 import com.alibaba.fastjson.JSONObject;
-import com.quinn.util.base.exception.LicenceUnauthorizedException;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.base.util.FileUtil;
@@ -9,6 +8,7 @@ import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.constant.enums.ExceptionEnums;
 import com.quinn.util.constant.enums.LicenceExceptionType;
+import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.SneakyThrows;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -37,6 +37,9 @@ public class LicenceClassLoader extends URLClassLoader {
      */
     private static final String ALGORITHM = "DES";
 
+    /**
+     * 临时目录
+     */
     private static final String TEMP_DIRECTORY_4_LICENCE_FILE = "tmp/quinn/licences/";
 
     /**
@@ -45,9 +48,14 @@ public class LicenceClassLoader extends URLClassLoader {
     private static boolean initFlag;
 
     /**
+     * 许可证信息
+     */
+    private static LicenceInfo licenceInfo;
+
+    /**
      * 自定义类路径
      */
-    private static String classPath;
+    private static String licencePath;
 
     /**
      * 单例对象
@@ -97,9 +105,9 @@ public class LicenceClassLoader extends URLClassLoader {
      *
      * @param url 初始化条件
      */
-    public synchronized static void init(URL url, ClassLoader realParent) {
+    public synchronized static BaseResult<LicenceInfo> init(URL url, ClassLoader realParent) {
         if (!LicenceClassLoader.initFlag) {
-            LicenceClassLoader.classPath = url.getPath();
+            LicenceClassLoader.licencePath = url.getPath();
 
             instance = new LicenceClassLoader(new URL[]{url}, realParent.getParent());
             instance.realParent = realParent;
@@ -108,44 +116,46 @@ public class LicenceClassLoader extends URLClassLoader {
 
             File tempFile = new File(TEMP_DIRECTORY_4_LICENCE_FILE);
             if (tempFile.exists()) {
-                tempFile.delete();
+                FileUtil.deleteDir(tempFile);
             }
+
             try {
                 tempFile.mkdirs();
+                String tempPath = tempFile.getAbsolutePath() + File.separatorChar;
+                String srcTemp = tempPath + 0;
 
-                String srcTemp = TEMP_DIRECTORY_4_LICENCE_FILE + 0;
-                FileUtil.copyNio(classPath, srcTemp);
+                FileUtil.copyNio(licencePath, srcTemp);
                 BaseResult<Map<Integer, String>> mapBaseResult =
-                        FileUtil.splitMergeFile(srcTemp, true, TEMP_DIRECTORY_4_LICENCE_FILE, 1);
+                        FileUtil.splitMergeFile(srcTemp, true, tempPath, 1);
 
                 if (!mapBaseResult.isSuccess()) {
-                    throw new LicenceUnauthorizedException()
-                            .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
-                BaseResult<Key> keyRes = FileUtil.loadObject(TEMP_DIRECTORY_4_LICENCE_FILE + 1);
+                BaseResult<Key> keyRes = FileUtil.loadObject(tempPath + 1);
                 if (!keyRes.isSuccess()) {
-                    throw new LicenceUnauthorizedException()
-                            .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
-                BaseResult<String> licenceStrRes = FileUtil.loadObjectWithSalt(TEMP_DIRECTORY_4_LICENCE_FILE + 2,
-                        TEMP_DIRECTORY_4_LICENCE_FILE + 1, ALGORITHM);
+                BaseResult<String> licenceStrRes = FileUtil.loadObjectWithSalt(tempPath + 2,
+                        tempPath + 1, ALGORITHM);
 
                 if (!licenceStrRes.isSuccess()) {
-                    throw new LicenceUnauthorizedException()
-                            .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
-                LicenceInfo licenceInfo = JSONObject.parseObject(licenceStrRes.getData(), LicenceInfo.class);
+                licenceInfo = JSONObject.parseObject(licenceStrRes.getData(), LicenceInfo.class);
                 BaseResult validateRes = licenceInfo.validate();
                 if (!validateRes.isSuccess()) {
-                    throw new LicenceUnauthorizedException()
-                            .getMessageProp().ofPrevProp(validateRes.getMessageProp())
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
                 String securityKey = licenceInfo.getSecurityKey();
@@ -153,37 +163,39 @@ public class LicenceClassLoader extends URLClassLoader {
                 licenceInfo.setSecurityKey(md5OfKey);
                 String md5OfLic = DigestUtils.md5Hex(StringUtil.getBytes(JSONObject.toJSONString(licenceInfo)));
                 if (StringUtil.isEmpty(securityKey) || !securityKey.equals(md5OfLic)) {
-                    throw new LicenceUnauthorizedException()
-                            .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
                 String[] classNames = licenceInfo.getClassNames();
                 if (mapBaseResult.getData().size() != classNames.length + NumberConstant.INT_TWO) {
-                    throw new LicenceUnauthorizedException()
-                            .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                            .exception();
+                    Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                    System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.exit(errCode);
                 }
 
                 for (int i = 0; i < classNames.length; i++) {
                     try {
-                        byte[] data = instance.loadByte(i);
+                        byte[] data = instance.loadByte(tempPath, i);
                         Class aClass = instance.defineClass(classNames[i], data, 0, data.length);
                         loadedClasses.put(classNames[i], aClass);
                     } catch (Exception e) {
-                        throw new LicenceUnauthorizedException()
-                                .addParam(ExceptionEnums.LICENCE_EXCEPTION.paramNames[0], LicenceExceptionType.FILE_DESTROYED.code)
-                                .exception();
+                        Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
+                        System.err.println(ExceptionEnums.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                        System.exit(errCode);
                     }
                 }
 
                 LicenceClassLoader.initFlag = true;
             } finally {
                 if (tempFile.exists()) {
-                    tempFile.delete();
+                    FileUtil.deleteDir(tempFile);
                 }
             }
         }
+
+        return BaseResult.success(licenceInfo);
     }
 
     /**
@@ -199,8 +211,8 @@ public class LicenceClassLoader extends URLClassLoader {
     }
 
     @SneakyThrows
-    private byte[] loadByte(int index) {
-        FileInputStream fis = new FileInputStream(TEMP_DIRECTORY_4_LICENCE_FILE + (index + 3));
+    private byte[] loadByte(String tempPath, int index) {
+        FileInputStream fis = new FileInputStream(tempPath + (index + 3));
         int len = fis.available();
         byte[] data = new byte[len];
         fis.read(data);

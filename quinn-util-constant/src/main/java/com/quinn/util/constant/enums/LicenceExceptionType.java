@@ -9,13 +9,13 @@ package com.quinn.util.constant.enums;
 public enum LicenceExceptionType {
 
     // 未授权
-    UNAUTHORIZED("未授权", 100),
+    UNAUTHORIZED("未授权", -90),
 
     // 文件损坏
-    FILE_DESTROYED("文件损坏", 90),
+    FILE_DESTROYED("文件损坏", -80),
 
     // 授权过期
-    AUTHORIZE_EXPIRE("授权过期", 80),
+    AUTHORIZE_EXPIRE("授权过期", -70),
 
     ;
 

@@ -8,20 +8,20 @@ import com.quinn.util.constant.enums.ExceptionEnums;
  * @author Qunhua.Liao
  * @since 2020-04-04
  */
-public class LicenceUnauthorizedException extends BaseBusinessException {
+public class LicenceException extends BaseBusinessException {
 
     {
         buildParam(ExceptionEnums.LICENCE_EXCEPTION.name(), 0, 1);
     }
 
-    public LicenceUnauthorizedException() {
+    public LicenceException() {
     }
 
-    public LicenceUnauthorizedException(String message) {
+    public LicenceException(String message) {
         super(message);
     }
 
-    public LicenceUnauthorizedException(String message, Throwable throwable) {
+    public LicenceException(String message, Throwable throwable) {
         super(message, throwable);
     }
 }
