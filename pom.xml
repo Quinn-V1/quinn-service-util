@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.quinn</groupId>
+        <artifactId>quinn-service-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath />
+    </parent>
+
+    <groupId>com.quinn.util</groupId>
+    <artifactId>quinn-service-util</artifactId>
+    <version>1.0.0</version>
+    <name>quinn-service-util</name>
+    <description>工具类父项目</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>quinn-util-base</module>
+        <module>quinn-util-constant</module>
+        <module>quinn-util-encrypt</module>
+        <module>quinn-util-excel</module>
+        <module>quinn-util-freemarker</module>
+        <module>quinn-util-generate</module>
+        <module>quinn-util-metadata</module>
+        <module>quinn-util-print</module>
+        <module>quinn-util-stream</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <util.version>1.0.0</util.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-service-util</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-base</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-constant</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-encrypt</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-excel</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-freemarker</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-generate</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-metadata</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-print</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.quinn.util</groupId>
+                <artifactId>quinn-util-stream</artifactId>
+                <version>${util.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>

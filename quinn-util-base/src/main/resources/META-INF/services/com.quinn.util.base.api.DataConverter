@@ -1,0 +1,10 @@
+com.quinn.util.base.convertor.DateConverter
+com.quinn.util.base.convertor.LocalDateConverter
+com.quinn.util.base.convertor.LocalDateTimeConverter
+com.quinn.util.base.convertor.BooleanConverter
+com.quinn.util.base.convertor.BigDecimalConverter
+com.quinn.util.base.convertor.DoubleConverter
+com.quinn.util.base.convertor.LongConverter
+com.quinn.util.base.convertor.IntegerConverter
+com.quinn.util.base.convertor.ShortConverter
+com.quinn.util.base.convertor.StringConverter
