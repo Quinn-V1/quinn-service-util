@@ -13,6 +13,9 @@ public enum NotifyEnum {
     // 全部数据通过
     ALL_DATA_PASSED(DESC_ALL_DATA_PASSED),
 
+    // 全部数据通过
+    NOTHING_HAPPENED(DESC_NOTHING_HAPPENED),
+
     ;
 
     /**

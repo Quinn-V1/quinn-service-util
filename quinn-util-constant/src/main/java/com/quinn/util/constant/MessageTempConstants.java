@@ -108,9 +108,14 @@ public interface MessageTempConstants {
     String DESC_FILE_DELETE_FAIL = "文件【${" + ParamName.PARAM_FILE_PATH + "}】删除失败";
 
     /**
-     * 文件删除失败
+     * 所有数据处理成功
      */
     String DESC_ALL_DATA_PASSED = "所有数据处理成功";
+
+    /**
+     * 未发生任何事情
+     */
+    String DESC_NOTHING_HAPPENED = "未发生任何事情";
 
     /**
      * 占位参数
