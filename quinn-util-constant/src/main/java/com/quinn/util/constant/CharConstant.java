@@ -11,6 +11,11 @@ public interface CharConstant {
     /**
      * 美元
      */
+    char CHAR_EQUAL = '=';
+
+    /**
+     * 美元
+     */
     char CHAR_DOLLAR = '$';
 
     /**

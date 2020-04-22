@@ -11,6 +11,26 @@ import java.util.regex.Pattern;
 public interface ConfigConstant {
 
     /**
+     * NON_OPTION_ARG前缀（System.getProperty()可获取）
+     */
+    String NON_OPTION_ARG_PREFIX_SYSTEM = "-D";
+
+    /**
+     * OPTION_ARG前缀
+     */
+    String OPTION_ARG_PREFIX = "--";
+
+    /**
+     * OPTION_ARG前缀
+     */
+    String FILE_SUFFIX_OF_YAML = "yml";
+
+    /**
+     * 空
+     */
+    String NULL_OF_STRING = "null";
+
+    /**
      * Spring boot容器自动剔除的配置类样式
      */
     Pattern PROPERTY_NAME_AUTOCONFIGURE_EXCLUDE = Pattern.compile("spring.autoconfigure.exclude[\\d]");
