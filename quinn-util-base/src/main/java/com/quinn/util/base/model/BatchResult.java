@@ -290,7 +290,7 @@ public class BatchResult<T> {
      * @author Qunhua.Liao
      * @since 2020-03-30
      */
-    public static class BatchResultMessageProp extends MessageProp {
+    public static class BatchResultMessageProp extends MessageProp<BatchResult> {
 
         /**
          * 构造器

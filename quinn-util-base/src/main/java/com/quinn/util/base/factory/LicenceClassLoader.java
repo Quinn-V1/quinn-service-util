@@ -63,11 +63,6 @@ public class LicenceClassLoader extends URLClassLoader {
     private static LicenceClassLoader instance;
 
     /**
-     * 管控类
-     */
-    private static Set<String> licenceClasses = new HashSet<>();
-
-    /**
      * 已经加载的类
      */
     private static Map<String, Class<?>> loadedClasses = new HashMap<>();
@@ -221,18 +216,9 @@ public class LicenceClassLoader extends URLClassLoader {
     }
 
     @Override
-    protected Class<?> findClass(String name) {
-        Class<?> aClass = loadedClasses.get(name);
-        if (aClass != null) {
-            return aClass;
-        }
-        return null;
-    }
-
-    @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-        if (licenceClasses.contains(name)) {
-            return super.loadClass(name);
+        if (loadedClasses.containsKey(name)) {
+           return loadedClasses.get(name);
         } else {
             return realParent.loadClass(name);
         }

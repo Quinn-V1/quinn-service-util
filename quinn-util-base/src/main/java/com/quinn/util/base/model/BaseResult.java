@@ -268,7 +268,7 @@ public class BaseResult<T> {
      * @author Qunhua.Liao
      * @since 2020-03-30
      */
-    public class BaseResultMessageProp<T extends BaseResult> extends MessageProp<T> {
+    public class BaseResultMessageProp extends MessageProp<BaseResult> {
 
         /**
          * 构造器
@@ -276,7 +276,7 @@ public class BaseResult<T> {
          * @param host        宿主
          * @param messageCode 消息编码
          */
-        public BaseResultMessageProp(T host, String messageCode) {
+        public BaseResultMessageProp(BaseResult host, String messageCode) {
             super(host, messageCode);
         }
 
@@ -286,7 +286,7 @@ public class BaseResult<T> {
          * @param host        宿主
          * @param messageProp 消息属性
          */
-        public BaseResultMessageProp(T host, MessageProp messageProp) {
+        public BaseResultMessageProp(BaseResult host, MessageProp messageProp) {
             super(host, null);
             if (messageProp != null) {
                 setMessageCode(messageProp.getMessageCode());
@@ -316,7 +316,7 @@ public class BaseResult<T> {
          *
          * @return
          */
-        public T result() {
+        public BaseResult result() {
             return getHost();
         }
 
