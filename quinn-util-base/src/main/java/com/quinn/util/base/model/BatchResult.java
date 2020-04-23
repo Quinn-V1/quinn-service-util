@@ -5,6 +5,8 @@ import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.enums.MessageLevelEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,7 @@ import java.util.List;
  */
 @Setter
 @Getter
+@ApiModel("批处理结果")
 public class BatchResult<T> {
 
     /**
@@ -38,16 +41,19 @@ public class BatchResult<T> {
     /**
      * 是否成功
      */
+    @ApiModelProperty("是否成功")
     private boolean success = true;
 
     /**
      * 消息等级
      */
+    @ApiModelProperty("消息等级：900致命、800错误、700警告、500通知、300调试、100追踪、0无")
     private int level = MessageLevelEnum.TRACE.status;
 
     /**
-     * 消息
+     * 消息内容
      */
+    @ApiModelProperty("消息内容")
     private String message;
 
     /**
@@ -94,8 +100,8 @@ public class BatchResult<T> {
      */
     public BatchItem<T> successData(T t) {
         BatchItem<T> item = new BatchItem<>(t);
-        data.getSuccessItems().add(item);
-        recentItem = item;
+        this.data.getSuccessItems().add(item);
+        this.recentItem = item;
         return item;
     }
 
@@ -106,8 +112,9 @@ public class BatchResult<T> {
      */
     public BatchItem<T> failData(T t) {
         BatchItem<T> item = new BatchItem<>(t);
-        data.getFailItems().add(item);
-        recentItem = item;
+        this.data.getFailItems().add(item);
+        this.recentItem = item;
+        this.success = false;
         return item;
     }
 

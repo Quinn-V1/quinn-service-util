@@ -7,6 +7,8 @@ import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.StringConstant;
 import com.quinn.util.constant.enums.MessageLevelEnum;
 import com.quinn.util.constant.enums.MessageParamCaseEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +23,7 @@ import java.util.Map;
  */
 @Setter
 @Getter
+@ApiModel("单体操作结果")
 public class BaseResult<T> {
 
     /**
@@ -34,21 +37,25 @@ public class BaseResult<T> {
     /**
      * 是否成功
      */
+    @ApiModelProperty("是否成功")
     private boolean success = true;
 
     /**
      * 消息等级
      */
+    @ApiModelProperty("消息等级：900致命、800错误、700警告、500通知、300调试、100追踪、0无")
     private int level = MessageLevelEnum.TRACE.status;
 
     /**
      * 消息
      */
+    @ApiModelProperty("消息内容")
     private String message;
 
     /**
-     * 耶稣数据
+     * 业务数据
      */
+    @ApiModelProperty("业务数据")
     private T data;
 
     /**
