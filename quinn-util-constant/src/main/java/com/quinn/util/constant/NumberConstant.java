@@ -48,4 +48,9 @@ public interface NumberConstant {
      */
     int MAX_TPS = 1000000;
 
+    /**
+     * 长整型0
+     */
+    Long LONG_ZERO = 0L;
+
 }

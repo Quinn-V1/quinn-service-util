@@ -30,17 +30,17 @@ public interface KeyValue<K, V> {
     V getDataValue();
 
     /**
+     * 获取编码（编码是业务主键的一种简要表达）
+     *
+     * @return  编码
+     */
+    default K getDataCode() {return getDataKey();}
+
+    /**
      * 获取上级ID（支持上下级）
      *
      * @return  默认为空
      */
     default Long getParentId() {return null;}
-
-    /**
-     * 获取编码（编码是业务主键的一种简要表达）
-     *
-     * @return  编码
-     */
-    default K getCode() {return getDataKey();}
 
 }
