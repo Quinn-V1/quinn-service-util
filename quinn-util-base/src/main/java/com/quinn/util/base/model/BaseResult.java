@@ -316,7 +316,7 @@ public class BaseResult<T> {
          *
          * @return
          */
-        public BaseResult result() {
+        public <T> BaseResult<T> result() {
             return getHost();
         }
 
