@@ -149,7 +149,7 @@ public final class FileUtil {
      * @param filePath 文件路径
      * @param handler  大文件处理器
      */
-    public BaseResult readLargeFile(String filePath, LargeStringFilePartHandler handler) {
+    public static BaseResult readLargeFile(String filePath, LargeStringFilePartHandler handler) {
         FileInputStream inputStream = null;
         Scanner sc = null;
         try {
@@ -173,7 +173,7 @@ public final class FileUtil {
      *
      * @param filePath
      */
-    public BaseResult readLargeFile2(String filePath, LargeStringFilePartHandler handler) {
+    public static BaseResult readLargeFile2(String filePath, LargeStringFilePartHandler handler) {
         File file = new File(filePath);
         BufferedReader reader = null;
         try {
