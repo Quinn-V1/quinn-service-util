@@ -8,15 +8,20 @@ package com.quinn.util.constant.enums;
  */
 public enum DataStatusEnum {
 
-    // 归档
-    ARCHIVE("归档", 0),
+    // 全部
+    UNREADY("未启用", 0),
 
-    // 无
-    DISABLED("禁用", 5),
+    // 归档
+    SYS_DISABLE("系统禁用", 5),
 
     // 全部
-    ENABLED("启用", 10),
+    BIZ_DISABLE("业务禁用", 9),
 
+    // 无
+    NORMAL("正常启用", 10),
+
+    // 归档
+    SYS_INIT("系统初始化", 10000),
     ;
 
     /**
