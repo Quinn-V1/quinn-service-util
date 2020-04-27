@@ -53,4 +53,9 @@ public interface NumberConstant {
      */
     Long LONG_ZERO = 0L;
 
+    /**
+     * 顶层数据父类ID
+     */
+    Long TOP_PARENT_ID = LONG_ZERO;
+
 }
