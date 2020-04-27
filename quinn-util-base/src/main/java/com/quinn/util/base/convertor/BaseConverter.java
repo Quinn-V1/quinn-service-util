@@ -1,13 +1,12 @@
 package com.quinn.util.base.convertor;
 
 import com.quinn.util.base.api.DataConverter;
+import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
+import com.quinn.util.constant.enums.DataTypeEnum;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ServiceLoader;
+import java.util.*;
 
 /**
  * 所有类型转换器的父类
@@ -95,6 +94,45 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
         }
 
         return value.toString();
+    }
+
+    /**
+     * 通过数据类型获取Java类
+     *
+     * @param dataType 数据类型
+     * @return  Java 类
+     */
+    public static Class classOf(String dataType) {
+        return DataTypeEnum.classOf(dataType);
+    }
+
+    /**
+     * 静态判断是否为空
+     *
+     * @param object    判断对象
+     * @return  是否为空
+     */
+    public static boolean staticIsEmpty(Object object) {
+        if (object == null) {
+            return true;
+        }
+
+        Class<?> aClass = object.getClass();
+        DataConverter dataConverter = CONVERTER_MAP.get(aClass);
+
+        if (dataConverter != null) {
+            return dataConverter.isEmpty(object);
+        }
+
+        if (aClass.isArray()) {
+            return CollectionUtil.isEmpty((Object[]) object);
+        } else if (Collection.class.isAssignableFrom(aClass)) {
+            return  CollectionUtil.isEmpty((Collection) object);
+        } else if (Map.class.isAssignableFrom(aClass)) {
+            return  CollectionUtil.isEmpty((Map) object);
+        }
+
+        return false;
     }
 
     @Override

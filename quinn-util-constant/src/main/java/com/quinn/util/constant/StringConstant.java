@@ -53,4 +53,14 @@ public interface StringConstant {
      */
     String NULL_OF_STRING = "null";
 
+    /**
+     * 顶层数据
+     */
+    String TOP_OF_DATA = "TOP_OF_DATA";
+
+    /**
+     * 顶层数据
+     */
+    String NONE_OF_DATA = "NONE_OF_DATA";
+
 }

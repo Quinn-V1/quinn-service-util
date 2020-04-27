@@ -77,6 +77,11 @@ public interface MessageTempConstants {
     String DESC_CHARSET_NOT_SUPPORTED = "字符集【${" + ParamName.PARAM_CHARSET_NAME + "}】不被系统支持";
 
     /**
+     * 字符集不支持
+     */
+    String DESC_STRATEGY_NOT_SUPPORTED = "策略【${" + ParamName.STRATEGY_TYPE + "}】不被系统支持";
+
+    /**
      * 文件夹创建失败
      */
     String DESC_FILE_DIRECTORY_CREATE_FAIL = "文件夹【${" + ParamName.PARAM_FILE_DIRECTORY + "}】创建失败";
@@ -188,24 +193,29 @@ public interface MessageTempConstants {
         String PARAM_TERMINATE_POSITION = "terminatePosition";
 
         /**
-         * 中断位置
+         * 文件夹路径
          */
         String PARAM_FILE_DIRECTORY = "fileDirectory";
 
         /**
-         * 中断位置
+         * 文件路径
          */
         String PARAM_FILE_PATH = "filePath";
 
         /**
-         * 中断位置
+         * 数据大小
          */
         String PARAM_DATA_SIZE = "dataSize";
 
         /**
-         * 中断位置
+         * 限制大小
          */
         String PARAM_LIMIT_SIZE = "limitSize";
+
+        /**
+         * 策略类型
+         */
+        String STRATEGY_TYPE = "strategyType";
 
     }
 }

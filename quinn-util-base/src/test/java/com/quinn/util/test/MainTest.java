@@ -1,4 +1,4 @@
-package com.quinn.util.base.util;
+package com.quinn.util.test;
 
 import com.quinn.util.base.convertor.BaseConverter;
 

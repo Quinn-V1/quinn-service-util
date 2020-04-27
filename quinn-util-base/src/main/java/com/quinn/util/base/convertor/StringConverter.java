@@ -1,5 +1,7 @@
 package com.quinn.util.base.convertor;
 
+import com.quinn.util.constant.StringConstant;
+
 /**
  * 字符串数据转换器
  *
@@ -21,4 +23,8 @@ public class StringConverter extends BaseConverter<String> {
         return true;
     }
 
+    @Override
+    public boolean isEmpty(String obj) {
+        return obj == null || StringConstant.STRING_EMPTY.equals(obj);
+    }
 }

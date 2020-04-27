@@ -1,5 +1,6 @@
 package com.quinn.util.base.util;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -47,18 +48,18 @@ public final class CollectionUtil {
     /**
      * 判断列表是否为空
      *
-     * @param list 判断列表
+     * @param collection 判断列表
      * @return 是否为空
      */
-    public static final boolean isEmpty(List list) {
-        return list == null || list.size() == 0;
+    public static final boolean isEmpty(Collection collection) {
+        return collection == null || collection.size() == 0;
     }
 
     /**
      * 判断Map是否为空
      *
-     * @param params    Map
-     * @return          是否为空
+     * @param params Map
+     * @return 是否为空
      */
     public static boolean isEmpty(Map params) {
         return params == null || params.size() == 0;
@@ -67,9 +68,9 @@ public final class CollectionUtil {
     /**
      * 将数组转化为Set
      *
-     * @param ts    数组
-     * @param <T>   数组泛型
-     * @return      Set
+     * @param ts  数组
+     * @param <T> 数组泛型
+     * @return Set
      */
     public static final <T> HashSet<T> asHashSet(T[] ts) {
         if (isEmpty(ts)) {
@@ -82,4 +83,30 @@ public final class CollectionUtil {
         }
         return hashSet;
     }
+
+    /**
+     * 整合两个Map
+     *
+     * @param oldMap 旧的Map
+     * @param addMap 新增Map
+     */
+    public static <K, V> void mergeMap(Map<K, V> oldMap, Map<K, V> addMap) {
+        if (addMap == null) {
+            return;
+        }
+
+        for (Map.Entry<K, V> entry : addMap.entrySet()) {
+            if (!oldMap.containsKey(entry.getKey())) {
+                oldMap.put(entry.getKey(), entry.getValue());
+            } else {
+                Object oldVal = oldMap.get(entry.getKey());
+                if (oldVal instanceof Map && entry.getValue() instanceof Map) {
+                    mergeMap((Map) oldVal, (Map) entry.getValue());
+                } else {
+                    oldMap.put(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+    }
+
 }

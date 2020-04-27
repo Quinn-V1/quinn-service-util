@@ -129,4 +129,18 @@ public final class StringUtil {
         return MimeMapper.DEFAULT_FILE_TYPE;
     }
 
+    /**
+     * 在框架内为空(一些特殊字符串)
+     *
+     * @return 框架内表示空的
+     */
+    public static boolean isEmptyInFrame(String str) {
+        boolean result = isEmpty(str);
+        if (result) {
+            return true;
+        }
+        return StringConstant.TOP_OF_DATA.equals(str) || StringConstant.NULL_OF_STRING.equals(str)
+                || StringConstant.NONE_OF_DATA.equals(str);
+    }
+
 }

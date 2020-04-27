@@ -25,6 +25,14 @@ public interface DataConverter<T> {
     boolean isMyStyle(Object obj);
 
     /**
+     * 判断一个对象是是不是空
+     *
+     * @param obj： 转换对象
+     * @return 是否符合目标对象的样式
+     */
+    default boolean isEmpty(T obj) {return obj == null;}
+
+    /**
      * 将一个对象转为字符串
      *
      * @param obj 目标对象

@@ -66,6 +66,9 @@ public enum ExceptionEnum {
     // 字符集不支持
     CHARSET_NOT_SUPPORTED(DESC_CHARSET_NOT_SUPPORTED, PARAM_CHARSET_NAME),
 
+    // 策略不被支持
+    STRATEGY_NOT_SUPPORTED(DESC_STRATEGY_NOT_SUPPORTED, STRATEGY_TYPE),
+
     ;
 
     /**
