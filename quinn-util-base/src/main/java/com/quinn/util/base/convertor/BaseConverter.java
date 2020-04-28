@@ -1,9 +1,12 @@
 package com.quinn.util.base.convertor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.quinn.util.base.api.DataConverter;
+import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.constant.enums.DataTypeEnum;
+import com.quinn.util.constant.enums.ExceptionEnum;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.*;
@@ -69,12 +72,25 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
             return (T) value;
         }
 
-        DataConverter converter = getInstance(clazz);
-        if (converter == null) {
-            return (T) value;
+        if (value == null) {
+            return null;
         }
 
-        return (T) converter.convert(value);
+        DataConverter converter = getInstance(clazz);
+        if (converter != null) {
+            return (T) converter.convert(value);
+        }
+
+        if (value instanceof JSONObject) {
+            return ((JSONObject) value).toJavaObject(clazz);
+        } else if (value instanceof Map) {
+            return new JSONObject((Map) value).toJavaObject(clazz);
+        }
+
+        throw new DataStyleNotMatchException().getMessageProp()
+                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], clazz.getName())
+                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], value)
+                .exception();
     }
 
     /**
@@ -100,7 +116,7 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
      * 通过数据类型获取Java类
      *
      * @param dataType 数据类型
-     * @return  Java 类
+     * @return Java 类
      */
     public static Class classOf(String dataType) {
         return DataTypeEnum.classOf(dataType);
@@ -109,27 +125,27 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
     /**
      * 静态判断是否为空
      *
-     * @param object    判断对象
-     * @return  是否为空
+     * @param object 判断对象
+     * @return 是否为空
      */
     public static boolean staticIsEmpty(Object object) {
         if (object == null) {
             return true;
         }
 
-        Class<?> aClass = object.getClass();
-        DataConverter dataConverter = CONVERTER_MAP.get(aClass);
+        Class<?> clazz = object.getClass();
+        DataConverter dataConverter = CONVERTER_MAP.get(clazz);
 
         if (dataConverter != null) {
             return dataConverter.isEmpty(object);
         }
 
-        if (aClass.isArray()) {
+        if (clazz.isArray()) {
             return CollectionUtil.isEmpty((Object[]) object);
-        } else if (Collection.class.isAssignableFrom(aClass)) {
-            return  CollectionUtil.isEmpty((Collection) object);
-        } else if (Map.class.isAssignableFrom(aClass)) {
-            return  CollectionUtil.isEmpty((Map) object);
+        } else if (Collection.class.isAssignableFrom(clazz)) {
+            return CollectionUtil.isEmpty((Collection) object);
+        } else if (Map.class.isAssignableFrom(clazz)) {
+            return CollectionUtil.isEmpty((Map) object);
         }
 
         return false;
@@ -143,8 +159,8 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
     /**
      * 是否是可以直接转化的基础类型
      *
-     * @param clazz     Java类型
-     * @return          是否是基础类
+     * @param clazz Java类型
+     * @return 是否是基础类
      */
     public static boolean isPrimitive(Class clazz) {
         return CONVERTER_MAP.containsKey(clazz);
