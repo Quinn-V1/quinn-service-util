@@ -54,8 +54,58 @@ public interface NumberConstant {
     Long LONG_ZERO = 0L;
 
     /**
-     * 顶层数据父类ID
+     * 长整型-1
      */
-    Long TOP_PARENT_ID = LONG_ZERO;
+    Long LONG_ONE_NEGATIVE = -1L;
+
+    /**
+     * 长整型-2
+     */
+    Long LONG_TWO_NEGATIVE = -2L;
+
+    /**
+     * 长整型-3
+     */
+    Long LONG_THREE_NEGATIVE = -3L;
+
+    /**
+     * 长整型-4
+     */
+    Long LONG_FOUR_NEGATIVE = -4L;
+
+    /**
+     * 长整型-4
+     */
+    Long LONG_FIVE_NEGATIVE = -5L;
+
+    /**
+     * 数据字典-ID-顶层数据
+     */
+    Long TOP_OF_DATA_ID = LONG_ZERO;
+
+    /**
+     * 数据字典-ID-无
+     */
+    Long NONE_OF_DATA_ID = LONG_ONE_NEGATIVE;
+
+    /**
+     * 数据字典-ID-全部
+     */
+    Long ALL_OF_DATA_ID = LONG_TWO_NEGATIVE;
+
+    /**
+     * 数据字典-ID-默认
+     */
+    Long DEFAULT_OF_DATA_ID = LONG_THREE_NEGATIVE;
+
+    /**
+     * 字典数据-ID-其他
+     */
+    Long OTHER_OF_DATA_ID = LONG_FOUR_NEGATIVE;
+
+    /**
+     * 字典数据-ID-数据类型
+     */
+    Long DATA_TYPE_ID = LONG_FIVE_NEGATIVE;
 
 }

@@ -54,23 +54,33 @@ public interface StringConstant {
     String NULL_OF_STRING = "null";
 
     /**
-     * 顶层数据
+     * 数据字典-编码-顶层数据
      */
     String TOP_OF_DATA = "TOP_OF_DATA";
 
     /**
-     * 顶层数据
+     * 数据字典-编码-无
      */
     String NONE_OF_DATA = "NONE_OF_DATA";
 
     /**
-     * 所有数据
+     * 数据字典-编码-所有
      */
     String ALL_OF_DATA = "ALL_OF_DATA";
 
     /**
-     * 所有数据
+     * 数据字典-编码-默认
      */
     String DEFAULT_OF_DATA = "DEFAULT_OF_DATA";
+
+    /**
+     * 数据字典-编码-其他
+     */
+    String OTHER_OF_DATA = "OTHER_OF_DATA";
+
+    /**
+     * 数据字典-编码-数据类型
+     */
+    String DATA_TYPE = "DATA_TYPE";
 
 }
