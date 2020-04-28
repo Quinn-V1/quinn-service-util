@@ -63,4 +63,14 @@ public interface StringConstant {
      */
     String NONE_OF_DATA = "NONE_OF_DATA";
 
+    /**
+     * 所有数据
+     */
+    String ALL_OF_DATA = "ALL_OF_DATA";
+
+    /**
+     * 所有数据
+     */
+    String DEFAULT_OF_DATA = "DEFAULT_OF_DATA";
+
 }
