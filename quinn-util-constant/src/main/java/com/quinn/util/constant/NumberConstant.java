@@ -51,6 +51,11 @@ public interface NumberConstant {
     /**
      * 长整型0
      */
+    Long LONG_ONE = 1L;
+
+    /**
+     * 长整型0
+     */
     Long LONG_ZERO = 0L;
 
     /**
