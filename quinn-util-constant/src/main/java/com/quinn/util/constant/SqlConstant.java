@@ -24,9 +24,19 @@ public interface SqlConstant {
     String PARAM_SEQ_VALUE = "seqValue";
 
     /**
+     * 参数：序列值
+     */
+    String PARAM_SEQ_STEP = "seqStep";
+
+    /**
      * 序列下N个序列
      */
-    String SEQ_NEXT_N_VALUE = "seqNextNValue";
+    String SEQ_NEXT_N_VALUE = "nextValueOfNum";
+
+    /**
+     * 序列个数
+     */
+    String SEQ_NUMBER = "seqNum";
 
     /**
      * 序列步长
