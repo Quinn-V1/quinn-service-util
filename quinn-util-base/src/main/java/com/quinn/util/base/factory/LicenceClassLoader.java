@@ -20,9 +20,7 @@ import java.net.URLClassLoader;
 import java.net.URLStreamHandlerFactory;
 import java.security.Key;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 个性化类加载器
@@ -117,11 +115,11 @@ public class LicenceClassLoader extends URLClassLoader {
             try {
                 tempFile.mkdirs();
                 String tempPath = tempFile.getAbsolutePath() + File.separatorChar;
-                String srcTemp = tempPath + 0;
+                String tempLic = tempPath + 0;
+                FileUtil.copy(licencePath, tempLic);
 
-                FileUtil.copyNio(licencePath, srcTemp);
                 BaseResult<Map<Integer, String>> mapBaseResult =
-                        FileUtil.splitMergeFile(srcTemp, true, tempPath, 1);
+                        FileUtil.splitMergeFile(licencePath, true, tempPath, 1);
 
                 if (!mapBaseResult.isSuccess()) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
@@ -218,7 +216,7 @@ public class LicenceClassLoader extends URLClassLoader {
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
         if (loadedClasses.containsKey(name)) {
-           return loadedClasses.get(name);
+            return loadedClasses.get(name);
         } else {
             return realParent.loadClass(name);
         }

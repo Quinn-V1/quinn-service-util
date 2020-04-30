@@ -444,6 +444,29 @@ public final class FileUtil {
     }
 
     /**
+     * 文件复制
+     *
+     * @param source 源
+     * @param dest   目标
+     */
+    public static void copy(String source, String dest) {
+        FileInputStream in = null;
+        FileOutputStream out = null;
+        try {
+            in = new FileInputStream(new File(source));
+            out = new FileOutputStream(new File(dest));
+            StreamUtil.copy(in, out);
+        } catch (Exception e) {
+            throw new FileOperationException()
+                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
+                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
+                    .exception();
+        } finally {
+            StreamUtil.closeQuietly(in, out);
+        }
+    }
+
+    /**
      * 删除文件级文件夹
      *
      * @param dir 文件路径
