@@ -5,7 +5,7 @@ import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
-import com.quinn.util.constant.enums.DataTypeEnum;
+import com.quinn.util.base.util.enums.DataTypeEnum;
 import com.quinn.util.constant.enums.ExceptionEnum;
 
 import java.lang.reflect.ParameterizedType;

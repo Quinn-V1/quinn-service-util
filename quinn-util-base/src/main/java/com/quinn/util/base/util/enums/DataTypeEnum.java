@@ -1,4 +1,7 @@
-package com.quinn.util.constant.enums;
+package com.quinn.util.base.util.enums;
+
+import com.quinn.util.base.model.BaseResult;
+import com.quinn.util.base.model.BatchResult;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -38,6 +41,12 @@ public enum DataTypeEnum {
 
     // 日期时间
     DATETIME(LocalDateTime.class),
+
+    // 基础结果类
+    BASE_RESULT(BaseResult.class),
+
+    // 批处理结果类
+    BATCH_RESULT(BatchResult.class),
 
     ;
 
