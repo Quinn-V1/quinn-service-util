@@ -76,7 +76,7 @@ public enum DataTypeEnum {
         try {
             return Class.forName(dataType);
         } catch (ClassNotFoundException e) {
-            return String.class;
+            return null;
         }
     }
 }
