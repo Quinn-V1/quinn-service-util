@@ -359,7 +359,7 @@ public final class NumberUtil {
      * 将long转为byte[]
      *
      * @param x long
-     * @return  byte[]
+     * @return byte[]
      */
     public static byte[] longToBytes(long x) {
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
@@ -371,13 +371,23 @@ public final class NumberUtil {
      * 将byte[]转为long
      *
      * @param bytes 字节数组
-     * @return  long
+     * @return long
      */
     public static long bytesToLong(byte[] bytes) {
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
         buffer.put(bytes, 0, bytes.length);
         buffer.flip();
         return buffer.getLong();
+    }
+
+    /**
+     * 在框架内是否代表空（系统主键）
+     *
+     * @param id 系统主键
+     * @return 空位true，否则为false
+     */
+    public static boolean isEmptyInFrame(Long id) {
+        return id == null || id <= 0;
     }
 
 }
