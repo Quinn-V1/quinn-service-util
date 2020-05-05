@@ -6,6 +6,7 @@ import com.quinn.util.constant.enums.ExceptionEnum;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * 流操作工具
@@ -177,4 +178,16 @@ public final class StreamUtil {
         out.flush();
         return byteCount;
     }
+
+    /**
+     * 流转为字符串
+     *
+     * @param inputStream 字符串输入流
+     * @return 字符串
+     */
+    public static String asString(InputStream inputStream) {
+        return new BufferedReader(new InputStreamReader(inputStream))
+                .lines().parallel().collect(Collectors.joining("\n"));
+    }
+
 }

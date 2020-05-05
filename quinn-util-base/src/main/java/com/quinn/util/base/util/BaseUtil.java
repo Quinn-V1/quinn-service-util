@@ -1,6 +1,8 @@
 package com.quinn.util.base.util;
 
 import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.UUID;
 
 /**
@@ -46,9 +48,9 @@ public final class BaseUtil {
     /**
      * 连续获取对象指定属性值
      *
-     * @param obj           对象
-     * @param fieldPath     属性路径
-     * @return              属性值
+     * @param obj       对象
+     * @param fieldPath 属性路径
+     * @return 属性值
      */
     public static Object getFieldInstance(Object obj, String fieldPath) {
         String[] fields = fieldPath.split("#");
@@ -83,4 +85,21 @@ public final class BaseUtil {
         return null;
     }
 
+    /**
+     * 取得最大的一个
+     *
+     * @param data       比较数据
+     * @param comparator 比较器
+     * @param <T>        数据泛型
+     * @return 最大值
+     */
+    public static <T> T getMax(Collection<T> data, Comparator comparator) {
+        T max = null;
+        for (T t : data) {
+            if (comparator.compare(max, t) < 0) {
+                max = t;
+            }
+        }
+        return max;
+    }
 }
