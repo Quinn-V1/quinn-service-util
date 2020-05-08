@@ -14,6 +14,11 @@ public enum  OrderByTypeEnum {
 
     ;
 
+    /**
+     * 默认排序
+     */
+    public static final String DEFAULT_ORDER = "DESC";
+
     public final int status;
 
     OrderByTypeEnum(int status) {

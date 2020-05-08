@@ -59,6 +59,11 @@ public interface CharConstant {
     char COLON = ':';
 
     /**
+     * 空格
+     */
+    char BLANK = ' ';
+
+    /**
      * 逗号
      */
     char COMMA = ',';
