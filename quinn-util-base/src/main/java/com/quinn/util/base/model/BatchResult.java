@@ -25,6 +25,11 @@ import java.util.List;
 public class BatchResult<T> {
 
     /**
+     * 通用成功接口（成功的方式大同小异，使用一个就可以；失败的方式千差万别，不做常量）
+     */
+    public static final BatchResult SUCCESS = new BatchResult(0);
+
+    /**
      * 有参构造器
      *
      * @param size  批处理任务条目数
@@ -32,11 +37,6 @@ public class BatchResult<T> {
     public BatchResult(int size) {
         this.data = new BatchItems<T>(size);
     }
-
-    /**
-     * 通用成功接口（成功的方式大同小异，使用一个就可以；失败的方式千差万别，不做常量）
-     */
-    public static final BatchResult SUCCESS = new BatchResult(0);
 
     /**
      * 是否成功

@@ -1,19 +1,13 @@
 package com.quinn.util.base.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.quinn.util.base.exception.BaseBusinessException;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.constant.CharConstant;
-import com.quinn.util.constant.StringConstant;
 import com.quinn.util.constant.enums.MessageLevelEnum;
-import com.quinn.util.constant.enums.MessageParamCaseEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 基础结果信息
@@ -147,9 +141,9 @@ public class BaseResult<T> {
     /**
      * 成功方法
      *
-     * @param data  数据
-     * @param <T>   数据泛型
-     * @return      结果
+     * @param data 数据
+     * @param <T>  数据泛型
+     * @return 结果
      */
     public static <T> BaseResult<T> success(T data) {
         BaseResult result = new BaseResult();
@@ -221,7 +215,7 @@ public class BaseResult<T> {
      * 链式处理中，后续逻辑是否继续的判断依据
      * 中断后续逻辑，不仅仅在前置逻辑出错的情况下会出现，还有可以，前面已经找到结果，就没必要再往后找
      *
-     * @return  是否要继续
+     * @return 是否要继续
      */
     public boolean wantContinue() {
         return !this.success || this.level < MessageLevelEnum.WARN.status;
@@ -230,7 +224,7 @@ public class BaseResult<T> {
     /**
      * 拼接消息
      *
-     * @param message   新消息
+     * @param message 新消息
      */
     public void appendMessage(String message) {
         if (StringUtil.isEmpty(message)) {
