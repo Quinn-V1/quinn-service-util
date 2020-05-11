@@ -180,4 +180,34 @@ public interface ConfigConstant {
      */
     String DEFAULT_LICENCE_PATH = "licence/licence.lic";
 
+    /**
+     * 配置:许可证路径
+     */
+    String PROP_KEY_OF_ENCRYPT_VALUE_PREFIX = "com.quinn-service.encrypt.value-prefix";
+
+    /**
+     * 配置:许可证路径
+     */
+    String PROP_KEY_OF_ENCRYPT_VALUE_SUFFIX = "com.quinn-service.encrypt.value-suffix";
+
+    /**
+     * 配置:许可证路径
+     */
+    String PROP_KEY_OF_ENCRYPT_SALT = "com.quinn-service.encrypt.salt";
+
+    /**
+     * 加密配置信息值：前缀
+     */
+    String ENCRYPT_VALUE_PREFIX = "ENC(";
+
+    /**
+     * 加密配置信息值：前缀
+     */
+    String ENCRYPT_VALUE_SUFFIX = ")";
+
+    /**
+     * 加密配置信息值：盐
+     */
+    String ENCRYPT_SALT = "quinn-service";
+
 }
