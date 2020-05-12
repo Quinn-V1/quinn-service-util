@@ -83,4 +83,8 @@ public interface StringConstant {
      */
     String DATA_TYPE = "DATA_TYPE";
 
+    /**
+     * 空的Json字符串
+     */
+    String EMPTY_JSON = "{}";
 }
