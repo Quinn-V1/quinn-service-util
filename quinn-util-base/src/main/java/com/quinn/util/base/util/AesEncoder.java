@@ -125,7 +125,6 @@ public class AesEncoder {
     public static void main(String[] args) {
         System.out.println(encode("ming-bpm", "quinn-service"));
         System.out.println(encode("MingBpm!", "quinn-service"));
-        System.out.println(encode("Caiyilin520", "quinn-service"));
     }
 
 }

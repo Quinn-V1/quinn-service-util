@@ -1,8 +1,10 @@
 package com.quinn.util.base.convertor;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
+import com.quinn.util.base.handler.BaseObjectSerializer;
 import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.base.util.enums.DataTypeEnum;
@@ -42,12 +44,16 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
     public static void addConverter(DataConverter converter) {
         CONVERTER_MAP.put(converter.getClass(), converter);
         ParameterizedType parameterizedType = (ParameterizedType) converter.getClass().getGenericSuperclass();
-        CONVERTER_MAP.put((Class<?>) parameterizedType.getActualTypeArguments()[0], converter);
+
+        Class clazz = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+        CONVERTER_MAP.put(clazz, converter);
+        SerializeConfig.globalInstance.put(clazz, BaseObjectSerializer.INSTANCE);
 
         Class[] supportedClasses = converter.getSupportedClasses();
         if (supportedClasses != null) {
-            for (Class clazz : supportedClasses) {
-                CONVERTER_MAP.put(clazz, converter);
+            for (Class type : supportedClasses) {
+                CONVERTER_MAP.put(type, converter);
+                SerializeConfig.globalInstance.put(type, BaseObjectSerializer.INSTANCE);
             }
         }
     }
