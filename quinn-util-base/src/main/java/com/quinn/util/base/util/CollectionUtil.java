@@ -1,8 +1,10 @@
 package com.quinn.util.base.util;
 
+import com.quinn.util.base.convertor.BaseConverter;
+import com.quinn.util.constant.StringConstant;
+
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -107,6 +109,66 @@ public final class CollectionUtil {
                 }
             }
         }
+    }
+
+    /**
+     * 默认分割符拼接列表
+     *
+     * @param data 数据
+     * @return 字符串
+     */
+    public static String join(Collection data) {
+        return join(data, StringConstant.CHAR_COMMA);
+    }
+
+    /**
+     * 默认分割符拼接数组
+     *
+     * @param data 数据
+     * @return 字符串
+     */
+    public static String join(Object[] data) {
+        return join(data, StringConstant.CHAR_COMMA);
+    }
+
+    /**
+     * 自定分隔符拼接列表
+     *
+     * @param data  数据
+     * @param split 分割符
+     * @return
+     */
+    public static String join(Collection data, String split) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        StringBuilder query = new StringBuilder();
+        for (Object o : data) {
+            query.append(BaseConverter.staticToString(o)).append(split);
+        }
+        query.delete(query.length() - split.length(), query.length());
+        return query.toString();
+    }
+
+    /**
+     * 自定分隔符拼接数组
+     *
+     * @param data  数据
+     * @param split 分割符
+     * @return
+     */
+    public static String join(Object[] data, String split) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        StringBuilder query = new StringBuilder();
+        for (Object o : data) {
+            query.append(BaseConverter.staticToString(o)).append(split);
+        }
+        query.delete(query.length() - split.length(), query.length());
+        return query.toString();
     }
 
 }
