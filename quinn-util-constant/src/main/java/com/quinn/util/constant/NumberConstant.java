@@ -34,6 +34,11 @@ public interface NumberConstant {
     int INT_FOUR = 4;
 
     /**
+     * 整数 5
+     */
+    int INT_FIVE = 5;
+
+    /**
      * 整数 10
      */
     int INT_TEN = 10;
@@ -56,66 +61,101 @@ public interface NumberConstant {
     /**
      * 长整型0
      */
-    Long LONG_ONE = 1L;
+    long LONG_ONE = 1L;
 
     /**
      * 长整型0
      */
-    Long LONG_ZERO = 0L;
+    long LONG_ZERO = 0L;
 
     /**
      * 长整型-1
      */
-    Long LONG_ONE_NEGATIVE = -1L;
+    long LONG_ONE_NEGATIVE = -1L;
 
     /**
      * 长整型-2
      */
-    Long LONG_TWO_NEGATIVE = -2L;
+    long LONG_TWO_NEGATIVE = -2L;
 
     /**
      * 长整型-3
      */
-    Long LONG_THREE_NEGATIVE = -3L;
+    long LONG_THREE_NEGATIVE = -3L;
 
     /**
      * 长整型-4
      */
-    Long LONG_FOUR_NEGATIVE = -4L;
+    long LONG_FOUR_NEGATIVE = -4L;
 
     /**
      * 长整型-4
      */
-    Long LONG_FIVE_NEGATIVE = -5L;
+    long LONG_FIVE_NEGATIVE = -5L;
 
     /**
      * 数据字典-ID-顶层数据
      */
-    Long TOP_OF_DATA_ID = LONG_ZERO;
+    long TOP_OF_DATA_ID = LONG_ZERO;
 
     /**
      * 数据字典-ID-无
      */
-    Long NONE_OF_DATA_ID = LONG_ONE_NEGATIVE;
+    long NONE_OF_DATA_ID = LONG_ONE_NEGATIVE;
 
     /**
      * 数据字典-ID-全部
      */
-    Long ALL_OF_DATA_ID = LONG_TWO_NEGATIVE;
+    long ALL_OF_DATA_ID = LONG_TWO_NEGATIVE;
 
     /**
      * 数据字典-ID-默认
      */
-    Long DEFAULT_OF_DATA_ID = LONG_THREE_NEGATIVE;
+    long DEFAULT_OF_DATA_ID = LONG_THREE_NEGATIVE;
 
     /**
      * 字典数据-ID-其他
      */
-    Long OTHER_OF_DATA_ID = LONG_FOUR_NEGATIVE;
+    long OTHER_OF_DATA_ID = LONG_FOUR_NEGATIVE;
 
     /**
      * 字典数据-ID-数据类型
      */
-    Long DATA_TYPE_ID = LONG_FIVE_NEGATIVE;
+    long DATA_TYPE_ID = LONG_FIVE_NEGATIVE;
+
+    /**
+     * 1秒钟对应的微秒数
+     */
+    long TIME_MILL_ONE_SECOND = 1000;
+
+    /**
+     * 1分钟对应的微秒数
+     */
+    long TIME_MILL_ONE_MINUTE = 60000;
+
+    /**
+     * 1分钟对应的微秒数
+     */
+    long TIME_MILL_ONE_HOUR = 3600000;
+
+    /**
+     * 1分钟对应的微数
+     */
+    long TIME_SEC_ONE_MINUTE = 60;
+
+    /**
+     * 1小时对应的秒数
+     */
+    long TIME_SEC_ONE_HOUR = 3600;
+
+    /**
+     * 半天对应的秒数
+     */
+    long TIME_SEC_HALF_DAY = 3600 * 12;
+
+    /**
+     * 一天对应的秒数
+     */
+    long TIME_SEC_ONE_DAY = 3600 * 24;
 
 }

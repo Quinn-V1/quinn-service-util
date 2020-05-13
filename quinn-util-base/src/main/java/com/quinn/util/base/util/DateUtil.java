@@ -25,16 +25,6 @@ import java.util.regex.Pattern;
  */
 public final class DateUtil {
 
-    /**
-     * 1分钟对应的微秒数
-     */
-    public static final long ONE_SECOND = 1000;
-
-    /**
-     * 1分钟对应的微秒数
-     */
-    public static final long ONE_MINUTE = 60000;
-
     private DateUtil() {
     }
 
