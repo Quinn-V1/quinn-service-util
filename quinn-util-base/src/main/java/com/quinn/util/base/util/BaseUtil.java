@@ -1,8 +1,12 @@
 package com.quinn.util.base.util;
 
+import com.quinn.util.base.api.MethodInvokerOneParam;
+import com.quinn.util.base.convertor.BaseConverter;
+
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -102,4 +106,51 @@ public final class BaseUtil {
         }
         return max;
     }
+
+    /**
+     * 如果对象不为空：执行回调函数（可能是列表，迭代执行）
+     *
+     * @param object        对象
+     * @param methodInvoker 回调函数
+     * @return 是否不为空（执行）
+     */
+    public static boolean execIfNotEmpty(Object object, MethodInvokerOneParam methodInvoker) {
+        if (object == null) {
+            return false;
+        }
+
+        if (object instanceof Collection) {
+            Collection collection = (Collection) object;
+            if (collection.size() == 0) {
+                return false;
+            }
+
+            if (methodInvoker != null) {
+                for (Object o : collection) {
+                    methodInvoker.invoke(o);
+                }
+            }
+        } else if (object.getClass().isArray()) {
+            Object[] array = (Object[]) object;
+            if (array.length == 0) {
+                return false;
+            }
+
+            if (methodInvoker != null) {
+                for (Object o : array) {
+                    methodInvoker.invoke(o);
+                }
+            }
+        } else {
+            if (BaseConverter.staticIsEmpty(object)) {
+                return false;
+            }
+            if (methodInvoker != null) {
+                methodInvoker.invoke(object);
+            }
+        }
+
+        return true;
+    }
+
 }

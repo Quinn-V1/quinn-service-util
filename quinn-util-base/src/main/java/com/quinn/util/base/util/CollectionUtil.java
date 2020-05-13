@@ -1,5 +1,6 @@
 package com.quinn.util.base.util;
 
+import com.quinn.util.base.api.MethodInvokerNoParam;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.StringConstant;
 
@@ -169,6 +170,24 @@ public final class CollectionUtil {
         }
         query.delete(query.length() - split.length(), query.length());
         return query.toString();
+    }
+
+    /**
+     * Map空值安全添加元素
+     *
+     * @param map   容器
+     * @param key   键
+     * @param value 空值生成值的回调函数
+     * @param <T>   值泛型
+     * @return 值（原值或者新添加的）
+     */
+    public static <T> T nullSafeGut(Map<String, T> map, String key, MethodInvokerNoParam<T> value) {
+        T t = map.get(key);
+        if (t == null) {
+            t = value.invoke();
+            map.put(key, t);
+        }
+        return t;
     }
 
 }

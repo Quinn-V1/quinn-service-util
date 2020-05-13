@@ -5,13 +5,15 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
-import com.quinn.util.base.util.CollectionUtil;
 import com.quinn.util.base.util.StringUtil;
 import com.quinn.util.base.util.enums.DataTypeEnum;
 import com.quinn.util.constant.enums.ExceptionEnum;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.ServiceLoader;
 
 /**
  * 所有类型转换器的父类
@@ -99,6 +101,21 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
                 .exception();
     }
 
+
+    /**
+     * 将任意类型的值转换为目标类型的值
+     *
+     * @param value  值
+     * @param clazz  目标类
+     * @param defVal 默认值
+     * @return 目标值
+     */
+    public static <T> T staticConvert(Object value, Class<T> clazz, T defVal) {
+        T result = staticConvert(value, clazz);
+        return result == null ? defVal : result;
+    }
+
+
     /**
      * 将任意类型的值转换为目标类型的值
      *
@@ -144,14 +161,6 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
 
         if (dataConverter != null) {
             return dataConverter.isEmpty(object);
-        }
-
-        if (clazz.isArray()) {
-            return CollectionUtil.isEmpty((Object[]) object);
-        } else if (Collection.class.isAssignableFrom(clazz)) {
-            return CollectionUtil.isEmpty((Collection) object);
-        } else if (Map.class.isAssignableFrom(clazz)) {
-            return CollectionUtil.isEmpty((Map) object);
         }
 
         return false;
