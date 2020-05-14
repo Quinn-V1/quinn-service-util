@@ -1,4 +1,4 @@
-package com.quinn.util.base.util.enums;
+package com.quinn.util.base.enums;
 
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.BatchResult;

@@ -1,9 +1,7 @@
 package com.quinn.util.base.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.quinn.util.base.util.CollectionUtil;
-import com.quinn.util.base.util.StringUtil;
-import com.quinn.util.constant.CharConstant;
+import com.quinn.util.base.CollectionUtil;
 import com.quinn.util.constant.enums.MessageLevelEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

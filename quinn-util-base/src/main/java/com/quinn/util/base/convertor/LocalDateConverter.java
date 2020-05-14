@@ -1,6 +1,6 @@
 package com.quinn.util.base.convertor;
 
-import com.quinn.util.base.util.DateUtil;
+import com.quinn.util.base.DateUtil;
 import com.quinn.util.constant.DateFormatConstant;
 
 import java.time.LocalDate;

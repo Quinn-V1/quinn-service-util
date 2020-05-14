@@ -1,6 +1,6 @@
 package com.quinn.util.base.convertor;
 
-import com.quinn.util.base.util.StringUtil;
+import com.quinn.util.base.StringUtil;
 
 /**
  * 字符串数据转换器

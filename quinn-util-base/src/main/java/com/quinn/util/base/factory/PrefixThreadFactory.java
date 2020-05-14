@@ -1,6 +1,6 @@
 package com.quinn.util.base.factory;
 
-import com.quinn.util.base.util.ThreadUtil;
+import com.quinn.util.base.ThreadUtil;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

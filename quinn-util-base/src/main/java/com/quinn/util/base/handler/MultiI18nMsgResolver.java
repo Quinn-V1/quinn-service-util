@@ -3,7 +3,7 @@ package com.quinn.util.base.handler;
 import com.quinn.util.base.api.I18nMsgResolver;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.MessageProp;
-import com.quinn.util.base.util.StringUtil;
+import com.quinn.util.base.StringUtil;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.StringConstant;
 import com.quinn.util.constant.enums.ExceptionEnum;

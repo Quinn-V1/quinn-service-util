@@ -1,6 +1,6 @@
 package com.quinn.util.base.convertor;
 
-import com.quinn.util.base.util.NumberUtil;
+import com.quinn.util.base.NumberUtil;
 
 /**
  * 双精度数据类型转换器

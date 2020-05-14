@@ -1,4 +1,4 @@
-package com.quinn.util.base.util;
+package com.quinn.util.base;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;

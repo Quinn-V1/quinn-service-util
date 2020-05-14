@@ -39,6 +39,11 @@ public interface StringConstant {
     String CHAR_COLON = ":";
 
     /**
+     * 冒号
+     */
+    String CHAR_DOLLAR = "$";
+
+    /**
      * 默认编码
      */
     String SYSTEM_DEFAULT_CHARSET = "UTF-8";

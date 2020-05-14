@@ -21,7 +21,7 @@
     <modules>
         <module>quinn-util-base</module>
         <module>quinn-util-constant</module>
-<!--        <module>quinn-util-encrypt</module>-->
+        <module>quinn-util-database</module>
         <module>quinn-util-excel</module>
         <module>quinn-util-freemarker</module>
         <module>quinn-util-generate</module>

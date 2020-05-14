@@ -1,7 +1,7 @@
 package com.quinn.util.base.model;
 
 import com.quinn.util.base.api.FileAdapter;
-import com.quinn.util.base.util.StringUtil;
+import com.quinn.util.base.StringUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

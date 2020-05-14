@@ -2,9 +2,8 @@ package com.quinn.util.base.handler;
 
 import com.quinn.util.base.api.PlaceholderHandler;
 import com.quinn.util.base.convertor.BaseConverter;
-import com.quinn.util.base.util.CollectionUtil;
-import com.quinn.util.base.util.StringUtil;
-import com.quinn.util.constant.CharConstant;
+import com.quinn.util.base.CollectionUtil;
+import com.quinn.util.base.StringUtil;
 
 import java.util.Collection;
 import java.util.List;

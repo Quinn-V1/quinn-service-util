@@ -1,4 +1,4 @@
-package com.quinn.util.base.util;
+package com.quinn.util.base;
 
 /**
  * 线程操作工具类

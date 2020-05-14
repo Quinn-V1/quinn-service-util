@@ -1,4 +1,4 @@
-package com.quinn.util.base.util;
+package com.quinn.util.base;
 
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.constant.enums.ExceptionEnum;

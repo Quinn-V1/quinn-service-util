@@ -5,8 +5,8 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
-import com.quinn.util.base.util.StringUtil;
-import com.quinn.util.base.util.enums.DataTypeEnum;
+import com.quinn.util.base.StringUtil;
+import com.quinn.util.base.enums.DataTypeEnum;
 import com.quinn.util.constant.enums.ExceptionEnum;
 
 import java.lang.reflect.ParameterizedType;

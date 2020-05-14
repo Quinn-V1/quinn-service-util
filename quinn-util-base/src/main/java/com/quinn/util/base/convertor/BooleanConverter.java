@@ -1,6 +1,6 @@
 package com.quinn.util.base.convertor;
 
-import com.quinn.util.base.util.BooleanUtil;
+import com.quinn.util.base.BooleanUtil;
 
 /**
  * 布尔型数据转换器
