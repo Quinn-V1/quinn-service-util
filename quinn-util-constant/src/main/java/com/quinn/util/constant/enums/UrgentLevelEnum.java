@@ -6,19 +6,19 @@ package com.quinn.util.constant.enums;
  * @author Qunhua.Liao
  * @since 2020-05-11
  */
-public enum  UrgentLevelEnum {
-
-    // 非常紧急
-    HIGH_V2(100),
-
-    // 比较紧急
-    HIGH_V1(50),
+public enum UrgentLevelEnum {
 
     // 一般
     NORMAL(30),
 
+    // 比较紧急
+    HIGH_V1(50),
+
+    // 非常紧急
+    HIGH_V2(100),
+
     // 不紧急
-    LOW(0),
+    LOW(10),
     ;
 
     /**
@@ -30,4 +30,23 @@ public enum  UrgentLevelEnum {
         this.code = code;
     }
 
+    /**
+     * 通过字符串带出数字等级
+     *
+     * @param urgentLevel 字符串等级
+     * @return 数字等级
+     */
+    public static int codeByName(String urgentLevel) {
+        if (urgentLevel == null || urgentLevel.isEmpty()) {
+            return NORMAL.code;
+        }
+
+        for (UrgentLevelEnum level : values()) {
+            if (level.name().equals(urgentLevel)) {
+                return level.code;
+            }
+        }
+
+        return NORMAL.code;
+    }
 }

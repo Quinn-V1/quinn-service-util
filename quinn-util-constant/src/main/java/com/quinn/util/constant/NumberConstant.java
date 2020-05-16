@@ -19,6 +19,11 @@ public interface NumberConstant {
     int INT_ONE = 1;
 
     /**
+     * 整数 -1
+     */
+    int INT_ONE_NEGATIVE = -1;
+
+    /**
      * 整数 2
      */
     int INT_TWO = 2;
@@ -102,6 +107,11 @@ public interface NumberConstant {
      * 数据字典-ID-无
      */
     long NONE_OF_DATA_ID = LONG_ONE_NEGATIVE;
+
+    /**
+     * 数据字典-ID-无
+     */
+    int NONE_OF_DATA_INT = INT_ONE_NEGATIVE;
 
     /**
      * 数据字典-ID-全部

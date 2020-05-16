@@ -390,4 +390,14 @@ public final class NumberUtil {
         return id == null || id <= 0;
     }
 
+    /**
+     * 在框架内是否代表空（系统主键）
+     *
+     * @param value 系统主键
+     * @return 空位true，否则为false
+     */
+    public static boolean isEmptyInFrame(Integer value) {
+        return value == null || value == 0 || value == -1;
+    }
+
 }
