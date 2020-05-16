@@ -1,6 +1,8 @@
 package com.quinn.util.database.model;
 
 import com.quinn.util.base.StringUtil;
+import com.quinn.util.base.convertor.BaseConverter;
+import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.database.DatabaseConnectionUtil;
 import com.quinn.util.database.enums.DataBaseTypeEnum;
 import lombok.SneakyThrows;
@@ -96,6 +98,7 @@ public final class DataSourceProvider {
      *
      * @return
      */
+    @SneakyThrows
     public synchronized static DataSource getDataSource(String datasourceName) {
         DataSource dataSource = DATA_SOURCE_MAP.get(datasourceName);
         if (dataSource == null) {
@@ -104,6 +107,8 @@ public final class DataSourceProvider {
                 dataSource = new DriverManagerDataSource(datasourceName);
             }
         }
+        String timeOut = System.getProperty(datasourceName + ".dataSource.timeout", NumberConstant.INT_TWO + "");
+        dataSource.setLoginTimeout(BaseConverter.staticConvert(timeOut, Integer.class));
         return dataSource;
     }
 
