@@ -153,4 +153,33 @@ public final class BaseUtil {
         return true;
     }
 
+    /**
+     * 判断对象是否为空
+     *
+     * @param object 对象
+     * @return 空：true
+     */
+    public static boolean isEmpty(Object object) {
+        boolean res = BaseConverter.staticIsEmpty(object);
+        if (res) {
+            return true;
+        }
+
+        if (object instanceof Collection) {
+            Collection collection = (Collection) object;
+            if (collection.size() == 0) {
+                return true;
+            }
+        } else if (object.getClass().isArray()) {
+            Object[] array = (Object[]) object;
+            if (array.length == 0) {
+                return true;
+            }
+        } else {
+            if (BaseConverter.staticIsEmpty(object)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
