@@ -143,4 +143,29 @@ public final class StringUtil {
                 || StringConstant.NONE_OF_DATA.equals(str);
     }
 
+    /**
+     * 判断一个字符串是否为Json格式
+     *
+     * @param string
+     * @return Json: true
+     */
+    public static boolean isJson(String string) {
+        if (string == null) {
+            return false;
+        }
+        return string.startsWith(StringConstant.CHAR_OPEN_BRACE) && string.endsWith(StringConstant.CHAR_CLOSE_BRACE);
+    }
+
+    /**
+     * 判断一个字符串是否为JsonArray格式
+     *
+     * @param string
+     * @return JsonArray : true
+     */
+    public static boolean isJsonArray(String string) {
+        if (string == null) {
+            return false;
+        }
+        return string.startsWith(StringConstant.CHAR_OPEN_BRACKET) && string.endsWith(StringConstant.CHAR_CLOSE_BRACKET);
+    }
 }

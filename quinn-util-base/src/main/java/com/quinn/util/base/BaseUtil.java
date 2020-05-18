@@ -1,13 +1,17 @@
 package com.quinn.util.base;
 
+import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerOneParam;
+import com.quinn.util.base.constant.ConfigConstant;
 import com.quinn.util.base.convertor.BaseConverter;
+import com.quinn.util.constant.RegexConstant;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Set;
+import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Matcher;
 
 /**
  * 基础工具类
@@ -182,4 +186,62 @@ public final class BaseUtil {
         }
         return false;
     }
+
+    /**
+     * 从Json对象中取值
+     *
+     * @param object Json对象（可能是列表）
+     * @param paths  属性名
+     * @return 属性值
+     */
+    public static Object valueOfJson(Object object, String... paths) {
+        if (CollectionUtil.isEmpty(paths)) {
+            return object;
+        }
+
+        Object result = null;
+        for (String path : paths) {
+            if (ConfigConstant.PARAM_OF_ITSELF.equals(path)) {
+                continue;
+            }
+
+            if (object instanceof Map) {
+                String name = null;
+                Integer index = null;
+                Matcher matcher = RegexConstant.ARRAY_PATTEN.matcher(path);
+                if (matcher.find()) {
+                    name = matcher.group(1);
+                    index = BaseConverter.staticConvert(matcher.group(2), Integer.class);
+                } else {
+                    name = path;
+                }
+
+                result = ((Map) object).get(name);
+                if (index != null) {
+                    result = CollectionUtil.get(object, index);
+                }
+            } else if (object instanceof JSONArray) {
+                JSONArray array = (JSONArray) object;
+                int size = array.size();
+                JSONArray res = new JSONArray(size);
+                result = res;
+
+                for (int i = 0; i < size; i++) {
+                    Object o = array.get(i);
+                    res.add(valueOfJson(o, path));
+                }
+            } else if (object instanceof Collection) {
+                Collection list = (Collection) object;
+                int size = list.size();
+                JSONArray res = new JSONArray(size);
+                result = res;
+                for (Object o : list) {
+                    res.add(valueOfJson(o, path));
+                }
+            }
+        }
+
+        return result;
+    }
+
 }

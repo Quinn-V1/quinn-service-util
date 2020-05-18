@@ -9,6 +9,11 @@ package com.quinn.util.constant;
 public interface StringConstant {
 
     /**
+     * 空字符串
+     */
+    String STRING_EMPTY = "";
+
+    /**
      * 大括号-开
      */
     String CHAR_OPEN_BRACE = "{";
@@ -19,9 +24,24 @@ public interface StringConstant {
     String CHAR_CLOSE_BRACE = "}";
 
     /**
-     * 空字符串
+     * 中括号-开
      */
-    String STRING_EMPTY = "";
+    String CHAR_OPEN_BRACKET = "[";
+
+    /**
+     * 中括号-闭
+     */
+    String CHAR_CLOSE_BRACKET = "]";
+
+    /**
+     * 字符串 点
+     */
+    String CHAR_DOT = ".";
+
+    /**
+     * 字符串 点
+     */
+    String CHAR_DOT_ = "\\.";
 
     /**
      * 逗号

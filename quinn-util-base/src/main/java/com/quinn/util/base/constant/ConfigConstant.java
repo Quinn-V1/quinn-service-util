@@ -210,4 +210,14 @@ public interface ConfigConstant {
      */
     String ENCRYPT_SALT = "quinn-service";
 
+    /**
+     * 参数本身 参数名
+     */
+    String PARAM_OF_ITSELF = "_paramItself";
+
+    /**
+     * 参数取值路径 参数名
+     */
+    String PARAM_NAME_OF_VALUE_PATH = "_paramValuePath";
+
 }

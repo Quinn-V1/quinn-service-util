@@ -1,11 +1,13 @@
 package com.quinn.util.base;
 
+import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerNoParam;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.StringConstant;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -188,6 +190,64 @@ public final class CollectionUtil {
             map.put(key, t);
         }
         return t;
+    }
+
+    /**
+     * 根据下标取值
+     *
+     * @param object 容器
+     * @param index  下标
+     * @return 值
+     */
+    public static Object get(Object object, int index) {
+        if (object == null || index < 0) {
+            return null;
+        }
+
+        if (object instanceof JSONArray) {
+            JSONArray array = ((JSONArray) object);
+            if (index >= array.size()) {
+                return null;
+            }
+            return array.get(index);
+        }
+
+        if (object.getClass().isArray()) {
+            Object[] array = (Object[]) object;
+            if (index >= array.length) {
+                return null;
+            }
+            return array[index];
+        }
+
+        if (List.class.isAssignableFrom(object.getClass())) {
+            List list = (List) object;
+            if (index >= list.size()) {
+                return null;
+            }
+            return list.get(index);
+        }
+
+        return null;
+    }
+
+    /**
+     * 平铺添加
+     *
+     * @param collection 已有集合
+     * @param object     新增数据
+     */
+    public static void plainAdd(Collection collection, Object object) {
+        if (object.getClass().isArray()) {
+            Object[] array = (Object[]) object;
+            for (Object o : array) {
+                collection.add(o);
+            }
+        } else if (Collection.class.isAssignableFrom(object.getClass())) {
+            collection.addAll((Collection) object);
+        } else {
+            collection.add(object);
+        }
     }
 
 }

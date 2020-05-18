@@ -72,6 +72,19 @@ public interface RegexConstant {
      * */
     String MOBILE_PATTERN_STRING = "^1[3,4,5,6,7,8,9]\\d{9}$";
 
+    /**
+     * 手机号样式
+     */
     Pattern MOBILE_PATTERN = Pattern.compile(MOBILE_PATTERN_STRING);
+
+    /**
+     * 数组样式字符串
+     */
+    String ARRAY_PATTEN_STRING = "(\\w*)\\[(\\d*)\\]";
+
+    /**
+     * 数组样式
+     */
+    Pattern ARRAY_PATTEN = Pattern.compile(ARRAY_PATTEN_STRING);
 
 }
