@@ -400,4 +400,20 @@ public final class NumberUtil {
         return value == null || value == 0 || value == -1;
     }
 
+    /**
+     * 位或操作
+     *
+     * @param values 运算值
+     * @return 或运算结果
+     */
+    public static int or(Integer... values) {
+        int result = 0;
+        for (Integer value : values) {
+            if (value == null) {
+                continue;
+            }
+            result = result | value;
+        }
+        return result;
+    }
 }
