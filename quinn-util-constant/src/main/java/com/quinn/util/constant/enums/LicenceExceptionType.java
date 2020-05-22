@@ -17,6 +17,9 @@ public enum LicenceExceptionType {
     // 授权过期
     AUTHORIZE_EXPIRE("授权过期", -70),
 
+    // 授权过期
+    PROFILE_HIGHER("运行环境高于授权", -60),
+
     ;
 
     /**

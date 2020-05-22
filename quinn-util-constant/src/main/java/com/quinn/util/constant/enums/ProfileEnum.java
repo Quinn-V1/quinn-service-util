@@ -12,13 +12,13 @@ public enum ProfileEnum {
     DEV("开发环境", 0),
 
     // 内部测试
-    TEST("内部测试", 3),
+    TEST("内部测试", 5),
 
     // 用户测试
-    QAS("用户测试", 6),
+    QAS("用户测试", 10),
 
     // 仿真测试
-    UAT("仿真测试", 9),
+    UAT("仿真测试", 15),
 
     // 生产环境
     PRD("生产环境", 20),
@@ -46,7 +46,7 @@ public enum ProfileEnum {
      * @param name
      * @return
      */
-    public static int findCodeByName(String name) {
+    public static int codeByName(String name) {
         if (name == null || "".equals(name.length())) {
             return PRD.level;
         }
@@ -58,6 +58,19 @@ public enum ProfileEnum {
         }
 
         return PRD.level;
+    }
+
+    /**
+     * 判断前者环境等级是否比后者低
+     *
+     * @param srcName 源环境名
+     * @param tarName 目标环境名
+     * @return 低：true
+     */
+    public static boolean higher(String srcName, String tarName) {
+        int srcCode = codeByName(srcName);
+        int targetCode = codeByName(tarName);
+        return srcCode - targetCode > 0;
     }
 
 }
