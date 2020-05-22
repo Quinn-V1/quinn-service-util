@@ -29,6 +29,6 @@ public class DateConverter extends BaseConverter<Date> {
         if (obj == null) {
             return null;
         }
-        return new SimpleDateFormat(DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_1).format(obj);
+        return new SimpleDateFormat(DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1).format(obj);
     }
 }
