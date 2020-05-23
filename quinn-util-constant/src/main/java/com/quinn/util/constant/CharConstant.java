@@ -16,6 +16,11 @@ public interface CharConstant {
     /**
      * 美元
      */
+    char CHAR_AT_SING = '@';
+
+    /**
+     * 美元
+     */
     char CHAR_DOLLAR = '$';
 
     /**

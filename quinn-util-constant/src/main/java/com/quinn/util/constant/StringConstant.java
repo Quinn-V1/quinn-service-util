@@ -14,6 +14,11 @@ public interface StringConstant {
     String STRING_EMPTY = "";
 
     /**
+     * 美元
+     */
+    String CHAR_AT_SING = "@";
+
+    /**
      * 大括号-开
      */
     String CHAR_OPEN_BRACE = "{";

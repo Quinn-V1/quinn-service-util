@@ -6,6 +6,6 @@ package com.quinn.util.base.model;
  * @author Qunhua.Liao
  * @since 2020-04-18
  */
-public class StringKeyValueAbstract extends AbstractDefaultKeyValue<String, String> {
+public class StringKeyValue extends AbstractDefaultKeyValue<String, String> {
 
 }

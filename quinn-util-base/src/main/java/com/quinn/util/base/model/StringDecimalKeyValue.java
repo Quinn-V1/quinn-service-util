@@ -8,6 +8,6 @@ import java.math.BigDecimal;
  * @author Qunhua.Liao
  * @since 2020-04-18
  */
-public class StringDecimalKeyValueAbstract extends AbstractDefaultKeyValue<String, BigDecimal> {
+public class StringDecimalKeyValue extends AbstractDefaultKeyValue<String, BigDecimal> {
 
 }
