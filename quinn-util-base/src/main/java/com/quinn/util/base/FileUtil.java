@@ -4,7 +4,7 @@ import com.quinn.util.base.api.LargeStringFilePartHandler;
 import com.quinn.util.base.exception.file.FileOperationException;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.constant.CharConstant;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 import com.quinn.util.constant.enums.FileOperationTypeEnum;
 
 import javax.crypto.Cipher;

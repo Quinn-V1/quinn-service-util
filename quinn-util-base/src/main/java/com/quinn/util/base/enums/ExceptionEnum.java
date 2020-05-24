@@ -1,4 +1,11 @@
-package com.quinn.util.constant.enums;
+package com.quinn.util.base.enums;
+
+import com.quinn.util.base.handler.EnumMessageResolver;
+import com.quinn.util.constant.MessageEnum;
+import com.quinn.util.constant.StringConstant;
+import com.quinn.util.constant.enums.LanguageEnum;
+
+import java.util.Locale;
 
 import static com.quinn.util.constant.MessageTempConstants.*;
 import static com.quinn.util.constant.MessageTempConstants.ParamName.*;
@@ -9,7 +16,7 @@ import static com.quinn.util.constant.MessageTempConstants.ParamName.*;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public enum ExceptionEnum {
+public enum ExceptionEnum implements MessageEnum {
 
     // 授权：开发许可未获取
     LICENCE_EXCEPTION(DESC_LICENCE_EXCEPTION, EXCEPTION_TYPE),
@@ -76,6 +83,9 @@ public enum ExceptionEnum {
      */
     public final String defaultDesc;
 
+    /**
+     * 参数名
+     */
     public final String[] paramNames;
 
     /**
@@ -87,4 +97,19 @@ public enum ExceptionEnum {
         this.defaultDesc = defaultDesc;
         this.paramNames = paramNames;
     }
+
+    @Override
+    public String defaultDesc() {
+        return defaultDesc;
+    }
+
+    @Override
+    public String[] paramNames() {
+        return paramNames;
+    }
+
+    static {
+        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, ExceptionEnum.values());
+    }
+
 }

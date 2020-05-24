@@ -1,9 +1,8 @@
 package com.quinn.util.base.handler;
 
-import com.quinn.util.base.api.PlaceholderHandler;
-import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.base.CollectionUtil;
 import com.quinn.util.base.StringUtil;
+import com.quinn.util.base.convertor.BaseConverter;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Stack;
  * @author Qunhua.Liao
  * @since 2020-02-30
  */
-public class DefaultPlaceholderHandler implements PlaceholderHandler {
+public class PlaceholderHandler {
 
     /**
      * 如果替换不掉，将其暂时替换为别的占位符（起始），以保证不影响迭代
@@ -38,12 +37,12 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
      */
     private static final String DEFAULT_SUFFIX = "}";
 
-    public DefaultPlaceholderHandler(String placeholderPrefix, String placeholderSuffix) {
+    public PlaceholderHandler(String placeholderPrefix, String placeholderSuffix) {
         this.placeholderPrefix = placeholderPrefix;
         this.placeholderSuffix = placeholderSuffix;
     }
 
-    public DefaultPlaceholderHandler() {
+    public PlaceholderHandler() {
         this.placeholderPrefix = DEFAULT_PREFIX;
         this.placeholderSuffix = DEFAULT_SUFFIX;
     }
@@ -63,11 +62,10 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
      *
      * @return 默认占位符解析器
      */
-    public static DefaultPlaceholderHandler defaultInstance() {
-        return new DefaultPlaceholderHandler(DEFAULT_PREFIX, DEFAULT_SUFFIX);
+    public static PlaceholderHandler defaultInstance() {
+        return new PlaceholderHandler(DEFAULT_PREFIX, DEFAULT_SUFFIX);
     }
 
-    @Override
     public String parseStringWithMap(String format, Map<String, Object> properties) {
         StringBuffer srcStr = new StringBuffer(format);
         ParseResult result = new ParseResult();
@@ -78,7 +76,6 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
                 .replace(PLACEHOLDER_SUFFIX_BAK, placeholderSuffix);
     }
 
-    @Override
     public String parseStringWithArray(String format, Object... args) {
         if (StringUtil.isEmpty(format) || CollectionUtil.isEmpty(args)
                 || !format.contains(placeholderPrefix)) {
@@ -123,7 +120,6 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
         return builder.toString();
     }
 
-    @Override
     public String parseSqlParamMapToList(String formatSql, List<Object> params, Map<String, Object> cond) {
         char[] sqlArray = formatSql.toCharArray();
         Stack<Character> stack = new Stack();
@@ -168,12 +164,10 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
         return builder.toString();
     }
 
-    @Override
     public String parseStringByOne(String format, String key, String value) {
         return format.replace(wrapperKey(key), value);
     }
 
-    @Override
     public boolean isComplete(String value) {
         return !value.contains(placeholderPrefix) && !value.contains(placeholderSuffix);
     }
@@ -215,7 +209,7 @@ public class DefaultPlaceholderHandler implements PlaceholderHandler {
         }
 
         String placeholder = srcStr.substring(startNew + placeholderPrefix.length(), endNew);
-        String val = String.valueOf(properties.get(placeholder));
+        String val = BaseConverter.staticToString(properties.get(placeholder));
         if (StringUtil.isNotEmpty(val)) {
             srcStr.replace(startNew, endNew + placeholderSuffix.length(), val);
         } else {

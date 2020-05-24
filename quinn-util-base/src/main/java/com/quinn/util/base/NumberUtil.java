@@ -1,7 +1,7 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.exception.DataStyleNotMatchException;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;

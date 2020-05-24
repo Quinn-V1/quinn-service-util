@@ -1,7 +1,7 @@
 package com.quinn.util.base.model;
 
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 
 /**
  * 临时容器

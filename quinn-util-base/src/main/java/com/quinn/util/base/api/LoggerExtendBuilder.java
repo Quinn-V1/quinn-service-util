@@ -11,8 +11,8 @@ public interface LoggerExtendBuilder {
     /**
      * 构建：打印日志，并返回结果
      *
-     * @return  日志记录
+     * @return 日志记录
      */
-    public String build();
+    String build();
 
 }

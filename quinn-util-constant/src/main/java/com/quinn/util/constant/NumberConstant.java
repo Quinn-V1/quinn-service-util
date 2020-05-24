@@ -66,12 +66,17 @@ public interface NumberConstant {
     /**
      * 长整型0
      */
+    long LONG_ZERO = 0L;
+
+    /**
+     * 长整型1
+     */
     long LONG_ONE = 1L;
 
     /**
-     * 长整型0
+     * 长整型2
      */
-    long LONG_ZERO = 0L;
+    long LONG_TOW = 2L;
 
     /**
      * 长整型-1

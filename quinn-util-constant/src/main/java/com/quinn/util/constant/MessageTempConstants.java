@@ -11,7 +11,7 @@ public interface MessageTempConstants {
     /**
      * 分页参数没有提供
      */
-    String DESC_LICENCE_EXCEPTION = "开发许可异常${【" + ParamName.EXCEPTION_TYPE + "}】，请联系管理员";
+    String DESC_LICENCE_EXCEPTION = "开发许可异常【${" + ParamName.EXCEPTION_TYPE + "}】，请联系管理员";
 
     /**
      * 分页参数没有提供

@@ -2,15 +2,9 @@ package com.quinn.util.base.factory;
 
 import com.quinn.util.base.api.LoggerExtend;
 import com.quinn.util.base.api.LoggerGenerator;
-import com.quinn.util.base.api.PlaceholderHandler;
-import com.quinn.util.base.constant.ConfigConstant;
-import com.quinn.util.base.handler.DefaultLoggerFactoryInitializer;
-import com.quinn.util.base.handler.DefaultPlaceholderHandler;
-import com.quinn.util.constant.StringConstant;
+import com.quinn.util.base.model.JavaLoggerGenerator;
 
-import java.util.Iterator;
 import java.util.Map;
-import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -33,8 +27,7 @@ public class LoggerExtendFactory {
 
     static {
         LOGGER_MAP = new ConcurrentHashMap<>();
-        // 初始日志工厂
-        DefaultLoggerFactoryInitializer.staticInitLoggerFactory(System.getProperties());
+        setLoggerGenerator(new JavaLoggerGenerator());
     }
 
     /**
@@ -44,10 +37,7 @@ public class LoggerExtendFactory {
      */
     public static void setLoggerGenerator(LoggerGenerator loggerGenerator) {
         LoggerExtendFactory.loggerGenerator = loggerGenerator;
-        PlaceholderHandler placeholderHandler = loggerGenerator.ofPlaceholderHandler(null);
-        for (Map.Entry<String, LoggerExtend> entry : LOGGER_MAP.entrySet()) {
-            entry.getValue().setPlaceholderHandler(placeholderHandler);
-        }
+        LOGGER_MAP.clear();
     }
 
     /**
@@ -59,7 +49,7 @@ public class LoggerExtendFactory {
     public static LoggerExtend getLogger(String className) {
         LoggerExtend loggerExtend = LOGGER_MAP.get(className);
         if (loggerExtend == null) {
-            loggerExtend = loggerGenerator.generator(className);
+            loggerExtend = loggerGenerator.generate(className);
             LOGGER_MAP.put(className, loggerExtend);
         }
         return loggerExtend;

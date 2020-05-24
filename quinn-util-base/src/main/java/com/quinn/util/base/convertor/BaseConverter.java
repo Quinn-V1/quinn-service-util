@@ -7,7 +7,7 @@ import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.enums.DataTypeEnum;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;

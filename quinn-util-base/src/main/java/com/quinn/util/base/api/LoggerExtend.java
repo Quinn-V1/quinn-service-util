@@ -16,13 +16,6 @@ public interface LoggerExtend {
     String getName();
 
     /**
-     * 设置占位符解析器
-     *
-     * @param placeholderHandler    占位符解析器
-     */
-    void setPlaceholderHandler(PlaceholderHandler placeholderHandler);
-
-    /**
      * 追踪级别日志
      *
      * @param format  消息模板

@@ -3,7 +3,7 @@ package com.quinn.util.base;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.constant.DateFormatConstant;
 import com.quinn.util.constant.RegexConstant;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;

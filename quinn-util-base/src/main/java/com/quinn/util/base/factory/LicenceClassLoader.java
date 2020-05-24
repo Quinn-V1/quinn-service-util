@@ -6,7 +6,7 @@ import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.base.FileUtil;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.constant.NumberConstant;
-import com.quinn.util.constant.enums.ExceptionEnum;
+import com.quinn.util.base.enums.ExceptionEnum;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.SneakyThrows;
