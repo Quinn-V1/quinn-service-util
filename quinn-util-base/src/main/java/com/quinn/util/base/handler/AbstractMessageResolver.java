@@ -5,9 +5,7 @@ import com.quinn.util.base.I18nUtil;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.api.MessageResolver;
 import com.quinn.util.base.convertor.BaseConverter;
-import com.quinn.util.base.exception.BaseBusinessException;
 import com.quinn.util.base.model.BaseResult;
-import com.quinn.util.base.model.MessageProp;
 
 import java.util.*;
 
@@ -64,26 +62,10 @@ public abstract class AbstractMessageResolver implements MessageResolver {
         }
 
         if (!directParam.isEmpty()) {
-           result = placeholderHandler.parseStringWithMap(result, directParam);
+            result = placeholderHandler.parseStringWithMap(result, directParam);
         }
 
         return BaseResult.success(result);
-    }
-
-    @Override
-    public BaseResult<String> resolveMessageProp(Locale locale, MessageProp messageProp, String defaultMessage) {
-        return resolveMessage(locale, messageProp.getMessageCode(), messageProp.getParams(),
-                messageProp.getI18nParams(), defaultMessage);
-    }
-
-    @Override
-    public BaseResult<String> resolveResult(Locale locale, BaseResult result) {
-        return resolveMessageProp(locale, result.getMessageProp(), result.getMessage());
-    }
-
-    @Override
-    public BaseResult<String> resolveException(Locale locale, BaseBusinessException exception) {
-        return resolveMessageProp(locale, exception.getMessageProp(), exception.getMessage());
     }
 
     @Override
@@ -103,12 +85,7 @@ public abstract class AbstractMessageResolver implements MessageResolver {
             args[i] = I18nUtil.tryGetI18n(BaseConverter.staticToString(args[i]), properties);
         }
 
-        result = placeholderHandler.parseStringWithArray(result, args);
-        if (placeholderHandler.isComplete(result)) {
-            return BaseResult.success(result);
-        } else {
-            return BaseResult.fail(result);
-        }
+        return BaseResult.success(placeholderHandler.parseStringWithArray(result, args));
     }
 
     /**

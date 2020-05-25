@@ -117,4 +117,15 @@ public interface StringConstant {
      * 空的Json字符串
      */
     String EMPTY_JSON = "{}";
+
+    /**
+     * 消息数据类型
+     */
+    String DATA_TYPE_OF_MESSAGE = "MESSAGE_CODE";
+
+    /**
+     * 消息数据类型
+     */
+    String DELIMITER_OF_DATA_KEY = CHAR_COLON;
+
 }

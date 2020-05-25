@@ -35,7 +35,10 @@ public interface MessageResolver {
      * @param defaultMessage 消息属性持有器
      * @return 解析后的消息
      */
-    BaseResult<String> resolveMessageProp(Locale locale, MessageProp messageProp, String defaultMessage);
+    default BaseResult<String> resolveMessageProp(Locale locale, MessageProp messageProp, String defaultMessage) {
+        return resolveMessage(locale, messageProp.getMessageCode(), messageProp.getParams(),
+                messageProp.getI18nParams(), defaultMessage);
+    }
 
     /**
      * 解析结果
@@ -44,7 +47,9 @@ public interface MessageResolver {
      * @param result 结果
      * @return 解析后的消息
      */
-    BaseResult<String> resolveResult(Locale locale, BaseResult result);
+    default BaseResult<String> resolveResult(Locale locale, BaseResult result) {
+        return resolveMessageProp(locale, result.getMessageProp(), result.getMessage());
+    }
 
     /**
      * 解析结果
@@ -53,7 +58,9 @@ public interface MessageResolver {
      * @param exception 异常
      * @return 解析后的消息
      */
-    BaseResult<String> resolveException(Locale locale, BaseBusinessException exception);
+    default BaseResult<String> resolveException(Locale locale, BaseBusinessException exception) {
+        return resolveMessageProp(locale, exception.getMessageProp(), exception.getMessage());
+    }
 
     /**
      * 解析消息

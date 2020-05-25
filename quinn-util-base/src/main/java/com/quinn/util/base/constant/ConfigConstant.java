@@ -220,4 +220,24 @@ public interface ConfigConstant {
      */
     String PARAM_NAME_OF_VALUE_PATH = "_paramValuePath";
 
+    /**
+     * 配置:许可证路径
+     */
+    String PROP_KEY_OF_MAIN_CACHE_NAME = "com.quinn-service.cache.main-cache-name";
+
+    /**
+     * 配置:许可证路径
+     */
+    String PROP_KEY_OF_SESSION_CACHE_NAME = "com.quinn-service.cache.session-cache-name";
+
+    /**
+     * 配置:许可证路径
+     */
+    String DEFAULT_MAIN_CACHE_NAME = "redisCacheAllService";
+
+    /**
+     * 配置:许可证路径
+     */
+    String DEFAULT_SESSION_CACHE_NAME = "redisByteCacheAllService";
+
 }
