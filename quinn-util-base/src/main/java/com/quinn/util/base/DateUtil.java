@@ -3,7 +3,7 @@ package com.quinn.util.base;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.constant.DateFormatConstant;
 import com.quinn.util.constant.RegexConstant;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
@@ -111,8 +111,8 @@ public final class DateUtil {
 
         throw new DataStyleNotMatchException()
                 .getMessageProp()
-                .addParamI8n(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDate.class.getName())
-                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
+                .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDate.class.getName())
+                .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
                 .exception()
                 ;
     }
@@ -154,8 +154,8 @@ public final class DateUtil {
 
         throw new DataStyleNotMatchException()
                 .getMessageProp()
-                .addParamI8n(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDateTime.class.getName())
-                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
+                .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDateTime.class.getName())
+                .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
                 .exception();
     }
 
@@ -190,8 +190,8 @@ public final class DateUtil {
 
         throw new DataStyleNotMatchException()
                 .getMessageProp()
-                .addParamI8n(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDateTime.class.getName())
-                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
+                .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], LocalDateTime.class.getName())
+                .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], obj)
                 .exception();
     }
 

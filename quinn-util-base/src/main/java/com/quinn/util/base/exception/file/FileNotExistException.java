@@ -1,7 +1,7 @@
 package com.quinn.util.base.exception.file;
 
 import com.quinn.util.base.exception.BaseBusinessException;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 
 /**
  * 文件不存在异常
@@ -12,7 +12,7 @@ import com.quinn.util.base.enums.ExceptionEnum;
 public class FileNotExistException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnum.FILE_NOT_EXIST.name(), 1, 0);
+        buildParam(CommMessageEnum.FILE_NOT_EXIST.name(), 1, 0);
     }
 
     public FileNotExistException() {

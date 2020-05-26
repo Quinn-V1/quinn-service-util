@@ -7,7 +7,7 @@ import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.enums.DataTypeEnum;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
@@ -96,8 +96,8 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
         }
 
         throw new DataStyleNotMatchException().getMessageProp()
-                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], clazz.getName())
-                .addParam(ExceptionEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], value)
+                .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], clazz.getName())
+                .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], value)
                 .exception();
     }
 

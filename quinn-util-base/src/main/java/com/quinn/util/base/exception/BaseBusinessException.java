@@ -99,6 +99,20 @@ public class BaseBusinessException extends RuntimeException {
     }
 
     /**
+     * 从消息属性构建消息属性
+     *
+     * @param paramName  参数名称
+     * @param paramValue 参数值
+     * @return 消息属性
+     */
+    public BusinessExceptionMessageProp addParamI8n(String paramName, Object paramValue) {
+        if (this.messageProp == null) {
+            this.messageProp = new BusinessExceptionMessageProp(this, "");
+        }
+        return messageProp.addParamI8n(paramName, paramValue);
+    }
+
+    /**
      * 业务也常消息条目
      *
      * @author Qunhua.Liao
@@ -150,7 +164,7 @@ public class BaseBusinessException extends RuntimeException {
         /**
          * 获取异常
          *
-         * @return
+         * @return 宿主异常
          */
         public BaseBusinessException exception() {
             return getHost();

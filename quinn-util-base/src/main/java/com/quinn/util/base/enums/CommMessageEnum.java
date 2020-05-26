@@ -1,14 +1,11 @@
 package com.quinn.util.base.enums;
 
 import com.quinn.util.base.handler.EnumMessageResolver;
-import com.quinn.util.constant.MessageEnum;
-import com.quinn.util.constant.StringConstant;
+import com.quinn.util.constant.MessageEnumFlag;
 import com.quinn.util.constant.enums.LanguageEnum;
 
-import java.util.Locale;
-
 import static com.quinn.util.constant.MessageTempConstants.*;
-import static com.quinn.util.constant.MessageTempConstants.ParamName.*;
+import static com.quinn.util.constant.CommonParamName.*;
 
 /**
  * 系统错误枚举类
@@ -16,7 +13,7 @@ import static com.quinn.util.constant.MessageTempConstants.ParamName.*;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public enum ExceptionEnum implements MessageEnum {
+public enum CommMessageEnum implements MessageEnumFlag {
 
     // 授权：开发许可未获取
     LICENCE_EXCEPTION(DESC_LICENCE_EXCEPTION, EXCEPTION_TYPE),
@@ -76,6 +73,9 @@ public enum ExceptionEnum implements MessageEnum {
     // 策略不被支持
     STRATEGY_NOT_SUPPORTED(DESC_STRATEGY_NOT_SUPPORTED, STRATEGY_TYPE),
 
+    // 主数据丢失
+    MASTER_DATA_LOST(DESC_MASTER_DATA_LOST, PARAM_DATA_TYPE, PARAM_DATA_KEY),
+
     ;
 
     /**
@@ -93,7 +93,7 @@ public enum ExceptionEnum implements MessageEnum {
      *
      * @param defaultDesc 默认描述
      */
-    ExceptionEnum(String defaultDesc, String... paramNames) {
+    CommMessageEnum(String defaultDesc, String... paramNames) {
         this.defaultDesc = defaultDesc;
         this.paramNames = paramNames;
     }
@@ -109,7 +109,7 @@ public enum ExceptionEnum implements MessageEnum {
     }
 
     static {
-        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, ExceptionEnum.values());
+        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, CommMessageEnum.values());
     }
 
 }

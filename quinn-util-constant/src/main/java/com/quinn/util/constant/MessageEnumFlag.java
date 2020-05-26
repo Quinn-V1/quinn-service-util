@@ -1,14 +1,12 @@
 package com.quinn.util.constant;
 
-import java.util.Locale;
-
 /**
  * 消息枚举
  *
  * @author Qunhua.Liao
  * @since 2020-05-24
  */
-public interface MessageEnum {
+public interface MessageEnumFlag {
 
     /**
      * 默认描述

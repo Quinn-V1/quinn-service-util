@@ -1,6 +1,6 @@
 package com.quinn.util.base.handler;
 
-import com.quinn.util.constant.MessageEnum;
+import com.quinn.util.constant.MessageEnumFlag;
 import com.quinn.util.constant.OrderedConstant;
 
 import java.util.Locale;
@@ -34,7 +34,7 @@ public class EnumMessageResolver extends AbstractMessageResolver {
      * @param locale       语言
      * @param messageEnums 枚举
      */
-    public static void addContent(Locale locale, MessageEnum[] messageEnums) {
+    public static void addContent(Locale locale, MessageEnumFlag[] messageEnums) {
         Properties prop = localeMessagesMap.get(locale);
         if (prop == null) {
             prop = new Properties();
@@ -47,7 +47,7 @@ public class EnumMessageResolver extends AbstractMessageResolver {
             defaultProperties = prop;
         }
 
-        for (MessageEnum messageEnum : messageEnums) {
+        for (MessageEnumFlag messageEnum : messageEnums) {
             prop.put(messageEnum.name(), messageEnum.defaultDesc());
         }
     }

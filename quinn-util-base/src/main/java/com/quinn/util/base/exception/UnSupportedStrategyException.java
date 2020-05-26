@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 
 /**
  * 不支持的方法
@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.ExceptionEnum;
 public class UnSupportedStrategyException extends BaseBusinessException {
 
     {
-        buildParam(ExceptionEnum.STRATEGY_NOT_SUPPORTED.name(), 1, 0);
+        buildParam(CommMessageEnum.STRATEGY_NOT_SUPPORTED.name(), 1, 0);
     }
 
     public UnSupportedStrategyException() {

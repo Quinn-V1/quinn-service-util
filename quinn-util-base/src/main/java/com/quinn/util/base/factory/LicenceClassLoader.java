@@ -6,7 +6,7 @@ import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.base.FileUtil;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.constant.NumberConstant;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.SneakyThrows;
@@ -123,14 +123,14 @@ public class LicenceClassLoader extends URLClassLoader {
 
                 if (!mapBaseResult.isSuccess()) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
                 BaseResult<Key> keyRes = FileUtil.loadObject(tempPath + 1);
                 if (!keyRes.isSuccess()) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
@@ -139,7 +139,7 @@ public class LicenceClassLoader extends URLClassLoader {
 
                 if (!licenceStrRes.isSuccess()) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
@@ -147,7 +147,7 @@ public class LicenceClassLoader extends URLClassLoader {
                 BaseResult validateRes = licenceInfo.validate();
                 if (!validateRes.isSuccess()) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
@@ -157,14 +157,14 @@ public class LicenceClassLoader extends URLClassLoader {
                 String md5OfLic = DigestUtils.md5Hex(StringUtil.getBytes(JSONObject.toJSONString(licenceInfo)));
                 if (StringUtil.isEmpty(securityKey) || !securityKey.equals(md5OfLic)) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
                 String[] classNames = licenceInfo.getClassNames();
                 if (mapBaseResult.getData().size() != classNames.length + NumberConstant.INT_TWO) {
                     Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                    System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                    System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                     System.exit(errCode);
                 }
 
@@ -175,7 +175,7 @@ public class LicenceClassLoader extends URLClassLoader {
                         loadedClasses.put(classNames[i], aClass);
                     } catch (Exception e) {
                         Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-                        System.err.println(ExceptionEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+                        System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
                         System.exit(errCode);
                     }
                 }

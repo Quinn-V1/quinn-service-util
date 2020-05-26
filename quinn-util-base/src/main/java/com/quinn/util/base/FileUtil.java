@@ -4,7 +4,7 @@ import com.quinn.util.base.api.LargeStringFilePartHandler;
 import com.quinn.util.base.exception.file.FileOperationException;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.constant.CharConstant;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 import com.quinn.util.constant.enums.FileOperationTypeEnum;
 
 import javax.crypto.Cipher;
@@ -435,8 +435,8 @@ public final class FileUtil {
             output.transferFrom(input, 0, input.size());
         } catch (Exception e) {
             throw new FileOperationException()
-                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
-                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
+                    .addParam(CommMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
+                    .addParam(CommMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
                     .exception();
         } finally {
             StreamUtil.closeQuietly(input, output);
@@ -458,8 +458,8 @@ public final class FileUtil {
             StreamUtil.copy(in, out);
         } catch (Exception e) {
             throw new FileOperationException()
-                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
-                    .addParam(ExceptionEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
+                    .addParam(CommMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
+                    .addParam(CommMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
                     .exception();
         } finally {
             StreamUtil.closeQuietly(in, out);

@@ -2,10 +2,7 @@ package com.quinn.util.base;
 
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.base.exception.UnSupportedCharsetException;
-import com.quinn.util.constant.MessageTempConstants;
-import com.quinn.util.constant.CharConstant;
-import com.quinn.util.constant.MimeMapper;
-import com.quinn.util.constant.StringConstant;
+import com.quinn.util.constant.*;
 
 import java.io.UnsupportedEncodingException;
 
@@ -82,7 +79,7 @@ public final class StringUtil {
             return str.getBytes(StringConstant.SYSTEM_DEFAULT_CHARSET);
         } catch (UnsupportedEncodingException e) {
             throw new UnSupportedCharsetException().getMessageProp()
-                    .addParam(MessageTempConstants.ParamName.PARAM_CLASS_NAME, StringConstant.SYSTEM_DEFAULT_CHARSET)
+                    .addParam(CommonParamName.PARAM_CLASS_NAME, StringConstant.SYSTEM_DEFAULT_CHARSET)
                     .exception();
         }
     }
@@ -102,7 +99,7 @@ public final class StringUtil {
             return new String(bytes, StringConstant.SYSTEM_DEFAULT_CHARSET);
         } catch (UnsupportedEncodingException e) {
             throw new UnSupportedCharsetException().getMessageProp()
-                    .addParam(MessageTempConstants.ParamName.PARAM_CLASS_NAME, StringConstant.SYSTEM_DEFAULT_CHARSET)
+                    .addParam(CommonParamName.PARAM_CLASS_NAME, StringConstant.SYSTEM_DEFAULT_CHARSET)
                     .exception();
         }
     }

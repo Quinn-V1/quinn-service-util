@@ -1,7 +1,7 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
-import com.quinn.util.base.enums.ExceptionEnum;
+import com.quinn.util.base.enums.CommMessageEnum;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -163,7 +163,7 @@ public final class StreamUtil {
         int byteCount = 0;
         if (in == null || out == null) {
             throw new ParameterShouldNotEmpty()
-                    .addParam(ExceptionEnum.PARAM_SHOULD_NOT_NULL.paramNames[0], "in or out")
+                    .addParam(CommMessageEnum.PARAM_SHOULD_NOT_NULL.paramNames[0], "in or out")
                     .exception()
                     ;
         }

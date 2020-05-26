@@ -16,6 +16,9 @@ import java.util.*;
  */
 public final class MultiMessageResolver {
 
+    /**
+     * 消息解析器列表：具有优先级
+     */
     private static Set<MessageResolver> resolverList = new LinkedHashSet<>();
 
     private MultiMessageResolver() {
