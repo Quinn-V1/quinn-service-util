@@ -39,7 +39,7 @@ public abstract class AbstractMessageResolver implements MessageResolver {
         }
 
         String result = properties.getProperty(messageCode);
-        if (StringUtil.isEmpty(result)) {
+        if (StringUtil.isEmptyInFrame(result)) {
             result = defaultMessage;
         }
 
