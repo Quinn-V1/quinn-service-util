@@ -64,9 +64,14 @@ public interface StringConstant {
     String CHAR_COLON = ":";
 
     /**
-     * 冒号
+     * 美元符号
      */
     String CHAR_DOLLAR = "$";
+
+    /**
+     * 井号
+     */
+    String CHAR_POUND_SIGN = "# ";
 
     /**
      * 分割
@@ -127,10 +132,5 @@ public interface StringConstant {
      * 消息数据类型
      */
     String DATA_TYPE_OF_MESSAGE = "MESSAGE_CODE";
-
-    /**
-     * 消息数据类型
-     */
-    String DELIMITER_OF_DATA_KEY = CHAR_COLON;
 
 }
