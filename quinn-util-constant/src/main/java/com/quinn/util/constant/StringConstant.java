@@ -69,6 +69,11 @@ public interface StringConstant {
     String CHAR_DOLLAR = "$";
 
     /**
+     * 分割
+     */
+    String CHAR_VERTICAL_BAR = "|";
+
+    /**
      * 默认编码
      */
     String SYSTEM_DEFAULT_CHARSET = "UTF-8";
