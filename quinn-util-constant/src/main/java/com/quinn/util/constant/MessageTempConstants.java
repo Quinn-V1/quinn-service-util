@@ -32,7 +32,7 @@ public interface MessageTempConstants {
     /**
      * 数据未找到
      */
-    String DESC_RESULT_NOT_FOUND = "未找到符合条件的${\" + ParamName.PARAM_DATA_TYPE + \"}数据";
+    String DESC_RESULT_NOT_FOUND = "未找到符合条件的${" + CommonParamName.PARAM_DATA_TYPE + "}数据";
 
     /**
      * 数据未找到
