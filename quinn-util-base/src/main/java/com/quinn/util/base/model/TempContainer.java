@@ -1,7 +1,7 @@
 package com.quinn.util.base.model;
 
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 /**
  * 临时容器
@@ -21,7 +21,7 @@ public class TempContainer {
     public TempContainer(Object t) {
         if (t == null) {
             throw new ParameterShouldNotEmpty()
-                    .addParam(CommMessageEnum.PARAM_SHOULD_NOT_NULL.paramNames[0], "fileInfoVO")
+                    .addParam(CommonMessageEnum.PARAM_SHOULD_NOT_NULL.paramNames[0], "fileInfoVO")
                     .exception()
                     ;
         }

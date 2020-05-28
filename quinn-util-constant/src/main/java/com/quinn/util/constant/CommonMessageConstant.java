@@ -6,7 +6,7 @@ package com.quinn.util.constant;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public interface MessageTempConstants {
+public interface CommonMessageConstant {
 
     /**
      * 分页参数没有提供

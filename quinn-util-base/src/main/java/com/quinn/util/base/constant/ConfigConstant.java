@@ -240,4 +240,14 @@ public interface ConfigConstant {
      */
     String DEFAULT_SESSION_CACHE_NAME = "redisByteCacheAllService";
 
+    /**
+     * 环境配置属性名
+     */
+    String PROP_KEY_OF_ACTIVE_PROFILE = "spring.profiles.active";
+
+    /**
+     * 默认环境
+     */
+    String DEFAULT_ACTIVE_PROFILE = "prd";
+
 }

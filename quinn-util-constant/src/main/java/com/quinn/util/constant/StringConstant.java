@@ -64,6 +64,11 @@ public interface StringConstant {
     String CHAR_COLON = ":";
 
     /**
+     * 冒号
+     */
+    String CHAR_HYPHEN = "-";
+
+    /**
      * 美元符号
      */
     String CHAR_DOLLAR = "$";

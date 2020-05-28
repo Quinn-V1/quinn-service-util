@@ -1,7 +1,7 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.exception.DataStyleNotMatchException;
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
@@ -237,8 +237,8 @@ public final class NumberUtil {
         if (!isDouble(o)) {
             throw new DataStyleNotMatchException()
                     .getMessageProp()
-                    .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Double.class.getName())
-                    .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
+                    .addParamI8n(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Double.class.getName())
+                    .addParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
                     .exception();
         }
 
@@ -263,8 +263,8 @@ public final class NumberUtil {
         if (!isBigDecimal(o)) {
             throw new DataStyleNotMatchException()
                     .getMessageProp()
-                    .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], BigDecimal.class.getName())
-                    .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
+                    .addParamI8n(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], BigDecimal.class.getName())
+                    .addParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
                     .exception();
         }
 
@@ -289,8 +289,8 @@ public final class NumberUtil {
         if (!isLong(o)) {
             throw new DataStyleNotMatchException()
                     .getMessageProp()
-                    .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Long.class.getName())
-                    .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
+                    .addParamI8n(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Long.class.getName())
+                    .addParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
                     .exception();
         }
 
@@ -316,8 +316,8 @@ public final class NumberUtil {
         if (!isInteger(o)) {
             throw new DataStyleNotMatchException()
                     .getMessageProp()
-                    .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Integer.class.getName())
-                    .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
+                    .addParamI8n(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Integer.class.getName())
+                    .addParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
                     .exception();
         }
 
@@ -343,8 +343,8 @@ public final class NumberUtil {
         if (!isShort(o)) {
             throw new DataStyleNotMatchException()
                     .getMessageProp()
-                    .addParamI8n(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Short.class.getName())
-                    .addParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
+                    .addParamI8n(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[0], Short.class.getName())
+                    .addParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.paramNames[1], o)
                     .exception();
         }
 

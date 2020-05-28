@@ -2,7 +2,7 @@ package com.quinn.util.base.model;
 
 import com.quinn.util.base.CollectionUtil;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.Getter;
@@ -70,13 +70,13 @@ public class LicenceInfo {
                 || licenceNumber == null || CollectionUtil.isEmpty(classNames) || CollectionUtil.isEmpty(modules)
                 || StringUtil.isEmpty(profile) || StringUtil.isEmpty(author)) {
             Integer errCode = LicenceExceptionType.FILE_DESTROYED.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-            System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+            System.err.println(CommonMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
             System.exit(errCode);
         }
 
         if (expireDateTime.isBefore(LocalDateTime.now())) {
             Integer errCode = LicenceExceptionType.AUTHORIZE_EXPIRE.code + SystemExitTypeEnum.LICENCE_ERROR.code;
-            System.err.println(CommMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
+            System.err.println(CommonMessageEnum.LICENCE_EXCEPTION.name() + "[" + errCode + "]");
             System.exit(errCode);
         }
 

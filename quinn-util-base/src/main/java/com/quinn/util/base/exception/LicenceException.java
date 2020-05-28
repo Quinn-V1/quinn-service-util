@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 /**
  * 开发许可未授权
@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommMessageEnum;
 public class LicenceException extends BaseBusinessException {
 
     {
-        buildParam(CommMessageEnum.LICENCE_EXCEPTION.name(), 0, 1);
+        buildParam(CommonMessageEnum.LICENCE_EXCEPTION.name(), 0, 1);
     }
 
     public LicenceException() {

@@ -1,6 +1,6 @@
 package com.quinn.util.constant.enums;
 
-import static com.quinn.util.constant.MessageTempConstants.*;
+import static com.quinn.util.constant.CommonMessageConstant.*;
 
 /**
  * 系统错误枚举类

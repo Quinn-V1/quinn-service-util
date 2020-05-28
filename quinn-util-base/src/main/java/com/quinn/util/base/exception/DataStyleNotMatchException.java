@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 /**
  * 数据样式不匹配异常
@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommMessageEnum;
 public class DataStyleNotMatchException extends BaseBusinessException {
 
     {
-        buildParam(CommMessageEnum.DATA_STYLE_NOT_MATCHED.name(), 1, 1);
+        buildParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.name(), 1, 1);
     }
 
     public DataStyleNotMatchException() {

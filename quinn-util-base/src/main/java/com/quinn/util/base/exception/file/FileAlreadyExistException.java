@@ -1,7 +1,7 @@
 package com.quinn.util.base.exception.file;
 
 import com.quinn.util.base.exception.BaseBusinessException;
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 /**
  * 文件不存在异常
@@ -12,7 +12,7 @@ import com.quinn.util.base.enums.CommMessageEnum;
 public class FileAlreadyExistException extends BaseBusinessException {
 
     {
-        buildParam(CommMessageEnum.FILE_DIRECTORY_OCCUPIED_BY_FILE.name(), 1, 0);
+        buildParam(CommonMessageEnum.FILE_DIRECTORY_OCCUPIED_BY_FILE.name(), 1, 0);
     }
 
     public FileAlreadyExistException() {

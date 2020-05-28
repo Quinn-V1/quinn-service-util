@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.enums.CommMessageEnum;
+import com.quinn.util.base.enums.CommonMessageEnum;
 
 /**
  * 主数据丢失异常
@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommMessageEnum;
 public class MasterDataLostException extends BaseBusinessException {
 
     {
-        buildParam(CommMessageEnum.MASTER_DATA_LOST.name(), 1, 1);
+        buildParam(CommonMessageEnum.MASTER_DATA_LOST.name(), 1, 1);
     }
 
     public MasterDataLostException() {

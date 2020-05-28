@@ -4,7 +4,7 @@ import com.quinn.util.base.handler.EnumMessageResolver;
 import com.quinn.util.constant.MessageEnumFlag;
 import com.quinn.util.constant.enums.LanguageEnum;
 
-import static com.quinn.util.constant.MessageTempConstants.*;
+import static com.quinn.util.constant.CommonMessageConstant.*;
 import static com.quinn.util.constant.CommonParamName.*;
 
 /**
@@ -13,7 +13,7 @@ import static com.quinn.util.constant.CommonParamName.*;
  * @author Qunhua.Liao
  * @since 2020-03-28
  */
-public enum CommMessageEnum implements MessageEnumFlag {
+public enum CommonMessageEnum implements MessageEnumFlag {
 
     // 授权：开发许可未获取
     LICENCE_EXCEPTION(DESC_LICENCE_EXCEPTION, EXCEPTION_TYPE),
@@ -93,7 +93,7 @@ public enum CommMessageEnum implements MessageEnumFlag {
      *
      * @param defaultDesc 默认描述
      */
-    CommMessageEnum(String defaultDesc, String... paramNames) {
+    CommonMessageEnum(String defaultDesc, String... paramNames) {
         this.defaultDesc = defaultDesc;
         this.paramNames = paramNames;
     }
@@ -109,7 +109,7 @@ public enum CommMessageEnum implements MessageEnumFlag {
     }
 
     static {
-        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, CommMessageEnum.values());
+        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, CommonMessageEnum.values());
     }
 
 }
