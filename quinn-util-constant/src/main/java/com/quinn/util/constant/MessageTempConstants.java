@@ -54,7 +54,7 @@ public interface MessageTempConstants {
             + "}，中断位置${" + CommonParamName.PARAM_TERMINATE_POSITION + "}";
 
     /**
-     * 太多数据被查询
+     * 太多数据被删除
      */
     String DESC_DATA_OPERATION_TOO_MANY_DELETE = "太多${" + CommonParamName.PARAM_DATA_TYPE + "}数据【${"
             + CommonParamName.PARAM_DATA_SIZE + "}】被删除，超出限制 ${" + CommonParamName.PARAM_LIMIT_SIZE + "}】";
