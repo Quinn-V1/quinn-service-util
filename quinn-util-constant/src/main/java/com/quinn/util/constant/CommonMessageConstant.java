@@ -127,4 +127,16 @@ public interface CommonMessageConstant {
      */
     String DESC_MASTER_DATA_LOST = "【${" + CommonParamName.PARAM_DATA_TYPE + "}】主数据【${"
             + CommonParamName.PARAM_DATA_KEY + "}】没有找到";
+
+    /**
+     * 关键信息丢失
+     */
+    String DESC_KEY_INFO_MISS = "关键信息【${" + CommonParamName.PARAM_PROP_NAME + "}】在【${"
+            + CommonParamName.PARAM_DATA_TYPE + "}】缺失";
+
+    /**
+     * 方法没有找到
+     */
+    String DESC_METHOD_NOT_FOUND = "方法【${" + CommonParamName.PARAM_METHOD_NAME + "}】在类【${"
+            + CommonParamName.PARAM_CLASS_NAME + "}】中缺失";
 }

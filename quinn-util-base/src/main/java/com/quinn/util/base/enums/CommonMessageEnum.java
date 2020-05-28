@@ -76,6 +76,12 @@ public enum CommonMessageEnum implements MessageEnumFlag {
     // 主数据丢失
     MASTER_DATA_LOST(DESC_MASTER_DATA_LOST, PARAM_DATA_TYPE, PARAM_DATA_KEY),
 
+    // 关键信息丢失
+    KEY_INFO_MISS(DESC_KEY_INFO_MISS, PARAM_PROP_NAME, PARAM_DATA_TYPE),
+
+    // 方法缺失
+    METHOD_NOT_FOUND(DESC_METHOD_NOT_FOUND, PARAM_METHOD_NAME, PARAM_CLASS_NAME)
+
     ;
 
     /**

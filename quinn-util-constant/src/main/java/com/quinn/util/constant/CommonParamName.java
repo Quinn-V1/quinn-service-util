@@ -98,4 +98,9 @@ public interface CommonParamName {
      */
     String STRATEGY_TYPE = "strategyType";
 
+    /**
+     * 属性名
+     */
+    String PARAM_PROP_NAME = "propName";
+
 }

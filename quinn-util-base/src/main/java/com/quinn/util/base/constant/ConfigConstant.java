@@ -250,4 +250,9 @@ public interface ConfigConstant {
      */
     String DEFAULT_ACTIVE_PROFILE = "prd";
 
+    /**
+     * 默认环境
+     */
+    String DEFAULT_PRINCIPAL_ID_FIELD_NAME = "principal";
+
 }
