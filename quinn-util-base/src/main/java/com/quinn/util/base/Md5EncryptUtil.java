@@ -62,7 +62,7 @@ public final class Md5EncryptUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(encryptHMAC("123456", "guest"));
+        System.out.println(encryptHMAC("a1234567", "lqh"));
     }
 
 }
