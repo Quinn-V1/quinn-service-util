@@ -18,6 +18,18 @@ public enum FunctionTypeEnum {
     BUTTON,
 
     // 接口
-    INTERFACE
+    INTERFACE,
 
+    // 用于匹配接口（通常用于接口权限控制）
+    MATCH;
+
+    /**
+     * 是否为接口
+     *
+     * @param functionType 功能类型
+     * @return  就接口：true
+     */
+    public static boolean isInterface(String functionType) {
+        return INTERFACE.name().equals(functionType) || MATCH.name().equals(functionType);
+    }
 }

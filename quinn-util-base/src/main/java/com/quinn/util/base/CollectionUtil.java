@@ -5,10 +5,7 @@ import com.quinn.util.base.api.MethodInvokerNoParam;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.StringConstant;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 集合工具类
@@ -248,6 +245,29 @@ public final class CollectionUtil {
         } else {
             collection.add(object);
         }
+    }
+
+    /**
+     * 合并两个列表
+     *
+     * @param data1 数据1
+     * @param data2 数据2
+     * @return 合并后的数据（不要改变之前的数据）
+     */
+    public static Set mergeSet(Set data1, Set data2) {
+        if (data1 == null) {
+            return data2;
+        }
+
+        if (data2 == null) {
+            return data1;
+        }
+
+        Set result = new HashSet();
+        result.addAll(data1);
+        result.addAll(data2);
+
+        return result;
     }
 
 }
