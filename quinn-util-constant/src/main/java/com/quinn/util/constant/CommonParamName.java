@@ -103,4 +103,9 @@ public interface CommonParamName {
      */
     String PARAM_PROP_NAME = "propName";
 
+    /**
+     * Bean 名称
+     */
+    String PARAM_BEAN_NAME = "beanName";
+
 }

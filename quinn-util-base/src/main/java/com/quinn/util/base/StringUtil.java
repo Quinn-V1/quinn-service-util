@@ -1,9 +1,15 @@
 package com.quinn.util.base;
 
+import com.quinn.util.base.enums.CommonMessageEnum;
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.base.exception.UnSupportedCharsetException;
-import com.quinn.util.constant.*;
+import com.quinn.util.constant.CharConstant;
+import com.quinn.util.constant.CommonParamName;
+import com.quinn.util.constant.MimeMapper;
+import com.quinn.util.constant.StringConstant;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -165,4 +171,45 @@ public final class StringUtil {
         }
         return string.startsWith(StringConstant.CHAR_OPEN_BRACKET) && string.endsWith(StringConstant.CHAR_CLOSE_BRACKET);
     }
+
+    /**
+     * 字节数组转字符串
+     *
+     * @param bytes 字节数组
+     * @return 字符串
+     */
+    public static String byte2hex(byte[] bytes) {
+        StringBuilder sign = new StringBuilder();
+        for (int i = 0; i < bytes.length; i++) {
+            String hex = Integer.toHexString(bytes[i] & 0xFF);
+            if (hex.length() == 1) {
+                sign.append("0");
+            }
+            sign.append(hex.toUpperCase());
+        }
+        return sign.toString();
+    }
+
+    /**
+     * 获取异常信息
+     *
+     * @param e 异常对象
+     * @return 异常信息
+     */
+    public static String getStringFromException(Throwable e) {
+        String result;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            PrintStream ps = new PrintStream(bos, false, StringConstant.SYSTEM_DEFAULT_CHARSET);
+            e.printStackTrace(ps);
+            result = bos.toString(StringConstant.SYSTEM_DEFAULT_CHARSET);
+        } catch (UnsupportedEncodingException ee) {
+            throw new UnSupportedCharsetException()
+                    .addParam(CommonMessageEnum.CHARSET_NOT_SUPPORTED.paramNames[0], StringConstant.SYSTEM_DEFAULT_CHARSET)
+                    .exception()
+                    ;
+        }
+        return result;
+    }
+
 }

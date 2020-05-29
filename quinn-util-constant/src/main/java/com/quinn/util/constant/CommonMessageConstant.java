@@ -139,4 +139,10 @@ public interface CommonMessageConstant {
      */
     String DESC_METHOD_NOT_FOUND = "方法【${" + CommonParamName.PARAM_METHOD_NAME + "}】在类【${"
             + CommonParamName.PARAM_CLASS_NAME + "}】中缺失";
+
+    /**
+     * 必要的Bean缺失
+     */
+    String DESC_MANDATORY_BEAN_MISS = "必要的Bean【${" + CommonParamName.PARAM_METHOD_NAME + "}】类【"
+            + CommonParamName.PARAM_CLASS_NAME + "】缺失";
 }

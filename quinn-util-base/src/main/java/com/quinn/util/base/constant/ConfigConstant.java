@@ -251,8 +251,23 @@ public interface ConfigConstant {
     String DEFAULT_ACTIVE_PROFILE = "prd";
 
     /**
-     * 默认环境
+     * 权限信息主键字段名
      */
     String DEFAULT_PRINCIPAL_ID_FIELD_NAME = "principal";
+
+    /**
+     * 加密方式配置属性名
+     */
+    String PROP_KEY_OF_MOCK_CREDENTIALS_MATCHER = "com.quinn-service.mock-auth.credentials-matcher";
+
+    /**
+     * 加密方式配置属性名
+     */
+    String PROP_KEY_OF_MAIN_CREDENTIALS_MATCHER = "com.quinn-service.auth.main-credentials-matcher";
+
+    /**
+     * 默认密码加密方式
+     */
+    String DEFAULT_MAIN_CREDENTIALS_MATCHER = "md5CredentialsSubMatcher";
 
 }
