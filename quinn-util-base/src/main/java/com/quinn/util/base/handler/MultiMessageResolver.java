@@ -40,7 +40,7 @@ public final class MultiMessageResolver {
         StringBuilder query = new StringBuilder();
 
         do {
-            String messageCode = messageProp.getMessageCode();
+            String messageCode = prev.getMessageCode();
             if (StringUtil.isEmpty(messageCode)) {
                 prev = prev.getPrevProp();
                 continue;

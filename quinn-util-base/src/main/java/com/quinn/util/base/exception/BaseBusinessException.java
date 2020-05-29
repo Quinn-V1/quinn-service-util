@@ -147,6 +147,10 @@ public class BaseBusinessException extends RuntimeException {
                 setParams(messageProp.getParams());
                 setI18nParams(messageProp.getI18nParams());
                 setPrevProp(messageProp.getPrevProp());
+
+                if (BaseBusinessException.this.messageProp != null) {
+                    BaseBusinessException.this.messageProp.ofPrevProp(messageProp);
+                }
             }
         }
 
