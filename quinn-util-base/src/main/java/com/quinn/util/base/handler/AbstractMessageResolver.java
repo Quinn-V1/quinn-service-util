@@ -10,19 +10,22 @@ import com.quinn.util.base.model.BaseResult;
 import java.util.*;
 
 /**
- * @author HUAWEI
+ * 抽象消息解析器
+ *
+ * @author Qunhua.Liao
+ * @since 2020-05-31
  */
 public abstract class AbstractMessageResolver implements MessageResolver {
 
     /**
      * 按语言区分的国际化配置（其他语言懒加载）
      */
-    protected final static Map<Locale, Properties> localeMessagesMap = new HashMap<>();
+    protected Map<Locale, Properties> localeMessagesMap = new HashMap<>();
 
     /**
      * 默认的属性
      */
-    protected static Properties defaultProperties;
+    protected Properties defaultProperties;
 
     /**
      * 占位符号解析器
@@ -86,6 +89,21 @@ public abstract class AbstractMessageResolver implements MessageResolver {
         }
 
         return BaseResult.success(placeholderHandler.parseStringWithArray(result, args));
+    }
+
+    @Override
+    public BaseResult<String> resolveString(Locale locale, String code) {
+        Properties properties = getProperties(locale);
+        if (properties == null) {
+            return BaseResult.fail(code);
+        }
+
+        String property = properties.getProperty(code);
+        if (StringUtil.isEmpty(property)) {
+            return BaseResult.fail(code);
+        } else {
+            return BaseResult.success(property);
+        }
     }
 
     /**

@@ -20,6 +20,16 @@ public interface MessageEnumFlag {
      *
      * @return 描述
      */
+    default String key() {
+        return getClass().getSimpleName() + StringConstant.CHAR_COLON + name()
+                + StringConstant.CHAR_POUND_SIGN + StringConstant.NONE_OF_DATA;
+    }
+
+    /**
+     * 默认描述
+     *
+     * @return 描述
+     */
     String defaultDesc();
 
     /**

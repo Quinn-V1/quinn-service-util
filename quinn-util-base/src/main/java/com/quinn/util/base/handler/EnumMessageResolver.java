@@ -14,13 +14,27 @@ import java.util.Properties;
  */
 public class EnumMessageResolver extends AbstractMessageResolver {
 
+    private static final EnumMessageResolver INSTANT = new EnumMessageResolver();
+
+    private EnumMessageResolver() {
+        this(PlaceholderHandler.defaultInstance());
+    }
+
+    public EnumMessageResolver(PlaceholderHandler placeholderHandler) {
+        this.placeholderHandler = placeholderHandler;
+    }
+
+    public static EnumMessageResolver getInstant() {
+        return INSTANT;
+    }
+
     @Override
     public Properties getProperties(Locale locale) {
         Properties properties = localeMessagesMap.get(locale);
         if (properties == null) {
             return defaultProperties;
         }
-        return null;
+        return properties;
     }
 
     @Override
@@ -35,20 +49,20 @@ public class EnumMessageResolver extends AbstractMessageResolver {
      * @param messageEnums 枚举
      */
     public static void addContent(Locale locale, MessageEnumFlag[] messageEnums) {
-        Properties prop = localeMessagesMap.get(locale);
+        Properties prop = INSTANT.localeMessagesMap.get(locale);
         if (prop == null) {
             prop = new Properties();
-            localeMessagesMap.put(locale, prop);
+            INSTANT.localeMessagesMap.put(locale, prop);
         }
 
         if (Locale.getDefault().equals(locale)) {
-            defaultProperties = prop;
-        } else if (defaultProperties == null) {
-            defaultProperties = prop;
+            INSTANT.defaultProperties = prop;
+        } else if (INSTANT.defaultProperties == null) {
+            INSTANT.defaultProperties = prop;
         }
 
         for (MessageEnumFlag messageEnum : messageEnums) {
-            prop.put(messageEnum.name(), messageEnum.defaultDesc());
+            prop.put(messageEnum.key(), messageEnum.defaultDesc());
         }
     }
 }

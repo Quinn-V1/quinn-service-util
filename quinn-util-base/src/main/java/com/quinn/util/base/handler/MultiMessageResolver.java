@@ -107,18 +107,6 @@ public final class MultiMessageResolver {
     }
 
     /**
-     * 设置解析器
-     *
-     * @param resolverList 解析器
-     */
-    public static void setResolverList(List<MessageResolver> resolverList) {
-        if (resolverList != null) {
-            Collections.sort(resolverList, Comparator.comparingInt(MessageResolver::priority));
-            MultiMessageResolver.resolverList.addAll(resolverList);
-        }
-    }
-
-    /**
      * 解析结果
      */
     public static String resolveResult(BaseResult result) {
@@ -140,6 +128,35 @@ public final class MultiMessageResolver {
             }
         }
         return exception.getClass().getSimpleName() + StringConstant.CHAR_COLON + exception.getMessage();
+    }
+
+    /**
+     * 解析字符传
+     *
+     * @param locale 语言
+     * @param code   编码
+     * @return 国际化显示
+     */
+    public static String resolveString(Locale locale, String code) {
+        for (MessageResolver resolver : resolverList) {
+            BaseResult<String> descRes = resolver.resolveString(locale, code);
+            if (descRes.isSuccess()) {
+                return descRes.getData();
+            }
+        }
+        return code;
+    }
+
+    /**
+     * 设置解析器
+     *
+     * @param resolverList 解析器
+     */
+    public static void setResolverList(List<MessageResolver> resolverList) {
+        if (resolverList != null) {
+            Collections.sort(resolverList, Comparator.comparingInt(MessageResolver::priority));
+            MultiMessageResolver.resolverList.addAll(resolverList);
+        }
     }
 
 }

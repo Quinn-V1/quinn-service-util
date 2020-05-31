@@ -75,6 +75,15 @@ public interface MessageResolver {
             Locale locale, String messageCode, String defaultMessage, Object... args);
 
     /**
+     * 解析字符串
+     *
+     * @param locale 语言
+     * @param code   编码
+     * @return 国际化显示
+     */
+    BaseResult<String> resolveString(Locale locale, String code);
+
+    /**
      * 优先级
      *
      * @return 优先级

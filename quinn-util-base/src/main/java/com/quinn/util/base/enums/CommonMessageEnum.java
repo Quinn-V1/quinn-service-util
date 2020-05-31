@@ -2,7 +2,9 @@ package com.quinn.util.base.enums;
 
 import com.quinn.util.base.handler.EnumMessageResolver;
 import com.quinn.util.constant.MessageEnumFlag;
-import com.quinn.util.constant.enums.LanguageEnum;
+import com.quinn.util.constant.StringConstant;
+
+import java.util.Locale;
 
 import static com.quinn.util.constant.CommonMessageConstant.*;
 import static com.quinn.util.constant.CommonParamName.*;
@@ -115,8 +117,14 @@ public enum CommonMessageEnum implements MessageEnumFlag {
         return paramNames;
     }
 
+    @Override
+    public String key() {
+        return StringConstant.DATA_TYPE_OF_MESSAGE + StringConstant.CHAR_COLON + name()
+                + StringConstant.CHAR_POUND_SIGN + StringConstant.NONE_OF_DATA;
+    }
+
     static {
-        EnumMessageResolver.addContent(LanguageEnum.zh_CN.locale, CommonMessageEnum.values());
+        EnumMessageResolver.addContent(Locale.SIMPLIFIED_CHINESE, CommonMessageEnum.values());
     }
 
 }

@@ -76,7 +76,7 @@ public interface StringConstant {
     /**
      * 井号
      */
-    String CHAR_POUND_SIGN = "# ";
+    String CHAR_POUND_SIGN = "#";
 
     /**
      * 分割
@@ -136,6 +136,6 @@ public interface StringConstant {
     /**
      * 消息数据类型
      */
-    String DATA_TYPE_OF_MESSAGE = "MESSAGE_CODE";
+    String DATA_TYPE_OF_MESSAGE = "MessageEnum";
 
 }
