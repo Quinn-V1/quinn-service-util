@@ -1,13 +1,28 @@
 package com.quinn.util.constant;
 
+import java.time.LocalDateTime;
+
 /**
  * 日期格式常量类
  *
  * @author Qunhua.Liao
  * @since 2020-03-29
  */
-public interface DateFormatConstant {
+public interface DateConstant {
 
+    /**
+     * 最大时间
+     */
+    LocalDateTime MAX_DATE_TIME = LocalDateTime.of(NumberConstant.INT_MAX_YEAR,
+            NumberConstant.INT_MAX_MONTH, NumberConstant.INT_MAX_DAY, NumberConstant.INT_MAX_HOUR,
+            NumberConstant.INT_MAX_MINUTE, NumberConstant.INT_MAX_SECOND);
+
+    /**
+     * 最小时间
+     */
+    LocalDateTime MIN_DATE_TIME = LocalDateTime.of(NumberConstant.INT_MIN_YEAR,
+            NumberConstant.INT_MIN_MONTH, NumberConstant.INT_MIN_DAY, NumberConstant.INT_MIN_HOUR,
+            NumberConstant.INT_MIN_MINUTE, NumberConstant.INT_MIN_SECOND);
 
     /**
      * 日期格式【YYYY-MM-DD】正则表达式

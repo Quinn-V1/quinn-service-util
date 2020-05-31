@@ -1,7 +1,7 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.exception.DataStyleNotMatchException;
-import com.quinn.util.constant.DateFormatConstant;
+import com.quinn.util.constant.DateConstant;
 import com.quinn.util.constant.RegexConstant;
 import com.quinn.util.base.enums.CommonMessageEnum;
 import lombok.SneakyThrows;
@@ -32,23 +32,23 @@ public final class DateUtil {
 
     static {
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_1,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_1);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_1);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_2,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_2);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_SEPARATOR_2);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_NO_SEPARATOR,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_NO_SEPARATOR);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_NO_SEPARATOR);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_2,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_2);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_2);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_NO_SEPARATOR,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_NO_SEPARATOR);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_NO_SEPARATOR);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_1,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_1);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_1);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_2,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_2);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_SEPARATOR_2);
         SUPPORT_PATTEN.put(RegexConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_NO_SEPARATOR,
-                DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_NO_SEPARATOR);
+                DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SSS_NO_SEPARATOR);
     }
 
     /**

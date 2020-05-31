@@ -1,7 +1,7 @@
 package com.quinn.util.base.convertor;
 
 import com.quinn.util.base.DateUtil;
-import com.quinn.util.constant.DateFormatConstant;
+import com.quinn.util.constant.DateConstant;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,7 +29,7 @@ public class LocalDateTimeConverter extends BaseConverter<LocalDateTime> {
         if (obj == null) {
             return null;
         }
-        return DateTimeFormatter.ofPattern(DateFormatConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1).format(obj);
+        return DateTimeFormatter.ofPattern(DateConstant.DATE_PATTEN_YYYY_MM_DD_HH_MM_SS_SEPARATOR_1).format(obj);
     }
 
 }

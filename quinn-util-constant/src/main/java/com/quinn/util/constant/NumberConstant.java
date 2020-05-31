@@ -173,4 +173,63 @@ public interface NumberConstant {
      */
     long TIME_SEC_ONE_DAY = 3600 * 24;
 
+    /**
+     * 最大年
+     */
+    int INT_MAX_YEAR = 2030;
+
+    /**
+     * 最大月份
+     */
+    int INT_MAX_MONTH = 12;
+
+    /**
+     * 最大天数（每月）
+     */
+    int INT_MAX_DAY = 31;
+
+    /**
+     * 最大小时
+     */
+    int INT_MAX_HOUR = 23;
+
+    /**
+     * 最大分钟
+     */
+    int INT_MAX_MINUTE = 59;
+
+    /**
+     * 最大秒钟
+     */
+    int INT_MAX_SECOND = 59;
+
+    /**
+     * 最小年份
+     */
+    int INT_MIN_YEAR = 1900;
+
+    /**
+     * 最小月份
+     */
+    int INT_MIN_MONTH = INT_ONE;
+
+    /**
+     * 最小天数
+     */
+    int INT_MIN_DAY = INT_ONE;
+
+    /**
+     * 最小小时
+     */
+    int INT_MIN_HOUR = INT_ZERO;
+
+    /**
+     * 最小分钟
+     */
+    int INT_MIN_MINUTE = INT_ZERO;
+
+    /**
+     * 最小秒钟
+     */
+    int INT_MIN_SECOND = INT_ZERO;
 }
