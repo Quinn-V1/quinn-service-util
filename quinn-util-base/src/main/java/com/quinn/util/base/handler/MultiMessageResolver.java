@@ -2,9 +2,11 @@ package com.quinn.util.base.handler;
 
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.api.MessageResolver;
+import com.quinn.util.base.exception.BaseBusinessException;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.MessageProp;
 import com.quinn.util.constant.CharConstant;
+import com.quinn.util.constant.StringConstant;
 
 import java.util.*;
 
@@ -114,6 +116,30 @@ public final class MultiMessageResolver {
             Collections.sort(resolverList, Comparator.comparingInt(MessageResolver::priority));
             MultiMessageResolver.resolverList.addAll(resolverList);
         }
+    }
+
+    /**
+     * 解析结果
+     */
+    public static String resolveResult(BaseResult result) {
+        MessageProp messageProp = result.getMessageProp();
+        if (messageProp == null) {
+            return result.getMessage();
+        }
+        return resolveMessageProp(Locale.getDefault(), messageProp);
+    }
+
+    /**
+     * 解析结果
+     */
+    public static String resolveException(Exception exception) {
+        if (exception instanceof BaseBusinessException) {
+            MessageProp messageProp = ((BaseBusinessException) exception).getMessageProp();
+            if (messageProp != null) {
+                return resolveMessageProp(Locale.getDefault(), messageProp);
+            }
+        }
+        return exception.getClass().getSimpleName() + StringConstant.CHAR_COLON + exception.getMessage();
     }
 
 }

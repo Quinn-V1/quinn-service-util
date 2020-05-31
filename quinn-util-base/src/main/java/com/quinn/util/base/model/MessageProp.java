@@ -136,6 +136,28 @@ public class MessageProp<T> {
     }
 
     /**
+     * 设置直接参数
+     *
+     * @param params 直接参数
+     * @return 本身
+     */
+    public MessageProp ofParams(Map<Object, Object> params) {
+        this.params = params;
+        return this;
+    }
+
+    /**
+     * 设置国际化参数
+     *
+     * @param i18nParams 国际化参数
+     * @return 本身
+     */
+    public MessageProp ofI18nParams(Map<Object, Object> i18nParams) {
+        this.i18nParams = i18nParams;
+        return this;
+    }
+
+    /**
      * 返回所在结果
      *
      * @return

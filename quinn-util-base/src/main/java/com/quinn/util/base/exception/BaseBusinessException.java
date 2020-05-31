@@ -1,9 +1,12 @@
 package com.quinn.util.base.exception;
 
+import com.quinn.util.base.handler.MultiMessageResolver;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.MessageProp;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Locale;
 
 /**
  * 工具类异常
@@ -42,16 +45,6 @@ public class BaseBusinessException extends RuntimeException {
      * 消息属性
      */
     private BusinessExceptionMessageProp messageProp;
-
-    @Override
-    public String getMessage() {
-        if (messageProp == null) {
-            return super.getMessage();
-        }
-
-        // TODO 待推究合理性
-        return null;
-    }
 
     /**
      * 结果转变异常

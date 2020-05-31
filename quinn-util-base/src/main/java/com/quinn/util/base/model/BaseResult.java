@@ -2,6 +2,8 @@ package com.quinn.util.base.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quinn.util.base.StringUtil;
+import com.quinn.util.base.exception.BaseBusinessException;
+import com.quinn.util.base.handler.MultiMessageResolver;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.enums.MessageLevelEnum;
 import io.swagger.annotations.ApiModel;
@@ -148,6 +150,30 @@ public class BaseResult<T> {
     public static <T> BaseResult<T> success(T data) {
         BaseResult result = new BaseResult();
         result.setData(data);
+        return result;
+    }
+
+    /**
+     * 从异常获取结果
+     *
+     * @param e 异常
+     * @param <T> 结果泛型
+     * @return 结果
+     */
+    public static <T> BaseResult<T> fromException(Exception e) {
+        BaseResult result = BaseResult.fail();
+        if (e instanceof BaseBusinessException) {
+            MessageProp messageProp = ((BaseBusinessException) e).getMessageProp();
+            if (messageProp != null) {
+                result.buildMessage(messageProp.getMessageCode(), 0, 0)
+                        .ofParams(messageProp.getParams())
+                        .ofI18nParams(messageProp.getI18nParams())
+                ;
+            }
+        } else {
+            result.setMessage(MultiMessageResolver.resolveException(e));
+        }
+
         return result;
     }
 
