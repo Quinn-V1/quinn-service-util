@@ -43,7 +43,7 @@ public abstract class AbstractMessageResolver implements MessageResolver {
 
         String result = properties.getProperty(messageCode);
         if (StringUtil.isEmptyInFrame(result)) {
-            result = defaultMessage;
+            return BaseResult.fail().ofData(defaultMessage);
         }
 
         if (CollectionUtil.isEmpty(params) && CollectionUtil.isEmpty(i18nParams)) {
@@ -80,8 +80,12 @@ public abstract class AbstractMessageResolver implements MessageResolver {
         }
 
         String result = properties.getProperty(defaultMessage);
+        if (StringUtil.isEmpty(result)) {
+            return BaseResult.fail(defaultMessage);
+        }
+
         if (CollectionUtil.isEmpty(args)) {
-            return BaseResult.fail(result);
+            return BaseResult.success(result);
         }
 
         for (int i = 0; i < args.length; i++) {

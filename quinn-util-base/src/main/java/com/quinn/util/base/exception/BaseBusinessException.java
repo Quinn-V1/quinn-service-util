@@ -1,12 +1,9 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.handler.MultiMessageResolver;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.MessageProp;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Locale;
 
 /**
  * 工具类异常

@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class MandatoryBeanMissException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.MANDATORY_BEAN_MISS.name(), 1, 0);
+        buildParam(CommonMessageEnum.MANDATORY_BEAN_MISS.key(), 1, 0);
     }
 
     public MandatoryBeanMissException() {

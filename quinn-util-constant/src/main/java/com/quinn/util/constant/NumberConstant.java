@@ -39,6 +39,11 @@ public interface NumberConstant {
     int INT_FOUR = 4;
 
     /**
+     * 整数 8
+     */
+    int INT_EIGHT = 8;
+
+    /**
      * 整数 5
      */
     int INT_FIVE = 5;

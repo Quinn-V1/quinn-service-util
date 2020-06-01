@@ -12,7 +12,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class FileOperationException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.name(), 1, 1);
+        buildParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.key(), 1, 1);
     }
 
     public FileOperationException() {

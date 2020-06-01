@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class MethodNotFoundException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.METHOD_NOT_FOUND.name(), 2, 0);
+        buildParam(CommonMessageEnum.METHOD_NOT_FOUND.key(), 2, 0);
     }
 
     public MethodNotFoundException() {

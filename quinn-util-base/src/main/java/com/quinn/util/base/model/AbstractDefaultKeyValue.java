@@ -14,14 +14,34 @@ import lombok.Setter;
 @Getter
 public abstract class AbstractDefaultKeyValue<K, V> implements KeyValue<K, V> {
 
+    /**
+     * 系统主键
+     */
     private Long id;
 
+    /**
+     * 父类系统主键
+     */
     private Long parentId;
 
+    /**
+     * 数据编码
+     */
     private K dataKey;
 
+    /**
+     * 短编码
+     */
     private K dataCode;
 
+    /**
+     * 数据值-描述
+     */
     private V dataValue;
+
+    /**
+     * 父类编码
+     */
+    private K parentKey;
 
 }

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerNoParam;
 import com.quinn.util.base.api.MethodInvokerOneParam;
 import com.quinn.util.base.convertor.BaseConverter;
+import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.constant.StringConstant;
 
 import java.util.*;
@@ -303,6 +304,68 @@ public final class CollectionUtil {
     /**
      * 将列表转为Map
      *
+     * @param data         数据
+     * @param keyInvoker   获取Key的回调函数
+     * @param valueInvoker 获取Value的回调函数
+     * @param <K>          Key 泛型
+     * @param <V>          值泛型
+     * @return Map
+     */
+    public static <K, V, R> Map<K, List<R>> collectionToListMap(
+            Collection<V> data, MethodInvokerOneParam<V, K> keyInvoker, MethodInvokerOneParam<V, R> valueInvoker) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        Map<K, List<R>> result = new HashMap<>(NumberConstant.INT_EIGHT);
+        for (V v : data) {
+            K k = keyInvoker.invoke(v);
+
+            List<R> vs = result.get(k);
+            if (vs == null) {
+                vs = new ArrayList<>();
+                result.put(k, vs);
+            }
+            vs.add(valueInvoker.invoke(v));
+        }
+
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
+     * @param data         数据
+     * @param keyInvoker   获取Key的回调函数
+     * @param valueInvoker 获取Value的回调函数
+     * @param <K>          Key 泛型
+     * @param <V>          值泛型
+     * @return Map
+     */
+    public static <K, V, R> Map<K, Set<R>> collectionToSetMap(
+            Collection<V> data, MethodInvokerOneParam<V, K> keyInvoker, MethodInvokerOneParam<V, R> valueInvoker) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        Map<K, Set<R>> result = new HashMap<>(NumberConstant.INT_EIGHT);
+        for (V v : data) {
+            K k = keyInvoker.invoke(v);
+
+            Set<R> vs = result.get(k);
+            if (vs == null) {
+                vs = new HashSet<>();
+                result.put(k, vs);
+            }
+            vs.add(valueInvoker.invoke(v));
+        }
+
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
      * @param data    数据
      * @param invoker 获取Key的回调函数
      * @param <K>     Key 泛型
@@ -314,6 +377,25 @@ public final class CollectionUtil {
         for (V v : data) {
             K k = invoker.invoke(v);
             result.put(k, v);
+        }
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
+     * @param data         数据
+     * @param keyInvoker   获取Key的回调函数
+     * @param valueInvoker 获取Value的回调函数
+     * @param <K>          Key 泛型
+     * @param <V>          值泛型
+     * @return Map
+     */
+    public static <K, V, R> Map<K, R> collectionToMap(
+            Collection<V> data, MethodInvokerOneParam<V, K> keyInvoker, MethodInvokerOneParam<V, R> valueInvoker) {
+        Map<K, R> result = new HashMap<>(data.size());
+        for (V v : data) {
+            result.put(keyInvoker.invoke(v), valueInvoker.invoke(v));
         }
         return result;
     }

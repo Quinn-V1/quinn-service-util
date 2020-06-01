@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class MasterDataLostException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.MASTER_DATA_LOST.name(), 1, 1);
+        buildParam(CommonMessageEnum.MASTER_DATA_LOST.key(), 1, 1);
     }
 
     public MasterDataLostException() {

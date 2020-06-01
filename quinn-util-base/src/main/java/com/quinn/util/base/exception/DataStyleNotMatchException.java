@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class DataStyleNotMatchException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.name(), 1, 1);
+        buildParam(CommonMessageEnum.DATA_STYLE_NOT_MATCHED.key(), 1, 1);
     }
 
     public DataStyleNotMatchException() {

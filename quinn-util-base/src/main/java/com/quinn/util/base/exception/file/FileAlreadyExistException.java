@@ -12,7 +12,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class FileAlreadyExistException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.FILE_DIRECTORY_OCCUPIED_BY_FILE.name(), 1, 0);
+        buildParam(CommonMessageEnum.FILE_DIRECTORY_OCCUPIED_BY_FILE.key(), 1, 0);
     }
 
     public FileAlreadyExistException() {

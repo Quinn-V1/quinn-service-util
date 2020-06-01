@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class KeyInfoMissException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.KEY_INFO_MISS.name(), 0, 2);
+        buildParam(CommonMessageEnum.KEY_INFO_MISS.key(), 0, 2);
     }
 
     public KeyInfoMissException() {

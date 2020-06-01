@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class UnSupportedStrategyException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.STRATEGY_NOT_SUPPORTED.name(), 1, 0);
+        buildParam(CommonMessageEnum.STRATEGY_NOT_SUPPORTED.key(), 1, 0);
     }
 
     public UnSupportedStrategyException() {

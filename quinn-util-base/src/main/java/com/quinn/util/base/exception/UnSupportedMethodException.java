@@ -11,7 +11,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class UnSupportedMethodException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.METHOD_NOT_SUPPORTED.name(), 2, 0);
+        buildParam(CommonMessageEnum.METHOD_NOT_SUPPORTED.key(), 2, 0);
     }
 
     public UnSupportedMethodException() {

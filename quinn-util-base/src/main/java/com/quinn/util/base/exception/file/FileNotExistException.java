@@ -12,7 +12,7 @@ import com.quinn.util.base.enums.CommonMessageEnum;
 public class FileNotExistException extends BaseBusinessException {
 
     {
-        buildParam(CommonMessageEnum.FILE_NOT_EXIST.name(), 1, 0);
+        buildParam(CommonMessageEnum.FILE_NOT_EXIST.key(), 1, 0);
     }
 
     public FileNotExistException() {
