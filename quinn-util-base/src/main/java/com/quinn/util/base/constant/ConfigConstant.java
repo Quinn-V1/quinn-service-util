@@ -98,7 +98,7 @@ public interface ConfigConstant {
     /**
      * 各功能模块添加资源的预留配置接口
      */
-    String MODULE_DEFINITION_METADATA = "classpath*:META-INF/meta-quinn-module*.properties";
+    String MODULE_DEFINITION_METADATA = "classpath*:META-INF/meta-quinn-module*.json";
 
     /**
      * 各功能模块添加资源的预留配置接口

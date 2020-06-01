@@ -54,6 +54,11 @@ public interface NumberConstant {
     int INT_TEN = 10;
 
     /**
+     * 整数 10
+     */
+    int INT_HUNDRED = 100;
+
+    /**
      * 默认安全删除数量
      */
     int DELETE_DANGER_SIZE = 100;
