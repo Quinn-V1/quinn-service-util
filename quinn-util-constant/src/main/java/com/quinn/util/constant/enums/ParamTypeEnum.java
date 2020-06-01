@@ -57,43 +57,8 @@ public enum ParamTypeEnum {
     }
 
     /**
-     * 从参数中获取参数类型的键
-     */
-    public static final String PARAM_KEY_TYPE = "paramType";
-
-    /**
-     * 从参数中获取参数类型的键
-     */
-    public static final String PARAM_KEY_SQL_RESULT = "resultRows";
-
-    /**
      * 从参数中获取参数内容的键
      */
     public static final String PARAM_KEY_DATA = "paramContent";
-
-    /**
-     * 从参数中获取参数内容的键
-     */
-    public static final String PARAM_RESOLVER_BEAN_PREFIX = "paramResolver";
-
-    /**
-     * 这次执行时间
-     */
-    public static final String PARAM_KEY_THIS_EXEC = "thisExecuteTime";
-
-    /**
-     * 上次执行时间
-     */
-    public static final String PARAM_KEY_LAST_EXEC = "latestExecuteTime";
-
-    /**
-     * 上次成功时间
-     */
-    public static final String PARAM_KEY_LAST_SUCCESS = "latestSuccessTime";
-
-    /**
-     * 上次失败时间
-     */
-    public static final String PARAM_KEY_LAST_FAIL = "latestFailTime";
 
 }

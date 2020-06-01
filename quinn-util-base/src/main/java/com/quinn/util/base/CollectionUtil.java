@@ -2,6 +2,7 @@ package com.quinn.util.base;
 
 import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerNoParam;
+import com.quinn.util.base.api.MethodInvokerOneParam;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.StringConstant;
 
@@ -270,4 +271,50 @@ public final class CollectionUtil {
         return result;
     }
 
+    /**
+     * 将列表转为Map
+     *
+     * @param data    数据
+     * @param invoker 获取Key的回调函数
+     * @param <K>     Key 泛型
+     * @param <V>     值泛型
+     * @return Map
+     */
+    public static <K, V> Map<K, List<V>> collectionToListMap(
+            Collection<V> data, MethodInvokerOneParam<V, K> invoker) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        Map<K, List<V>> result = new HashMap<>();
+        for (V v : data) {
+            K k = invoker.invoke(v);
+            List<V> vs = result.get(k);
+            if (vs == null) {
+                vs = new ArrayList<>();
+                result.put(k, vs);
+            }
+            vs.add(v);
+        }
+
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
+     * @param data    数据
+     * @param invoker 获取Key的回调函数
+     * @param <K>     Key 泛型
+     * @param <V>     值泛型
+     * @return Map
+     */
+    public static <K, V> Map<K, V> collectionToMap(Collection<V> data, MethodInvokerOneParam<V, K> invoker) {
+        Map<K, V> result = new HashMap<>(data.size());
+        for (V v : data) {
+            K k = invoker.invoke(v);
+            result.put(k, v);
+        }
+        return result;
+    }
 }

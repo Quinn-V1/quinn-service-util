@@ -44,16 +44,6 @@ public final class BaseUtil {
     }
 
     /**
-     * 生成UUID去 -
-     *
-     * @return UUID去 -
-     */
-    public static String uuid() {
-        String uuid = UUID.randomUUID().toString();
-        return uuid.replace("-", "");
-    }
-
-    /**
      * 连续获取对象指定属性值
      *
      * @param obj       对象

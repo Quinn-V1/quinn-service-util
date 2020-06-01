@@ -11,6 +11,7 @@ import com.quinn.util.constant.StringConstant;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 /**
  * 字符串工具类
@@ -210,6 +211,16 @@ public final class StringUtil {
                     ;
         }
         return result;
+    }
+
+    /**
+     * 生成UUID去 -
+     *
+     * @return UUID去 -
+     */
+    public static String uuid() {
+        String uuid = UUID.randomUUID().toString();
+        return uuid.replace("-", "");
     }
 
 }
