@@ -37,8 +37,8 @@ public class DatabaseMainTest {
         try {
             connection = DataSourceProvider.getConnection();
             // 如果取不到数据库连接（则放弃测试）
-            System.out.println("Connection get failed");
         } catch (Exception e) {
+            System.out.println("Connection get failed");
             return;
         }
 

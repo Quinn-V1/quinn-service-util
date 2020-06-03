@@ -11,6 +11,7 @@ import com.quinn.util.constant.StringConstant;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -223,4 +224,53 @@ public final class StringUtil {
         return uuid.replace("-", "");
     }
 
+    /**
+     * 拼接字符串
+     *
+     * @param strings 零碎字符串
+     * @return 拼接字符串
+     */
+    public static String concat(String... strings) {
+        StringBuilder query = new StringBuilder();
+        for (String str : strings) {
+            if (isEmpty(str)) {
+                continue;
+            }
+            query.append(str);
+        }
+        return query.toString();
+    }
+
+    /**
+     * 拼接字符串
+     *
+     * @param strings 零碎字符串
+     * @return 拼接字符串
+     */
+    public static String join(Collection<String> strings, String delimiter) {
+        StringBuilder query = new StringBuilder();
+        for (String str : strings) {
+            query.append(str).append(delimiter);
+        }
+
+        if (query.length() > 0) {
+            query.delete(query.length() - delimiter.length(), query.length());
+        }
+        return query.toString();
+    }
+
+    /**
+     * 根据长度省略显示
+     *
+     * @param content   内容
+     * @param maxLength 最大长度
+     * @return 省略后的值
+     */
+    public static String omitByLength(String content, int maxLength) {
+        if (content.length() <= maxLength) {
+            return content;
+        }
+
+        return content.substring(0, maxLength - StringConstant.OMIT_STRING.length()) + StringConstant.OMIT_STRING;
+    }
 }

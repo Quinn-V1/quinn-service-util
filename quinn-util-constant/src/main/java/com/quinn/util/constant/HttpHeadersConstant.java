@@ -12,25 +12,31 @@ public interface HttpHeadersConstant {
      * The HTTP Cache-Control header field name.
      */
     String CACHE_CONTROL = "Cache-Control";
+
     /**
      * The HTTP Content-Length header field name.
      */
     String CONTENT_LENGTH = "Content-Length";
+
     /**
      * The HTTP Content-Type header field name.
      */
     String CONTENT_TYPE = "Content-Type";
+
     /**
      * The HTTP Date header field name.
      */
     String DATE = "Date";
+
     /**
      * The HTTP Pragma header field name.
      */
     String PRAGMA = "Pragma";
+
     /**
      * The HTTP Via header field name.
      */
+
     String VIA = "Via";
     /**
      * The HTTP Warning header field name.
@@ -307,9 +313,15 @@ public interface HttpHeadersConstant {
      * The HTTP X-User-IP header field name.
      */
     String X_USER_IP = "X-User-IP";
+
     /**
      * The HTTP X-XSS-Protection header field name.
      */
     String X_XSS_PROTECTION = "X-XSS-Protection";
+
+    /**
+     * 相应内容类型：html
+     */
+    String CONTENT_TYPE_HTML = "text/html;charset=UTF-8";
 
 }

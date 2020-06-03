@@ -304,6 +304,34 @@ public final class CollectionUtil {
     /**
      * 将列表转为Map
      *
+     * @param data    数据
+     * @param invoker 获取Key的回调函数
+     * @param <K>     Key 泛型
+     * @param <V>     值泛型
+     * @return Map
+     */
+    public static <K, V> Map<K, List<V>> collectionToListMap(
+            Map<K, List<V>> result, Collection<V> data, MethodInvokerOneParam<V, K> invoker) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        for (V v : data) {
+            K k = invoker.invoke(v);
+            List<V> vs = result.get(k);
+            if (vs == null) {
+                vs = new ArrayList<>();
+                result.put(k, vs);
+            }
+            vs.add(v);
+        }
+
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
      * @param data         数据
      * @param keyInvoker   获取Key的回调函数
      * @param valueInvoker 获取Value的回调函数
@@ -398,5 +426,21 @@ public final class CollectionUtil {
             result.put(keyInvoker.invoke(v), valueInvoker.invoke(v));
         }
         return result;
+    }
+
+    /**
+     * 空安全添加列表Map
+     *
+     * @param listMap 列表Map
+     * @param data    数据
+     * @param key     Key
+     */
+    public static <T> void nullSafePutList(Map<String, List<T>> listMap, T data, String key) {
+        List list = listMap.get(key);
+        if (list == null) {
+            list = new ArrayList();
+            listMap.put(key, list);
+        }
+        list.add(data);
     }
 }
