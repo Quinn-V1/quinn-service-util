@@ -64,7 +64,42 @@ public interface StringConstant {
     String CHAR_COLON = ":";
 
     /**
-     * 冒号
+     * 等于
+     */
+    String CHAR_EQUAL_MARK = "=";
+
+    /**
+     * 小于
+     */
+    String CHAR_LESS_THAN = "<";
+
+    /**
+     * 小于
+     */
+    String CHAR_LESS_EQUAL = "<=";
+
+    /**
+     * 小于
+     */
+    String CHAR_GREAT_THAN = ">";
+
+    /**
+     * 小于
+     */
+    String CHAR_GREAT_EQUAL = ">=";
+
+    /**
+     * 小于
+     */
+    String CHAR_LIKE = "LIKE";
+
+    /**
+     * 问号
+     */
+    String CHAR_QUESTION_MARK = "?";
+
+    /**
+     * 中横线
      */
     String CHAR_HYPHEN = "-";
 
