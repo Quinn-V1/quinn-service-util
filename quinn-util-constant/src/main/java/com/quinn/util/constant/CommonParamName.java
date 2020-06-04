@@ -116,21 +116,36 @@ public interface CommonParamName {
     /**
      * 从参数中获取参数类型的键
      */
-    public static final String PARAM_KEY_TYPE = "paramType";
+   String PARAM_KEY_TYPE = "paramType";
+
+    /**
+     * 从参数中获取参数类型的键
+     */
+   String PARAM_RESOLVER_BEAN_NAME_PREFIX = "paramResolver";
 
     /**
      * 从参数中获取参数内容的键
      */
-    public static final String PARAM_KEY_DATA = "paramContent";
+   String PARAM_KEY_DATA = "paramContent";
 
     /**
      * 从参数中获取参数类型的键
      */
-    public static final String PARAM_KEY_SQL = "paramSql";
+   String PARAM_KEY_SQL = "paramSql";
 
     /**
      * 从参数中获取参数类型的键
      */
-    public static final String PARAM_KEY_SQL_SINGLE_RESULT = "singleResult";
+   String PARAM_KEY_SQL_SINGLE_RESULT = "singleResult";
+
+    /**
+     * 本次执行时间
+     */
+    String PARAM_KEY_NOW_TIME = "timeOfNow";
+
+    /**
+     * 本次执行时间
+     */
+    String PARAM_KEY_NOW_DATE = "dateOfNow";
 
 }

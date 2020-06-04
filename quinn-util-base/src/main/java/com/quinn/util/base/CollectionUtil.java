@@ -1,6 +1,7 @@
 package com.quinn.util.base;
 
 import com.alibaba.fastjson.JSONArray;
+import com.quinn.util.base.api.DegreeEntity;
 import com.quinn.util.base.api.MethodInvokerNoParam;
 import com.quinn.util.base.api.MethodInvokerOneParam;
 import com.quinn.util.base.convertor.BaseConverter;
@@ -431,6 +432,20 @@ public final class CollectionUtil {
     /**
      * 空安全添加列表Map
      *
+     * @param map  列表Map
+     * @param data 数据
+     * @param key  Key
+     */
+    public static <T> void nullSafePut(Map<String, T> map, T data, String key) {
+        if (data == null || key == null) {
+            return;
+        }
+        map.put(key, data);
+    }
+
+    /**
+     * 空安全添加列表Map
+     *
      * @param listMap 列表Map
      * @param data    数据
      * @param key     Key
@@ -442,5 +457,44 @@ public final class CollectionUtil {
             listMap.put(key, list);
         }
         list.add(data);
+    }
+
+    /**
+     * 将层级列表转成树结构
+     *
+     * @param degreeList 层级数据列表
+     * @param <T>        数据泛型
+     * @param <K>        关联字段泛型
+     * @return 树结构
+     */
+    public static <T extends DegreeEntity<K, T>, K> List<T> collectionToTree(List<T> degreeList) {
+        if (isEmpty(degreeList)) {
+            return null;
+        }
+
+        LinkedHashMap<K, T> allMap = new LinkedHashMap<>();
+        List<T> result = new ArrayList<>();
+
+        for (T data : degreeList) {
+            allMap.put(data.getDataKey(), data);
+        }
+
+        for (T data : degreeList) {
+            K parentKey = data.getParentKey();
+            T parent = allMap.get(parentKey);
+
+            if (parent == null) {
+                result.add(data);
+            } else {
+                List<T> children = parent.getChildren();
+                if (children == null) {
+                    children = new ArrayList<>();
+                    parent.setChildren(children);
+                }
+                children.add(data);
+            }
+        }
+
+        return result;
     }
 }
