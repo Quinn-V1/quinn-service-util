@@ -61,6 +61,11 @@ public class LicenceInfo {
     private String[] modules;
 
     /**
+     * 授权模块
+     */
+    private String[] supportLangCodes;
+
+    /**
      * 校验证书是否合格
      *
      * @return
@@ -83,4 +88,12 @@ public class LicenceInfo {
         return BaseResult.SUCCESS;
     }
 
+    /**
+     * 获取支持语言
+     *
+     * @return 支持语言
+     */
+    public String[] getSupportLangCodes() {
+        return supportLangCodes;
+    }
 }
