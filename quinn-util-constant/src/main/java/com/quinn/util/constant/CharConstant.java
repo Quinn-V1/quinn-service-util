@@ -64,6 +64,11 @@ public interface CharConstant {
     char COLON = ':';
 
     /**
+     * 下划线
+     */
+    char UNDERLINE = '_';
+
+    /**
      * 空格
      */
     char BLANK = ' ';

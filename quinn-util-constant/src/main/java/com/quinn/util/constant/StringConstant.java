@@ -119,6 +119,11 @@ public interface StringConstant {
     String CHAR_VERTICAL_BAR = "|";
 
     /**
+     * 下划线
+     */
+    String CHAR_UNDERLINE = "_";
+
+    /**
      * 默认编码
      */
     String SYSTEM_DEFAULT_CHARSET = "UTF-8";
