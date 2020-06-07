@@ -234,4 +234,19 @@ public final class BaseUtil {
         return result;
     }
 
+    /**
+     * 空值返回默认，否则返回本身
+     *
+     * @param value        实际值
+     * @param defaultValue 默认值
+     * @param <T>          结果参数泛型
+     * @return 本身或者默认值
+     */
+    public static <T> T ifNull(T value, T defaultValue) {
+        if (value == null) {
+            return defaultValue;
+        }
+        return value;
+    }
+
 }
