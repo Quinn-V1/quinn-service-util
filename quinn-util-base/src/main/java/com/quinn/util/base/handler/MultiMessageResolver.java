@@ -1,5 +1,6 @@
 package com.quinn.util.base.handler;
 
+import com.quinn.util.base.CollectionUtil;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.api.MessageResolver;
 import com.quinn.util.base.exception.BaseBusinessException;
@@ -77,8 +78,26 @@ public final class MultiMessageResolver {
             return null;
         }
 
+        if (!CollectionUtil.isEmpty(i18nParams)) {
+            if (params == null) {
+                params = new HashMap<>(i18nParams.size());
+            }
+
+            LOOP:
+            for (Map.Entry<String, Object> entry : i18nParams.entrySet()) {
+                for (MessageResolver resolver : resolverList) {
+                    BaseResult<String> res = resolver.resolveString(locale, (String) entry.getValue());
+                    if (res.isSuccess()) {
+                        params.put(entry.getKey(), res.getData());
+                        continue LOOP;
+                    }
+                }
+                params.put(entry.getKey(), entry.getValue());
+            }
+        }
+
         for (MessageResolver resolver : resolverList) {
-            BaseResult<String> res = resolver.resolveMessage(locale, messageCode, params, i18nParams, messageCode);
+            BaseResult<String> res = resolver.resolveMessage(locale, messageCode, params, null, messageCode);
             if (res.isSuccess()) {
                 return res.getData();
             }
