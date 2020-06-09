@@ -49,6 +49,11 @@ public interface CharConstant {
     char SLASH = '/';
 
     /**
+     * 分割
+     */
+    char VERTICAL_BAR = '|';
+
+    /**
      * 反斜线
      */
     char BACKS_LASH = '\\';
