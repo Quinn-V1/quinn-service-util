@@ -9,11 +9,6 @@ package com.quinn.util.constant;
 public interface MessageEnumFlag {
 
     /**
-     * 数据类型的数据类型
-     */
-    String DADA_TYPE_OF_DATA_TYPE = "DataTypeEnum";
-
-    /**
      * 默认描述
      *
      * @return 描述

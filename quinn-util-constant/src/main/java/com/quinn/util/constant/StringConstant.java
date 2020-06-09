@@ -179,6 +179,11 @@ public interface StringConstant {
     String DATA_TYPE_OF_MESSAGE = "MessageEnum";
 
     /**
+     * 数据类型的数据类型
+     */
+    String DADA_TYPE_OF_DATA_TYPE = "DataTypeEnum";
+
+    /**
      * 长度过长后省略
      */
     String OMIT_STRING = "...";
