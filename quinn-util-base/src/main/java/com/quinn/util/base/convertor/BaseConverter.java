@@ -6,7 +6,7 @@ import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.base.enums.DataTypeEnum;
+import com.quinn.util.base.enums.PrimitiveDataTypeEnum;
 import com.quinn.util.base.enums.CommonMessageEnum;
 
 import java.lang.reflect.ParameterizedType;
@@ -142,7 +142,7 @@ public abstract class BaseConverter<T> implements DataConverter<T> {
      * @return Java 类
      */
     public static Class classOf(String dataType) {
-        return DataTypeEnum.classOf(dataType);
+        return PrimitiveDataTypeEnum.classOf(dataType);
     }
 
     /**

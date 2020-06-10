@@ -1,5 +1,6 @@
 package com.quinn.util.base.enums;
 
+import com.alibaba.fastjson.JSONObject;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.BatchResult;
 
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
  * @author Qunhua.Liao
  * @since 2020-04-27
  */
-public enum DataTypeEnum {
+public enum PrimitiveDataTypeEnum {
 
     // 字符串
     STRING(String.class),
@@ -42,6 +43,9 @@ public enum DataTypeEnum {
     // 日期时间
     DATETIME(LocalDateTime.class),
 
+    // JSON格式
+    JSON(JSONObject.class),
+
     // 基础结果类
     BASE_RESULT(BaseResult.class),
 
@@ -52,14 +56,14 @@ public enum DataTypeEnum {
 
     public final Class clazz;
 
-    DataTypeEnum(Class clazz) {
+    PrimitiveDataTypeEnum(Class clazz) {
         this.clazz = clazz;
     }
 
     /**
      * 获取数据类型对应的Java类
      *
-     * @param dataType  数据类型
+     * @param dataType 数据类型
      * @return Java类
      */
     public static Class classOf(String dataType) {
@@ -67,7 +71,7 @@ public enum DataTypeEnum {
             return String.class;
         }
 
-        for (DataTypeEnum dataTypeEnum : DataTypeEnum.values()) {
+        for (PrimitiveDataTypeEnum dataTypeEnum : PrimitiveDataTypeEnum.values()) {
             if (dataTypeEnum.name().equals(dataType)) {
                 return dataTypeEnum.clazz;
             }

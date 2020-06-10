@@ -9,10 +9,10 @@ package com.quinn.util.constant.enums;
 public enum SyncStatusEnum {
 
     // 未同步
-    NOT_SYNCHRONIZED("未同步", 1),
+    UN_SYNCED("未同步", 1),
 
     // 已修改
-    ALREADY_EDITED("已修改", 9),
+    CHANGED("已修改", 9),
 
     // 已同步
     SYNCED("已同步", 10),
