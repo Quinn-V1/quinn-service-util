@@ -190,4 +190,14 @@ public final class StreamUtil {
                 .lines().parallel().collect(Collectors.joining("\n"));
     }
 
+    /**
+     * 字符串转为流
+     *
+     * @param string 字符串
+     * @return 流
+     */
+    public static InputStream asStream(String string) {
+        return new ByteArrayInputStream(string.getBytes());
+    }
+
 }
