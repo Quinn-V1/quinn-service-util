@@ -413,6 +413,24 @@ public final class CollectionUtil {
     /**
      * 将列表转为Map
      *
+     * @param data    数据
+     * @param invoker 获取Key的回调函数
+     * @param <K>     Key 泛型
+     * @param <V>     值泛型
+     * @return Map
+     */
+    public static <K, V> Map<K, V> arrayToMap(V[] data, MethodInvokerOneParam<V, K> invoker) {
+        Map<K, V> result = new HashMap<>(data.length);
+        for (V v : data) {
+            K k = invoker.invoke(v);
+            result.put(k, v);
+        }
+        return result;
+    }
+
+    /**
+     * 将列表转为Map
+     *
      * @param data         数据
      * @param keyInvoker   获取Key的回调函数
      * @param valueInvoker 获取Value的回调函数
