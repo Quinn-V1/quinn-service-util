@@ -20,6 +20,9 @@ public enum LicenceExceptionType {
     // 授权过期
     PROFILE_HIGHER("运行环境高于授权", -60),
 
+    // 授权过期
+    PROFILE_RESTART("运行环境重启时间到", -50),
+
     ;
 
     /**

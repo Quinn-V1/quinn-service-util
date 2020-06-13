@@ -9,19 +9,19 @@ package com.quinn.util.constant.enums;
 public enum ProfileEnum {
 
     // 开发环境
-    DEV("开发环境", 0),
+    DEV("开发环境", 10),
 
     // 内部测试
-    TEST("内部测试", 5),
+    TEST("内部测试", 90),
 
     // 用户测试
-    QAS("用户测试", 10),
+    QAS("用户测试", 180),
 
     // 仿真测试
-    UAT("仿真测试", 15),
+    UAT("仿真测试", 360),
 
     // 生产环境
-    PRD("生产环境", 20),
+    PRD("生产环境", Integer.MAX_VALUE),
 
     ;
 
@@ -46,9 +46,9 @@ public enum ProfileEnum {
      * @param name
      * @return
      */
-    public static int codeByName(String name) {
+    public static int codeByName(String name, ProfileEnum defLevel) {
         if (name == null || "".equals(name.length())) {
-            return PRD.level;
+            return defLevel.level;
         }
 
         for (ProfileEnum profile : ProfileEnum.values()) {
@@ -57,7 +57,7 @@ public enum ProfileEnum {
             }
         }
 
-        return PRD.level;
+        return defLevel.level;
     }
 
     /**
@@ -68,8 +68,8 @@ public enum ProfileEnum {
      * @return 低：true
      */
     public static boolean higher(String srcName, String tarName) {
-        int srcCode = codeByName(srcName);
-        int targetCode = codeByName(tarName);
+        int srcCode = codeByName(srcName, PRD);
+        int targetCode = codeByName(tarName, DEV);
         return srcCode - targetCode > 0;
     }
 
