@@ -1,8 +1,12 @@
 package com.quinn.util.base.enums;
 
+import com.quinn.util.base.NumberUtil;
 import com.quinn.util.base.handler.EnumMessageResolver;
 import com.quinn.util.constant.MessageEnumFlag;
+import com.quinn.util.constant.NumberConstant;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -37,6 +41,51 @@ public enum MessageTypeEnum implements MessageEnumFlag {
      * 编码:用于位存储
      */
     public final int code;
+
+    /**
+     * 变成字符串数组
+     *
+     * @param dealTypes 支持操作类型的合成整型
+     * @return 支持操作类型
+     */
+    public static String[] asStrings(Integer dealTypes) {
+        if (NumberUtil.isEmptyInFrame(dealTypes)) {
+            return null;
+        }
+
+        List<String> results = new ArrayList<>();
+        for (MessageTypeEnum dealTypeEnum : MessageTypeEnum.values()) {
+            if ((dealTypeEnum.code & dealTypes) > 0) {
+                results.add(dealTypeEnum.name());
+            }
+        }
+
+        return results.toArray(new String[results.size()]);
+    }
+
+    /**
+     * 合成整型
+     *
+     * @param dealTypesStr 支持操作类型数组
+     * @return 合成整型
+     */
+    public static Integer asInteger(String[] dealTypesStr) {
+        if (dealTypesStr == null) {
+            return NumberConstant.INT_ZERO;
+        }
+
+        Integer result = 0;
+        for (String dealType : dealTypesStr) {
+            for (MessageTypeEnum dealTypeEnum : MessageTypeEnum.values()) {
+                if (dealTypeEnum.name().equals(dealType)) {
+                    result = result | dealTypeEnum.code;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
 
     MessageTypeEnum(String defaultDesc, int code) {
         this.defaultDesc = defaultDesc;
