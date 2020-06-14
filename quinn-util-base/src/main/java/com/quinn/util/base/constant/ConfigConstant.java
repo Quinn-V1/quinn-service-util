@@ -270,4 +270,24 @@ public interface ConfigConstant {
      */
     String DEFAULT_MAIN_CREDENTIALS_MATCHER = "md5CredentialsSubMatcher";
 
+    /**
+     * 超级管理员角色的配置属性名
+     */
+    String PROP_KEY_OF_SUPER_ADMIN_ROLE_NAME = "com.quinn-service.auth.super-admin-role-name";
+
+    /**
+     * 租户管理员角色的配置属性名
+     */
+    String PROP_KEY_OF_ORG_ADMIN_ROLE_NAME = "com.quinn-service.auth.org-admin-role-name";
+
+    /**
+     * 超级管理员角色默认名称
+     */
+    String DEFAULT_SUPER_ADMIN_ROLE_NAME = "admin";
+
+    /**
+     * 租户管理员角色默认名称
+     */
+    String DEFAULT_ORG_ADMIN_ROLE_NAME = "orgAdmin";
+
 }
