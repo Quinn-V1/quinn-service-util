@@ -79,8 +79,8 @@ public abstract class AbstractMessageResolver implements MessageResolver {
             return BaseResult.fail(defaultMessage);
         }
 
-        String result = properties.getProperty(defaultMessage);
-        if (StringUtil.isEmpty(result)) {
+        String result = properties.getProperty(messageCode);
+        if (StringUtil.isEmptyInFrame(result)) {
             return BaseResult.fail(defaultMessage);
         }
 

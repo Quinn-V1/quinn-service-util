@@ -19,6 +19,9 @@ public enum LanguageEnum {
     // 英文-英
     en(Locale.ENGLISH),
 
+    // 随用户
+    by_user(null),
+
     ;
 
     public Locale locale;
