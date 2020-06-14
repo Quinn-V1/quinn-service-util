@@ -15,18 +15,21 @@ public class I18nUtil {
     /**
      * 判断一个键就是否要国际化
      *
-     * @param key   键
-     * @return      是否就国际化
+     * @param key 键
+     * @return 是否就国际化
      */
     public static boolean isI18nKey(String key) {
+        if (key == null) {
+            return false;
+        }
         return key.startsWith(StringConstant.SYSTEM_I18N_KEY_PREFIX);
     }
 
     /**
      * 将一个字符串转为国际化键
      *
-     * @param key   键
-     * @return      国际化键
+     * @param key 键
+     * @return 国际化键
      */
     private static String i18nKey(String key) {
         if (isI18nKey(key)) {
@@ -38,8 +41,8 @@ public class I18nUtil {
     /**
      * 清除国际化标识
      *
-     * @param key   键
-     * @return      清除后人值
+     * @param key 键
+     * @return 清除后人值
      */
     public static String clearI18nKey(String key) {
         if (!isI18nKey(key)) {
@@ -51,8 +54,8 @@ public class I18nUtil {
     /**
      * 尝试获取国际化描述
      *
-     * @param key           键
-     * @param properties    属性池
+     * @param key        键
+     * @param properties 属性池
      */
     public static String tryGetI18n(String key, Properties properties) {
         if (key == null || isI18nKey(key) || properties == null) {
