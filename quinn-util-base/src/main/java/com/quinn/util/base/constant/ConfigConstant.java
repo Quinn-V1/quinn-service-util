@@ -290,4 +290,14 @@ public interface ConfigConstant {
      */
     String DEFAULT_ORG_ADMIN_ROLE_NAME = "orgAdmin";
 
+    /**
+     * Email开启SSL
+     */
+    String PROP_KEY_OF_EMAIL_SSL_ENABLE = "com.quinn-service.msg.email.ssl-enable";
+
+    /**
+     * 默认EMAIL开启SSL
+     */
+    boolean DEFAULT_EMAIL_SSL_ENABLE = false;
+
 }

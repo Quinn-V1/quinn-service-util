@@ -20,8 +20,10 @@ public final class BooleanUtil {
     private static final Map<Object, Boolean> BOOLEAN_MAP = new HashMap<>();
 
     static {
+        BOOLEAN_MAP.put("false", false);
         BOOLEAN_MAP.put("N", false);
         BOOLEAN_MAP.put(0, false);
+        BOOLEAN_MAP.put("true", true);
         BOOLEAN_MAP.put("Y", true);
         BOOLEAN_MAP.put(1, true);
     }
