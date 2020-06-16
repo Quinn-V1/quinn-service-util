@@ -145,4 +145,9 @@ public interface CommonMessageConstant {
      */
     String DESC_MANDATORY_BEAN_MISS = "必要的Bean【${" + CommonParamName.PARAM_METHOD_NAME + "}】类【"
             + CommonParamName.PARAM_CLASS_NAME + "】缺失";
+
+    /**
+     * 文件格式不正确
+     */
+    String DESC_FILE_FORMAT_NOT_CORRECT = "文件格式与【${" + CommonParamName.PARAM_KEY_FILE_TYPE + "}】格式不匹配";
 }

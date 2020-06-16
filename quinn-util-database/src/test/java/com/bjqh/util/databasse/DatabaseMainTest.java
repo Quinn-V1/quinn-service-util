@@ -1,5 +1,6 @@
 package com.bjqh.util.databasse;
 
+import com.quinn.util.database.DatabaseConnectionUtil;
 import com.quinn.util.database.DatabaseMetadataUtil;
 import com.quinn.util.database.model.DataSourceProvider;
 import com.quinn.util.database.model.DatabaseTable;
@@ -33,19 +34,21 @@ public class DatabaseMainTest {
      */
     @Test
     public void testTables() {
-        Connection connection;
+        Connection connection = null;
         try {
             connection = DataSourceProvider.getConnection();
             // 如果取不到数据库连接（则放弃测试）
+
+            List<DatabaseTable> allDatabaseTables = DatabaseMetadataUtil
+                    .getRegexTables(connection, null, "EAMUSER", "APP%");
+            for (DatabaseTable databaseTable : allDatabaseTables) {
+                System.out.println(databaseTable.getTableName());
+            }
         } catch (Exception e) {
             System.out.println("Connection get failed");
             return;
-        }
-
-        List<DatabaseTable> allDatabaseTables = DatabaseMetadataUtil
-                .getRegexTables(connection, null, "EAMUSER", "APP%");
-        for (DatabaseTable databaseTable : allDatabaseTables) {
-            System.out.println(databaseTable.getTableName());
+        } finally {
+            DatabaseConnectionUtil.close(connection);
         }
     }
 

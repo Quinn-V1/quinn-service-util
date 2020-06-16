@@ -273,4 +273,13 @@ public final class StringUtil {
 
         return content.substring(0, maxLength - StringConstant.OMIT_STRING.length()) + StringConstant.OMIT_STRING;
     }
+
+    /**
+     * 首字母小写
+     *
+     * @return 首字母小写
+     */
+    public static String firstCharLowercase(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
+    }
 }

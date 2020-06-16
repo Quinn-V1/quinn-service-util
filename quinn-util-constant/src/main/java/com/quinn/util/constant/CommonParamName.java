@@ -153,4 +153,9 @@ public interface CommonParamName {
      */
     String PARAM_KEY_NOW_DATE = "dateOfNow";
 
+    /**
+     * 本次执行时间
+     */
+    String PARAM_KEY_FILE_TYPE = "fileType";
+
 }

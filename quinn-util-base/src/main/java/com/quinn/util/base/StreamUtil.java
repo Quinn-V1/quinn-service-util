@@ -1,5 +1,6 @@
 package com.quinn.util.base;
 
+import com.quinn.util.base.exception.BaseBusinessException;
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.base.enums.CommonMessageEnum;
 
@@ -7,6 +8,8 @@ import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * 流操作工具
@@ -198,6 +201,26 @@ public final class StreamUtil {
      */
     public static InputStream asStream(String string) {
         return new ByteArrayInputStream(string.getBytes());
+    }
+
+    /**
+     * 把文件集合打成zip压缩包
+     *
+     * @param name            名称
+     * @param inputStream     数据流
+     * @param zipOutputStream 压缩文件输出流
+     * @return File 压缩文件
+     */
+    public static void addEntry(String name, InputStream inputStream, ZipOutputStream zipOutputStream) {
+        try {
+            zipOutputStream.putNextEntry(new ZipEntry(name));
+            StreamUtil.copy(inputStream, zipOutputStream);
+            zipOutputStream.closeEntry();
+        } catch (IOException e) {
+            throw new BaseBusinessException();
+        } finally {
+            StreamUtil.closeQuietly(inputStream);
+        }
     }
 
 }

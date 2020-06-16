@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Setter
 @Getter
 @ApiModel("批处理结果")
-public class BatchResult<T> {
+public class BatchResult<T> implements Serializable {
 
     /**
      * 通用成功接口（成功的方式大同小异，使用一个就可以；失败的方式千差万别，不做常量）
@@ -30,7 +31,7 @@ public class BatchResult<T> {
     /**
      * 有参构造器
      *
-     * @param size  批处理任务条目数
+     * @param size 批处理任务条目数
      */
     public BatchResult(int size) {
         this.data = new BatchItems<T>(size);
@@ -80,9 +81,9 @@ public class BatchResult<T> {
     /**
      * 构建消息记录
      *
-     * @param t         数据
-     * @param size      成功
-     * @return          消息记录
+     * @param t    数据
+     * @param size 成功
+     * @return 消息记录
      */
     public static <T> BatchResult<T> build(T t, boolean success, int size) {
         BatchResult<T> result = new BatchResult<>(size);
@@ -94,7 +95,7 @@ public class BatchResult<T> {
     /**
      * 添加成功消息
      *
-     * @param t         业务数据
+     * @param t 业务数据
      */
     public BatchItem<T> successData(T t) {
         BatchItem<T> item = new BatchItem<>(t);
@@ -106,7 +107,7 @@ public class BatchResult<T> {
     /**
      * 添加失败消息
      *
-     * @param t         业务数据
+     * @param t 业务数据
      */
     public BatchItem<T> failData(T t) {
         BatchItem<T> item = new BatchItem<>(t);
@@ -119,8 +120,8 @@ public class BatchResult<T> {
     /**
      * 通过单个结果增加记录
      *
-     * @param t         数据
-     * @param success   结果
+     * @param t       数据
+     * @param success 结果
      */
     public BatchItem<T> addItem(T t, boolean success) {
         if (success) {
@@ -132,7 +133,7 @@ public class BatchResult<T> {
     /**
      * 通过单个结果增加记录
      *
-     * @param res   结果
+     * @param res 结果
      */
     public BatchResult<T> addItem(BaseResult<T> res) {
         BatchItem<T> batchItem = addItem(res.getData(), res.isSuccess())
@@ -183,8 +184,8 @@ public class BatchResult<T> {
         /**
          * 构建消息属性
          *
-         * @param messageProp   消息编码
-         * @return              消息属性
+         * @param messageProp 消息编码
+         * @return 消息属性
          */
         public BatchItem<T> buildMessage(MessageProp messageProp) {
             this.messageProp = new BatchResultMessageProp(BatchResult.this, messageProp);
@@ -194,8 +195,8 @@ public class BatchResult<T> {
         /**
          * 构建消息属性
          *
-         * @param messageCode   消息编码
-         * @return              消息属性
+         * @param messageCode 消息编码
+         * @return 消息属性
          */
         public BatchItem<T> buildMessage(String messageCode, int paramSize, int i18nParamSize) {
             this.messageProp = (BatchResultMessageProp) new BatchResultMessageProp(BatchResult.this, messageCode)
@@ -213,7 +214,7 @@ public class BatchResult<T> {
          *
          * @param key   参数键
          * @param value 参数值
-         * @return      本身
+         * @return 本身
          */
         public BatchItem<T> addParam(Object key, Object value) {
             this.messageProp.addParam(key, value);
@@ -225,7 +226,7 @@ public class BatchResult<T> {
          *
          * @param key   参数键
          * @param value 参数值
-         * @return      本身
+         * @return 本身
          */
         public BatchItem<T> addParamI8n(Object key, Object value) {
             this.messageProp.addParamI8n(key, value);
@@ -235,9 +236,9 @@ public class BatchResult<T> {
         /**
          * 创建下一条记录
          *
-         * @param success   是否成功
-         * @param t         业务数据
-         * @return          数据条目
+         * @param success 是否成功
+         * @param t       业务数据
+         * @return 数据条目
          */
         public BatchItem<T> nextItem(boolean success, T t) {
             BatchItem item = new BatchItem<>(t);
@@ -270,7 +271,7 @@ public class BatchResult<T> {
         /**
          * 有参构造器
          *
-         * @param size  批处理任务数
+         * @param size 批处理任务数
          */
         public BatchItems(int size) {
             this.successItems = new ArrayList<>(size);
