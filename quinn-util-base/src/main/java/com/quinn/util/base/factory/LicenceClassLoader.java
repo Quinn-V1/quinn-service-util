@@ -1,12 +1,12 @@
 package com.quinn.util.base.factory;
 
 import com.alibaba.fastjson.JSONObject;
-import com.quinn.util.base.model.BaseResult;
-import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.base.FileUtil;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.base.model.BaseResult;
+import com.quinn.util.base.model.LicenceInfo;
+import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.SneakyThrows;
@@ -98,6 +98,7 @@ public class LicenceClassLoader extends URLClassLoader {
      *
      * @param url 初始化条件
      */
+    @SneakyThrows
     public synchronized static BaseResult<LicenceInfo> init(URL url, ClassLoader realParent) {
         if (!LicenceClassLoader.initFlag) {
             LicenceClassLoader.licencePath = url.getPath();
@@ -116,7 +117,7 @@ public class LicenceClassLoader extends URLClassLoader {
                 tempFile.mkdirs();
                 String tempPath = tempFile.getAbsolutePath() + File.separatorChar;
                 String tempLic = tempPath + 0;
-                FileUtil.copy(licencePath, tempLic);
+                FileUtil.copy(url.openStream(), tempLic);
 
                 BaseResult<Map<Integer, String>> mapBaseResult =
                         FileUtil.splitMergeFile(licencePath, true, tempPath, 1);

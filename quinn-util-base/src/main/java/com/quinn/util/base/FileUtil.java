@@ -1,7 +1,9 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.api.LargeStringFilePartHandler;
+import com.quinn.util.base.api.LoggerExtend;
 import com.quinn.util.base.exception.file.FileOperationException;
+import com.quinn.util.base.factory.LoggerExtendFactory;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.base.enums.CommonMessageEnum;
@@ -24,6 +26,8 @@ import java.util.Scanner;
  * @since 2020-04-17
  */
 public final class FileUtil {
+
+    private static final LoggerExtend LOGGER = LoggerExtendFactory.getLogger(FileUtil.class);
 
     private FileUtil() {
     }
@@ -459,6 +463,28 @@ public final class FileUtil {
         } catch (Exception e) {
             throw new FileOperationException()
                     .addParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], source + "->" + dest)
+                    .addParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
+                    .exception();
+        } finally {
+            StreamUtil.closeQuietly(in, out);
+        }
+    }
+
+    /**
+     * 文件复制
+     *
+     * @param in   源
+     * @param dest 目标
+     */
+    public static void copy(InputStream in, String dest) {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(new File(dest));
+            StreamUtil.copy(in, out);
+        } catch (Exception e) {
+            LOGGER.errorError("Error occurs when copy file", e);
+            throw new FileOperationException()
+                    .addParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[0], in + "->" + dest)
                     .addParam(CommonMessageEnum.FILE_STREAM_OPERATION_FAIL.paramNames[1], FileOperationTypeEnum.COPY.name())
                     .exception();
         } finally {
