@@ -282,4 +282,13 @@ public final class StringUtil {
     public static String firstCharLowercase(String string) {
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
+
+    /**
+     * 首字母大写
+     *
+     * @return 首字母大写
+     */
+    public static String firstCharUppercase(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
+    }
 }
