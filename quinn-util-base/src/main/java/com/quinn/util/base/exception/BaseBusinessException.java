@@ -15,6 +15,11 @@ import lombok.Setter;
 @Setter
 public class BaseBusinessException extends RuntimeException {
 
+    /**
+     * 状态码
+     */
+    private int statusCode;
+
     public BaseBusinessException() {
         super();
     }
@@ -36,6 +41,11 @@ public class BaseBusinessException extends RuntimeException {
 
     public BaseBusinessException(String message, Throwable throwable) {
         super(message, throwable);
+    }
+
+    public BaseBusinessException ofStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+        return this;
     }
 
     /**
