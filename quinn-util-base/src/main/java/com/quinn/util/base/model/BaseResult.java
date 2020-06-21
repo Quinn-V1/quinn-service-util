@@ -27,7 +27,11 @@ public class BaseResult<T> {
      */
     public static final BaseResult SUCCESS = new BaseResult();
 
-    private BaseResult() {
+    /**
+     * 请使用 build(true) 代替
+     */
+    @Deprecated
+    public BaseResult() {
     }
 
     /**
