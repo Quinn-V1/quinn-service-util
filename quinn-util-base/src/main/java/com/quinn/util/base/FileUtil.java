@@ -139,7 +139,7 @@ public final class FileUtil {
             }
             fileWriter = new FileWriter(file, true);
             fileWriter.write(content);
-            return new BaseResult();
+            return BaseResult.SUCCESS;
         } catch (Exception e) {
             return BaseResult.fail(e.getMessage());
         } finally {
@@ -163,7 +163,7 @@ public final class FileUtil {
                 String line = sc.nextLine();
                 handler.handle(line);
             }
-            return new BaseResult();
+            return BaseResult.SUCCESS;
         } catch (Exception e) {
             return BaseResult.fail(e.getMessage());
         } finally {
@@ -186,7 +186,7 @@ public final class FileUtil {
             while ((tempString = reader.readLine()) != null) {
                 handler.handle(tempString);
             }
-            return new BaseResult();
+            return BaseResult.SUCCESS;
         } catch (IOException e) {
             return BaseResult.fail(e.getMessage());
         } finally {
@@ -415,7 +415,7 @@ public final class FileUtil {
         try {
             os = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
             os.writeObject(object);
-            return new BaseResult();
+            return BaseResult.SUCCESS;
         } catch (Exception e) {
             return BaseResult.fail(e.getMessage());
         } finally {

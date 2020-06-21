@@ -27,7 +27,7 @@ public class BaseResult<T> {
      */
     public static final BaseResult SUCCESS = new BaseResult();
 
-    public BaseResult() {
+    private BaseResult() {
     }
 
     /**
@@ -40,7 +40,7 @@ public class BaseResult<T> {
      * 消息等级
      */
     @ApiModelProperty("消息等级：900致命、800错误、700警告、500通知、300调试、100追踪、0无")
-    private int level = MessageLevelEnum.TRACE.status;
+    private int level;
 
     /**
      * 消息
@@ -67,8 +67,7 @@ public class BaseResult<T> {
      * @return 结果
      */
     public static BaseResult fromPrev(BaseResult prev) {
-        BaseResult result = new BaseResult();
-        result.setSuccess(prev.isSuccess());
+        BaseResult result = build(prev.isSuccess());
         result.setMessage(prev.getMessage());
         result.setData(prev.getData());
         result.setMessageProp(prev.getMessageProp());
@@ -83,8 +82,7 @@ public class BaseResult<T> {
      * @return 结果
      */
     public static BaseResult fromPrev(BaseResult prev, String messageOrCode, int paramSize, int i18nParamSize) {
-        BaseResult result = new BaseResult();
-        result.setSuccess(prev.isSuccess());
+        BaseResult result = build(prev.isSuccess());
 
         if (StringUtil.isEmpty(messageOrCode)) {
             result.setMessage(prev.getMessage());
@@ -110,8 +108,7 @@ public class BaseResult<T> {
      * @return 失败结果
      */
     public static BaseResult fail() {
-        BaseResult result = new BaseResult();
-        result.setSuccess(false);
+        BaseResult result = build(false);
         return result;
     }
 
@@ -122,8 +119,7 @@ public class BaseResult<T> {
      * @return 失败结果
      */
     public static BaseResult fail(String message) {
-        BaseResult result = new BaseResult();
-        result.setSuccess(false);
+        BaseResult result = build(false);
         result.setMessage(message);
         return result;
     }
@@ -137,6 +133,11 @@ public class BaseResult<T> {
     public static BaseResult build(boolean success) {
         BaseResult result = new BaseResult();
         result.setSuccess(success);
+        if (success) {
+            result.setLevel(MessageLevelEnum.TRACE.status);
+        } else {
+            result.setLevel(MessageLevelEnum.ERROR.status);
+        }
         return result;
     }
 
@@ -148,7 +149,7 @@ public class BaseResult<T> {
      * @return 结果
      */
     public static <T> BaseResult<T> success(T data) {
-        BaseResult result = new BaseResult();
+        BaseResult result = build(true);
         result.setData(data);
         return result;
     }
@@ -156,12 +157,12 @@ public class BaseResult<T> {
     /**
      * 从异常获取结果
      *
-     * @param e 异常
+     * @param e   异常
      * @param <T> 结果泛型
      * @return 结果
      */
     public static <T> BaseResult<T> fromException(Exception e) {
-        BaseResult result = BaseResult.fail();
+        BaseResult result = build(false);
         if (e instanceof BaseBusinessException) {
             MessageProp messageProp = ((BaseBusinessException) e).getMessageProp();
             if (messageProp != null) {
@@ -267,7 +268,7 @@ public class BaseResult<T> {
     /**
      * 凭借前一个结果（一般用于错误消息传递）
      *
-     * @param prev
+     * @param prev 前一个错误
      */
     public void appendPrev(BaseResult prev) {
         if (!prev.isSuccess()) {
