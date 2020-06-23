@@ -1,5 +1,6 @@
 package com.quinn.util.base.enums;
 
+import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.handler.EnumMessageResolver;
 import com.quinn.util.constant.MessageEnumFlag;
 
@@ -46,6 +47,49 @@ public enum SecurityLevelEnum implements MessageEnumFlag {
     SecurityLevelEnum(String defaultDesc, int code) {
         this.defaultDesc = defaultDesc;
         this.code = code;
+    }
+
+    /**
+     * 根据编码获取名称
+     *
+     * @param securityLevel 编码
+     * @return 名称
+     */
+    public static String nameByCode(Integer securityLevel) {
+        if (securityLevel == null) {
+            return null;
+        }
+
+        String result = PUBLIC.name();
+        for (SecurityLevelEnum levelEnum : SecurityLevelEnum.values()) {
+            if (securityLevel < levelEnum.code) {
+                break;
+            } else {
+                result = levelEnum.name();
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 根据名称获取编码
+     *
+     * @param securityLevelStr 名称
+     * @return 编码
+     */
+    public static Integer codeByName(String securityLevelStr) {
+        if (StringUtil.isEmptyInFrame(securityLevelStr)) {
+            return null;
+        }
+
+        for (SecurityLevelEnum levelEnum : SecurityLevelEnum.values()) {
+            if (levelEnum.name().equals(securityLevelStr)) {
+                return levelEnum.code;
+            }
+        }
+
+        return null;
     }
 
     @Override
