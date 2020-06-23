@@ -3,6 +3,7 @@ package com.quinn.util.base.enums;
 import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.handler.EnumMessageResolver;
 import com.quinn.util.constant.MessageEnumFlag;
+import com.quinn.util.constant.StringConstant;
 
 import java.util.Locale;
 
@@ -90,6 +91,12 @@ public enum SecurityLevelEnum implements MessageEnumFlag {
         }
 
         return null;
+    }
+
+    @Override
+    public String key() {
+        return getClass().getSimpleName() + StringConstant.CHAR_COLON + code
+                + StringConstant.CHAR_POUND_SIGN + StringConstant.NONE_OF_DATA;
     }
 
     @Override
