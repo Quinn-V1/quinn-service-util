@@ -324,4 +324,14 @@ public interface HttpHeadersConstant {
      */
     String CONTENT_TYPE_HTML = "text/html;charset=UTF-8";
 
+    /**
+     * 相应内容类型：html
+     */
+    String XML_HTTP_REQUEST = "XMLHttpRequest";
+
+    /**
+     * 相应内容类型：html
+     */
+    String SEC_FETCH_DEST = "Sec-Fetch-Dest";
+
 }
