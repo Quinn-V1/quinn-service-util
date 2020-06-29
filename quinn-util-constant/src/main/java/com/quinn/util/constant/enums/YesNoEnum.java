@@ -31,4 +31,13 @@ public enum  YesNoEnum {
         this.code = code;
     }
 
+    /**
+     * 获取字符串布尔值
+     *
+     * @param syncFlag 布尔值
+     * @return 字符串布尔值
+     */
+    public static String stringOf(boolean syncFlag) {
+        return syncFlag ? YES.code : NO.code;
+    }
 }
