@@ -1,29 +1,40 @@
 package com.quinn.util.constant.enums;
 
 /**
- * 表单元素类型
+ * 表单元素输入控制
  *
  * @author Qunhua.Liao
  * @since 2020-06-12
  */
 public enum FormElementRequireEnum {
 
-    // 文本录入框
-    NONE,
+    // 不渲染
+    NONE(0),
 
-    // 数值录入框
-    HIDDEN,
+    // 隐藏
+    HIDDEN(10),
 
-    // 数值录入框
-    DISABLED,
+    // 禁用
+    DISABLED(20),
 
-    // 日期录入框
-    READABLE,
+    // 只读
+    READABLE(30),
 
-    // 日期录入框
-    WRITABLE,
+    // 可写
+    WRITABLE(40),
 
-    // 日期录入框
-    REQUIRED,
+    // 必填
+    REQUIRED(50),
+
+    ;
+
+    /**
+     * 数字等级
+     */
+    public final int code;
+
+    FormElementRequireEnum(int code) {
+        this.code = code;
+    }
 
 }
