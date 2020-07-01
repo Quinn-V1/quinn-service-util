@@ -307,8 +307,15 @@ public interface HttpHeadersConstant {
     String X_POWERED_BY = "X-Powered-By";
     /**
      * The HTTP X-Requested-With header field name.
+     *          X-Requested-width
      */
     String X_REQUESTED_WITH = "X-Requested-With";
+    /**
+     * The HTTP X-Requested-With header field name.
+     *          X-Requested-width (容错)
+     */
+    @Deprecated
+    String X_REQUESTED_WIDTH = "X-Requested-width";
     /**
      * The HTTP X-User-IP header field name.
      */
