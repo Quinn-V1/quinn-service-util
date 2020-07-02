@@ -1,5 +1,7 @@
 package com.quinn.util.constant.enums;
 
+import java.util.Map;
+
 /**
  * 表单元素输入控制
  *
@@ -35,6 +37,16 @@ public enum FormElementRequireEnum {
 
     FormElementRequireEnum(int code) {
         this.code = code;
+    }
+
+    /**
+     * 初始化属性
+     *
+     * @param renderParams 渲染参数
+     * @param code 读写标识
+     */
+    public static void initAttr(Map<String, Object> renderParams, int code) {
+
     }
 
 }
