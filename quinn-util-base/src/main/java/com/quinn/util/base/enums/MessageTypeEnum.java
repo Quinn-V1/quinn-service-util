@@ -48,7 +48,7 @@ public enum MessageTypeEnum implements MessageEnumFlag {
      * @param dealTypes 支持操作类型的合成整型
      * @return 支持操作类型
      */
-    public static String[] asStrings(Integer dealTypes) {
+    public static List<String> asStrings(Integer dealTypes) {
         if (NumberUtil.isEmptyInFrame(dealTypes)) {
             return null;
         }
@@ -60,7 +60,7 @@ public enum MessageTypeEnum implements MessageEnumFlag {
             }
         }
 
-        return results.toArray(new String[results.size()]);
+        return results;
     }
 
     /**
