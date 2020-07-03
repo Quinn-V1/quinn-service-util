@@ -119,6 +119,11 @@ public interface StringConstant {
     String CHAR_VERTICAL_BAR = "|";
 
     /**
+     * 分割
+     */
+    String CHAR_SLASH = "/";
+
+    /**
      * 下划线
      */
     String CHAR_UNDERLINE = "_";

@@ -291,4 +291,17 @@ public final class StringUtil {
     public static String firstCharUppercase(String string) {
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
+
+    /**
+     * 源串是否以withinStr为起始
+     *
+     * @return 起始为true
+     */
+    public static boolean startWith(String srcStr, String withinStr) {
+        if (srcStr == null || withinStr == null) {
+            return false;
+        }
+        return srcStr.startsWith(withinStr);
+    }
+
 }
