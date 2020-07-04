@@ -1,5 +1,6 @@
 package com.quinn.util.base;
 
+import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.enums.CommonMessageEnum;
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.base.exception.UnSupportedCharsetException;
@@ -297,6 +298,7 @@ public final class StringUtil {
      *
      * @return 起始为true
      */
+    @Strategy("StringUtil.startWith")
     public static boolean startWith(String srcStr, String withinStr) {
         if (srcStr == null || withinStr == null) {
             return false;

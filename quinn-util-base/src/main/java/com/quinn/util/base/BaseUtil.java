@@ -2,6 +2,7 @@ package com.quinn.util.base;
 
 import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerOneParam;
+import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.constant.ConfigConstant;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.RegexConstant;
@@ -29,8 +30,9 @@ public final class BaseUtil {
      *
      * @param obj1 对象1
      * @param obj2 对象2
-     * @return
+     * @return 是否相等
      */
+    @Strategy("BaseUtil.equals")
     public static final boolean equals(Object obj1, Object obj2) {
         if (obj1 == null && obj2 == null) {
             return true;

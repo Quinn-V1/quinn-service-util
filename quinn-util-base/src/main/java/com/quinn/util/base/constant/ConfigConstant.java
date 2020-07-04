@@ -300,4 +300,24 @@ public interface ConfigConstant {
      */
     boolean DEFAULT_EMAIL_SSL_ENABLE = false;
 
+    /**
+     * 重定向阻断Key配置属性名
+     */
+    String PROP_KEY_OF_AUTH_LOGIN_URL = "com.quinn-service.auth.login-url";
+
+    /**
+     * 重定向阻断Key配置属性名
+     */
+    String PROP_KEY_OF_AUTH_REDIRECT_BREAK_KEY = "com.quinn-service.auth.redirect-break-key";
+
+    /**
+     * 默认重定向阻断校验Key
+     */
+    String DEFAULT_AUTH_REDIRECT_BREAK_KEY = "083de6fad48e46a19a9f0eb6d9cf26df";
+
+    /**
+     * 默认重定向阻断校验Key
+     */
+    String REDIRECT_BREAK_KEY_HEADER_NAME = "083de6fad48e46a19a9f0eb6d9cf26df";
+
 }

@@ -158,4 +158,9 @@ public interface CommonParamName {
      */
     String PARAM_KEY_FILE_TYPE = "fileType";
 
+    /**
+     * 流程实例ID
+     */
+    String STRATEGY_PARAM = "strategyParam";
+
 }
