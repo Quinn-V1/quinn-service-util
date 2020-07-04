@@ -90,6 +90,9 @@ public enum CommonMessageEnum implements MessageEnumFlag {
     // 文件格式与【${fileType}】格式不匹配
     FILE_FORMAT_NOT_CORRECT(DESC_FILE_FORMAT_NOT_CORRECT, PARAM_KEY_FILE_TYPE),
 
+    // 文件格式与【${fileType}】格式不匹配
+    SYSTEM_ERROR(DESC_SYSTEM_ERROR),
+
     ;
 
     /**

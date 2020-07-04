@@ -150,4 +150,9 @@ public interface CommonMessageConstant {
      * 文件格式不正确
      */
     String DESC_FILE_FORMAT_NOT_CORRECT = "文件格式与【${" + CommonParamName.PARAM_KEY_FILE_TYPE + "}】格式不匹配";
+
+    /**
+     * 文件格式不正确
+     */
+    String DESC_SYSTEM_ERROR = "系统错误，请联系管理员";
 }
