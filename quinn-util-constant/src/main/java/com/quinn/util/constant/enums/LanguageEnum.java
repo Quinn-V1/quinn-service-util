@@ -42,7 +42,7 @@ public enum LanguageEnum {
         }
 
         for (LanguageEnum languageEnum : LanguageEnum.values()) {
-            if (locale.equals(languageEnum.locale)) {
+            if (locale.equals(languageEnum.locale) || locale.toString().equals(languageEnum.name())) {
                 return locale;
             }
         }
