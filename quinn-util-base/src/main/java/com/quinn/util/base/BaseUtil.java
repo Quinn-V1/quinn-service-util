@@ -28,21 +28,21 @@ public final class BaseUtil {
     /**
      * null安全判断值是否相等
      *
-     * @param obj1 对象1
-     * @param obj2 对象2
+     * @param srcVal    源对象
+     * @param targetVal 目标对象
      * @return 是否相等
      */
     @Strategy("BaseUtil.equals")
-    public static final boolean equals(Object obj1, Object obj2) {
-        if (obj1 == null && obj2 == null) {
+    public static final boolean equals(Object srcVal, Object targetVal) {
+        if (srcVal == null && targetVal == null) {
             return true;
         }
 
-        if (obj1 == null) {
+        if (srcVal == null) {
             return false;
         }
 
-        return obj1.equals(obj2);
+        return srcVal.equals(targetVal);
     }
 
     /**

@@ -299,11 +299,11 @@ public final class StringUtil {
      * @return 起始为true
      */
     @Strategy("StringUtil.startWith")
-    public static boolean startWith(String srcStr, String withinStr) {
-        if (srcStr == null || withinStr == null) {
+    public static boolean startWith(String srcStr, String subStr) {
+        if (srcStr == null || subStr == null) {
             return false;
         }
-        return srcStr.startsWith(withinStr);
+        return srcStr.startsWith(subStr);
     }
 
 }
