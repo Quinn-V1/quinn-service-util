@@ -44,6 +44,11 @@ public interface StringConstant {
     String CHAR_DOT = ".";
 
     /**
+     * 字符串 星号
+     */
+    String CHAR_ASTERISK = "*";
+
+    /**
      * 字符串 点
      */
     String CHAR_DOT_ = "\\.";
