@@ -69,6 +69,11 @@ public interface StringConstant {
     String CHAR_EQUAL_MARK = "=";
 
     /**
+     * 不等于
+     */
+    String NOT_EQUAL_MARK = "<>";
+
+    /**
      * 小于
      */
     String CHAR_LESS_THAN = "<";
