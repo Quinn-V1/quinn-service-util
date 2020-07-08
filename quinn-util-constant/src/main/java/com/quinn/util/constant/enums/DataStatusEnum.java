@@ -41,6 +41,23 @@ public enum DataStatusEnum implements MessageEnumFlag {
         this.code = code;
     }
 
+    /**
+     * 生成状态枚举
+     *
+     * @return 枚举
+     */
+    public static DataStatusEnum generateStatus(int code) {
+        DataStatusEnum result = UNREADY;
+        for (DataStatusEnum dataStatusEnum : DataStatusEnum.values()) {
+            if (dataStatusEnum.code > code) {
+                return result;
+            } else {
+                result = dataStatusEnum;
+            }
+        }
+        return result;
+    }
+
     @Override
     public String defaultDesc() {
         return desc;
