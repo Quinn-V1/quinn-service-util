@@ -1,12 +1,14 @@
 package com.quinn.util.constant.enums;
 
+import com.quinn.util.constant.MessageEnumFlag;
+
 /**
  * 默认选项枚举
  *
  * @author Qunhua.Liao
  * @since 2020-03-31
  */
-public enum DataStatusEnum {
+public enum DataStatusEnum implements MessageEnumFlag {
 
     // 全部
     UNREADY("未启用", 0),
@@ -39,4 +41,13 @@ public enum DataStatusEnum {
         this.code = code;
     }
 
+    @Override
+    public String defaultDesc() {
+        return desc;
+    }
+
+    @Override
+    public String[] paramNames() {
+        return null;
+    }
 }

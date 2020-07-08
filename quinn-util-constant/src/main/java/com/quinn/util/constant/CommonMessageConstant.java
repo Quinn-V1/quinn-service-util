@@ -47,6 +47,12 @@ public interface CommonMessageConstant {
             + "}【${" + CommonParamName.PARAM_DATA_KEY + "}】未命中";
 
     /**
+     * 操作数据未命中
+     */
+    String DESC_DATA_OPERATION_NOT_SUPPORT_OF_STATUS = "【${" + CommonParamName.PARAM_DATA_STATUS + "}】状态下的【${"
+            + CommonParamName.PARAM_DATA_TYPE + "}】数据不支持【${" + CommonParamName.PARAM_OPERATE_TYPE + "}】操作";
+
+    /**
      * 数据操作事务中断
      */
     String DESC_DATA_OPERATION_TRANSACTION_TERMINATED = "事务操作【${" + CommonParamName.PARAM_OPERATE_TYPE + "} ${"

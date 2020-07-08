@@ -29,6 +29,11 @@ public interface CommonParamName {
     String PARAM_DATA_TYPE = "dataType";
 
     /**
+     * 数据状态
+     */
+    String PARAM_DATA_STATUS = "dataStatus";
+
+    /**
      * 异常类型
      */
     String EXCEPTION_TYPE = "exceptionType";
