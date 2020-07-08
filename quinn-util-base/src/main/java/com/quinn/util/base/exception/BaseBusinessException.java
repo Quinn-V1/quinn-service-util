@@ -74,6 +74,8 @@ public class BaseBusinessException extends RuntimeException {
         if (messageProp == null) {
             messageProp = (BusinessExceptionMessageProp) new BusinessExceptionMessageProp(this, messageCode)
                     .paramSize(paramSize).i18nParamSize(i18nParamSize);
+        } else {
+            messageProp.paramSize(paramSize).i18nParamSize(i18nParamSize);
         }
         return messageProp;
     }
