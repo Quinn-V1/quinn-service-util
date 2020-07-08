@@ -120,6 +120,26 @@ public final class CollectionUtil {
      * @param data 数据
      * @return 字符串
      */
+    public static <T> String join(Collection<T> data, String split, MethodInvokerOneParam<T, String> invoker) {
+        if (isEmpty(data)) {
+            return null;
+        }
+
+        StringBuilder query = new StringBuilder();
+        for (T o : data) {
+            query.append(invoker.invoke(o)).append(split);
+        }
+
+        query.delete(query.length() - split.length(), query.length());
+        return query.toString();
+    }
+
+    /**
+     * 默认分割符拼接列表
+     *
+     * @param data 数据
+     * @return 字符串
+     */
     public static String join(Collection data) {
         return join(data, StringConstant.CHAR_COMMA);
     }
@@ -142,16 +162,7 @@ public final class CollectionUtil {
      * @return
      */
     public static String join(Collection data, String split) {
-        if (isEmpty(data)) {
-            return null;
-        }
-
-        StringBuilder query = new StringBuilder();
-        for (Object o : data) {
-            query.append(BaseConverter.staticToString(o)).append(split);
-        }
-        query.delete(query.length() - split.length(), query.length());
-        return query.toString();
+        return join(data, split, (MethodInvokerOneParam<Object, String>) o -> BaseConverter.staticToString(o));
     }
 
     /**
