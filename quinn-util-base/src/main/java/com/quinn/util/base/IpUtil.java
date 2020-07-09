@@ -16,14 +16,15 @@ import java.util.List;
  */
 public final class IpUtil {
 
-    private IpUtil() {}
+    private IpUtil() {
+    }
 
     /**
      * 获取本机IP地址
      *
-     * @return  IP地址列表
+     * @return IP地址列表
      */
-	public static List<String> getLocalIPList() {
+    public static List<String> getLocalIPList() {
         List<String> ipList = new ArrayList<>();
         try {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();

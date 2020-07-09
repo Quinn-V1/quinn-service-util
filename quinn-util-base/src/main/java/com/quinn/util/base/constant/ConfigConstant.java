@@ -311,6 +311,11 @@ public interface ConfigConstant {
     String PROP_KEY_OF_AUTH_REDIRECT_BREAK_KEY = "com.quinn-service.auth.redirect-break-key";
 
     /**
+     * 重定向阻断Key配置属性名
+     */
+    String PROP_KEY_OF_API_DOMAIN_URL = "com.quinn-service.api.domain-url";
+
+    /**
      * 默认重定向阻断校验Key
      */
     String DEFAULT_AUTH_REDIRECT_BREAK_KEY = "083de6fad48e46a19a9f0eb6d9cf26df";

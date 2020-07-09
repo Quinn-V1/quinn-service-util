@@ -26,6 +26,15 @@ public final class BaseUtil {
     }
 
     /**
+     * 应用域名
+     */
+    public static final String DOMAIN_URL;
+
+    static {
+        DOMAIN_URL = System.getProperty(ConfigConstant.PROP_KEY_OF_API_DOMAIN_URL, "");
+    }
+
+    /**
      * null安全判断值是否相等
      *
      * @param srcVal    源对象
