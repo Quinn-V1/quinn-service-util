@@ -9,6 +9,11 @@ package com.quinn.util.constant;
 public interface StringConstant {
 
     /**
+     * 感叹号
+     */
+    String EXCLAMATION_POINT = "!";
+
+    /**
      * 空字符串
      */
     String STRING_EMPTY = "";

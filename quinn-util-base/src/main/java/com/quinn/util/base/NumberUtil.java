@@ -1,5 +1,6 @@
 package com.quinn.util.base;
 
+import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.enums.CommonMessageEnum;
 
@@ -398,6 +399,65 @@ public final class NumberUtil {
      */
     public static boolean isEmptyInFrame(Integer value) {
         return value == null || value == 0 || value == -1;
+    }
+
+    /**
+     * 判断src是否大于target
+     *
+     * @param src    比较值
+     * @param target 目标值
+     * @return 大于：true
+     */
+    @Strategy("numberUtil.isGreater")
+    public static final boolean isGreater(BigDecimal src, BigDecimal target) {
+        if (src == null) {
+            return false;
+        }
+
+        if (target == null) {
+            return true;
+        }
+
+        return src.compareTo(target) > 0;
+    }
+
+    /**
+     * 判断src是否小于target
+     *
+     * @param src    比较值
+     * @param target 目标值
+     * @return 大于：true
+     */
+    @Strategy("numberUtil.isLess")
+    public static final boolean isLess(BigDecimal src, BigDecimal target) {
+        if (src == null) {
+            return true;
+        }
+
+        if (target == null) {
+            return false;
+        }
+
+        return src.compareTo(target) < 0;
+    }
+
+    /**
+     * src求和
+     *
+     * @param src 比较值
+     * @return 大于：true
+     */
+    @Strategy("numberUtil.sum")
+    public static final BigDecimal sum(BigDecimal... src) {
+        if (src == null) {
+            return null;
+        }
+
+        BigDecimal sum = new BigDecimal(0);
+        for (BigDecimal num : src) {
+            sum = sum.add(num);
+        }
+        return sum;
     }
 
     /**

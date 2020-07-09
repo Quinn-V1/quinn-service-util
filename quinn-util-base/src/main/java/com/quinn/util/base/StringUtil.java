@@ -32,6 +32,7 @@ public final class StringUtil {
      * @param str 字符串
      * @return 空为true
      */
+    @Strategy("StringUtil.isEmpty")
     public final static boolean isEmpty(String str) {
         return str == null || str.length() == 0;
     }
@@ -42,6 +43,7 @@ public final class StringUtil {
      * @param str 字符串
      * @return 空为true
      */
+    @Strategy("StringUtil.isNotEmpty")
     public final static boolean isNotEmpty(String str) {
         return str != null && str.length() > 0;
     }
@@ -66,6 +68,7 @@ public final class StringUtil {
      * @param separator 分割符
      * @return 数组
      */
+    @Strategy("StringUtil.split")
     public static String[] split(String str, String separator) {
         if (str == null) {
             return null;
@@ -140,6 +143,7 @@ public final class StringUtil {
      *
      * @return 框架内表示空的
      */
+    @Strategy("StringUtil.isEmptyInFrame")
     public static boolean isEmptyInFrame(String str) {
         boolean result = isEmpty(str);
         if (result) {
@@ -220,6 +224,7 @@ public final class StringUtil {
      *
      * @return UUID去 -
      */
+    @Strategy("StringUtil.uuid")
     public static String uuid() {
         String uuid = UUID.randomUUID().toString();
         return uuid.replace("-", "");
