@@ -200,13 +200,13 @@ public final class BaseUtil {
             return object;
         }
 
-        Object result = null;
+        Object result = object;
         for (String path : paths) {
             if (ConfigConstant.PARAM_OF_ITSELF.equals(path)) {
                 continue;
             }
 
-            if (object instanceof Map) {
+            if (result instanceof Map) {
                 String name = null;
                 Integer index = null;
                 Matcher matcher = RegexConstant.ARRAY_PATTEN.matcher(path);
@@ -217,12 +217,12 @@ public final class BaseUtil {
                     name = path;
                 }
 
-                result = ((Map) object).get(name);
+                result = ((Map) result).get(name);
                 if (index != null) {
-                    result = CollectionUtil.get(object, index);
+                    result = CollectionUtil.get(result, index);
                 }
-            } else if (object instanceof JSONArray) {
-                JSONArray array = (JSONArray) object;
+            } else if (result instanceof JSONArray) {
+                JSONArray array = (JSONArray) result;
                 int size = array.size();
                 JSONArray res = new JSONArray(size);
                 result = res;
@@ -231,8 +231,8 @@ public final class BaseUtil {
                     Object o = array.get(i);
                     res.add(valueOfJson(o, path));
                 }
-            } else if (object instanceof Collection) {
-                Collection list = (Collection) object;
+            } else if (result instanceof Collection) {
+                Collection list = (Collection) result;
                 int size = list.size();
                 JSONArray res = new JSONArray(size);
                 result = res;
