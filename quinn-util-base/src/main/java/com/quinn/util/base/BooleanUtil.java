@@ -2,6 +2,8 @@ package com.quinn.util.base;
 
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.base.model.BaseResult;
+import com.quinn.util.base.model.BatchResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +53,10 @@ public final class BooleanUtil {
     public static Boolean parseBoolean(Object obj) {
         if (obj instanceof Boolean) {
             return (Boolean) obj;
+        } else if (obj instanceof BaseResult) {
+            return ((BaseResult) obj).isSuccess();
+        } else if (obj instanceof BatchResult) {
+            return ((BatchResult) obj).isSuccess();
         }
 
         Boolean res = BOOLEAN_MAP.get(obj);
