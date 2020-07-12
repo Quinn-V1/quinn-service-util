@@ -8,6 +8,7 @@ import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.CommonParamName;
 import com.quinn.util.constant.MimeMapper;
 import com.quinn.util.constant.StringConstant;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -73,7 +74,7 @@ public final class StringUtil {
         if (str == null) {
             return null;
         }
-        return str.split(separator);
+        return StringUtils.split(str, separator);
     }
 
     /**
@@ -310,5 +311,6 @@ public final class StringUtil {
         }
         return srcStr.startsWith(subStr);
     }
+
 
 }
