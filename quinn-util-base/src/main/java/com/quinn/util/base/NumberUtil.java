@@ -29,7 +29,7 @@ public final class NumberUtil {
             return false;
         }
 
-        char[] array = str.toCharArray();
+        char[] array = str.trim().toCharArray();
         boolean firstChar = (array[0] <= '9' && array[0] >= '0') || array[0] == '+' || array[0] == '-' || array[0] == '.';
         if (!firstChar) {
             return false;
@@ -121,7 +121,7 @@ public final class NumberUtil {
         }
 
         if (o instanceof String) {
-            String str = (String) o;
+            String str = ((String) o).trim();
             if (!isNumber(str)) {
                 return false;
             }
@@ -146,7 +146,7 @@ public final class NumberUtil {
         }
 
         if (o instanceof String) {
-            String str = (String) o;
+            String str = ((String) o).trim();
             if (!isDigit(str)) {
                 return false;
             }
@@ -211,7 +211,7 @@ public final class NumberUtil {
         }
 
         if (o instanceof String) {
-            String str = (String) o;
+            String str = ((String) o).trim();
             if (!isDigit(str)) {
                 return false;
             }
@@ -247,7 +247,7 @@ public final class NumberUtil {
             return (Double) o;
         }
 
-        return Double.valueOf(String.valueOf(o));
+        return Double.valueOf(String.valueOf(o).trim());
     }
 
     /**
@@ -273,7 +273,7 @@ public final class NumberUtil {
             return (BigDecimal) o;
         }
 
-        return new BigDecimal(String.valueOf(o));
+        return new BigDecimal(String.valueOf(o).trim());
     }
 
     /**
@@ -299,7 +299,7 @@ public final class NumberUtil {
             return (Long) o;
         }
 
-        return Long.valueOf(String.valueOf(o));
+        return Long.valueOf(String.valueOf(o).trim());
     }
 
 
@@ -326,7 +326,7 @@ public final class NumberUtil {
             return (Integer) o;
         }
 
-        return Integer.valueOf(String.valueOf(o));
+        return Integer.valueOf(String.valueOf(o).trim());
     }
 
 
@@ -353,7 +353,7 @@ public final class NumberUtil {
             return (Short) o;
         }
 
-        return Short.valueOf(String.valueOf(o));
+        return Short.valueOf(String.valueOf(o).trim());
     }
 
     /**
@@ -408,7 +408,7 @@ public final class NumberUtil {
      * @param target 目标值
      * @return 大于：true
      */
-    @Strategy("numberUtil.isGreater")
+    @Strategy("NumberUtil.isGreater")
     public static final boolean isGreater(BigDecimal src, BigDecimal target) {
         if (src == null) {
             return false;
@@ -428,7 +428,7 @@ public final class NumberUtil {
      * @param target 目标值
      * @return 大于：true
      */
-    @Strategy("numberUtil.isLess")
+    @Strategy("NumberUtil.isLess")
     public static final boolean isLess(BigDecimal src, BigDecimal target) {
         if (src == null) {
             return true;
@@ -447,7 +447,7 @@ public final class NumberUtil {
      * @param src 比较值
      * @return 大于：true
      */
-    @Strategy("numberUtil.sum")
+    @Strategy("NumberUtil.sum")
     public static final BigDecimal sum(BigDecimal... src) {
         if (src == null) {
             return null;
