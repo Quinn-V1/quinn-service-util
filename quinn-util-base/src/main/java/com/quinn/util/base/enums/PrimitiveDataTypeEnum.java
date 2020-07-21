@@ -1,6 +1,7 @@
 package com.quinn.util.base.enums;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.BatchResult;
 
@@ -45,6 +46,9 @@ public enum PrimitiveDataTypeEnum {
 
     // JSON格式
     JSON(JSONObject.class),
+
+    // JSON格式
+    JSON_ARRAY(JSONArray.class),
 
     // 基础结果类
     BASE_RESULT(BaseResult.class),
