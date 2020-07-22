@@ -8,3 +8,5 @@ com.quinn.util.base.convertor.LongConverter
 com.quinn.util.base.convertor.IntegerConverter
 com.quinn.util.base.convertor.ShortConverter
 com.quinn.util.base.convertor.StringConverter
+com.quinn.util.base.convertor.JsonObjectConverter
+com.quinn.util.base.convertor.JsonArrayConverter
