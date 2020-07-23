@@ -1,7 +1,7 @@
 package com.quinn.util.base.enums;
 
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.BatchResult;
 
@@ -86,5 +86,25 @@ public enum PrimitiveDataTypeEnum {
         } catch (ClassNotFoundException e) {
             return null;
         }
+    }
+
+    /**
+     * 获取数据类型对应的Java类
+     *
+     * @param clazz 数据类型
+     * @return Java类
+     */
+    public static String nameOf(Class clazz) {
+        if (clazz == null) {
+            return STRING.name();
+        }
+
+        for (PrimitiveDataTypeEnum dataTypeEnum : PrimitiveDataTypeEnum.values()) {
+            if (dataTypeEnum.clazz == clazz) {
+                return dataTypeEnum.name();
+            }
+        }
+
+        return JSON.name();
     }
 }
