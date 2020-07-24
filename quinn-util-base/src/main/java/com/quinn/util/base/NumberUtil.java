@@ -3,6 +3,7 @@ package com.quinn.util.base;
 import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.NumberConstant;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
@@ -388,7 +389,8 @@ public final class NumberUtil {
      * @return 空位true，否则为false
      */
     public static boolean isEmptyInFrame(Long id) {
-        return id == null || id <= 0;
+        return id == null || id.longValue() == NumberConstant.NONE_OF_DATA_ID
+                || id.longValue() == NumberConstant.TOP_OF_DATA_ID;
     }
 
     /**
@@ -398,7 +400,8 @@ public final class NumberUtil {
      * @return 空位true，否则为false
      */
     public static boolean isEmptyInFrame(Integer value) {
-        return value == null || value == 0 || value == -1;
+        return value == null || value.intValue() == NumberConstant.NONE_OF_DATA_ID
+                || value.intValue() == NumberConstant.TOP_OF_DATA;
     }
 
     /**

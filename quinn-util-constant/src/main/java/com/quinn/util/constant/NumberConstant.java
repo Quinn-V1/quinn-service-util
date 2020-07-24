@@ -119,6 +119,11 @@ public interface NumberConstant {
     long TOP_OF_DATA_ID = LONG_ZERO;
 
     /**
+     * 整型-顶层数据
+     */
+    long TOP_OF_DATA = INT_ZERO;
+
+    /**
      * 数据字典-ID-无
      */
     long NONE_OF_DATA_ID = LONG_ONE_NEGATIVE;
