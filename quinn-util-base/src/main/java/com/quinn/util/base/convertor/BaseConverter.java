@@ -6,8 +6,8 @@ import com.quinn.util.base.api.DataConverter;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
 import com.quinn.util.base.handler.BaseObjectSerializer;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.base.enums.PrimitiveDataTypeEnum;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.PrimitiveDataTypeEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;

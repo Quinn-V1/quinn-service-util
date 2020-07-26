@@ -1,4 +1,4 @@
-package com.quinn.util.base.enums;
+package com.quinn.util.constant.enums;
 
 import com.quinn.util.base.NumberUtil;
 import com.quinn.util.base.handler.EnumMessageResolver;

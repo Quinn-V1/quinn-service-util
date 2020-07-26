@@ -2,7 +2,7 @@ package com.quinn.util.base;
 
 import com.quinn.util.base.exception.BaseBusinessException;
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 
 import java.io.*;
 import java.nio.channels.FileChannel;

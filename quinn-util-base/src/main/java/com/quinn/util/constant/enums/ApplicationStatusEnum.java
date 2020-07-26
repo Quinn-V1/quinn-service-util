@@ -9,7 +9,7 @@ package com.quinn.util.constant.enums;
 public enum  ApplicationStatusEnum {
 
     // 停止
-    STOPED(0),
+    STOPPED(0),
 
     // 启动中
     STARTING(100),
@@ -21,7 +21,7 @@ public enum  ApplicationStatusEnum {
     WAITING(500),
 
     // 停止中
-    STOPING(700),
+    STOPPING(700),
 
     ;
 

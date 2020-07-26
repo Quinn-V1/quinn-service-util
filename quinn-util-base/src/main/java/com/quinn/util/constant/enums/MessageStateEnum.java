@@ -1,4 +1,4 @@
-package com.quinn.util.base.enums;
+package com.quinn.util.constant.enums;
 
 /**
  * 消息状态枚举

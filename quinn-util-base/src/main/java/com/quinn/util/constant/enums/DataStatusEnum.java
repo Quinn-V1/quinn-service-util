@@ -1,6 +1,7 @@
 package com.quinn.util.constant.enums;
 
 import com.quinn.util.constant.MessageEnumFlag;
+import com.quinn.util.constant.StringConstant;
 
 /**
  * 默认选项枚举
@@ -56,6 +57,12 @@ public enum DataStatusEnum implements MessageEnumFlag {
             }
         }
         return result;
+    }
+
+    @Override
+    public String key() {
+        return getClass().getSimpleName() + StringConstant.CHAR_COLON + code
+                + StringConstant.CHAR_POUND_SIGN + StringConstant.NONE_OF_DATA;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.quinn.util.base.constant;
+package com.quinn.util.constant;
 
 import java.util.regex.Pattern;
 

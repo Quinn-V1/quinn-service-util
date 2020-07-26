@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception;
 
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 
 /**
  * 关键信息缺失异常

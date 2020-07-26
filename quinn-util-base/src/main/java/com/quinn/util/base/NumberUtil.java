@@ -2,7 +2,7 @@ package com.quinn.util.base;
 
 import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.constant.NumberConstant;
 
 import java.math.BigDecimal;

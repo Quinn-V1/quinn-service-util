@@ -6,7 +6,7 @@ import com.quinn.util.base.exception.file.FileOperationException;
 import com.quinn.util.base.factory.LoggerExtendFactory;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.constant.CharConstant;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.constant.enums.FileOperationTypeEnum;
 
 import javax.crypto.Cipher;

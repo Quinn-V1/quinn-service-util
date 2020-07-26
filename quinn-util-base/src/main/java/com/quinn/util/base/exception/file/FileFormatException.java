@@ -1,6 +1,6 @@
 package com.quinn.util.base.exception.file;
 
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.base.exception.BaseBusinessException;
 
 /**

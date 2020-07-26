@@ -3,7 +3,7 @@ package com.quinn.util.base.factory;
 import com.alibaba.fastjson.JSONObject;
 import com.quinn.util.base.FileUtil;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.constant.NumberConstant;

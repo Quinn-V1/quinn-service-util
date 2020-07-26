@@ -3,7 +3,7 @@ package com.quinn.util.base;
 import com.alibaba.fastjson.JSONArray;
 import com.quinn.util.base.api.MethodInvokerOneParam;
 import com.quinn.util.base.api.Strategy;
-import com.quinn.util.base.constant.ConfigConstant;
+import com.quinn.util.constant.ConfigConstant;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.RegexConstant;
 
@@ -11,7 +11,6 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.UUID;
 import java.util.regex.Matcher;
 
 /**

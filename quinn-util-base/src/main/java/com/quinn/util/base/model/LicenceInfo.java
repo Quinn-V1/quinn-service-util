@@ -2,13 +2,14 @@ package com.quinn.util.base.model;
 
 import com.quinn.util.base.CollectionUtil;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.base.enums.CommonMessageEnum;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 
 /**
  * 许可证信息
@@ -64,6 +65,11 @@ public class LicenceInfo {
      * 授权模块
      */
     private String[] supportLangCodes;
+
+    /**
+     * 应用名称（不同语言）
+     */
+    private String[] appNames;
 
     /**
      * 校验证书是否合格

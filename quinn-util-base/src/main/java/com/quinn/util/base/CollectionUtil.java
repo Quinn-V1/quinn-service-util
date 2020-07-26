@@ -534,8 +534,20 @@ public final class CollectionUtil {
         return populateMap(new HashMap<>(16), name1, value1, name2, value2);
     }
 
-    private static <V> Map<String, V> populateMap(Map<String, V> map, Object... data) {
-        for (int i = 0; i < data.length; ) {
+    public static <V> Map<String, V> populateMap(Map<String, V> map, Object... data) {
+        if (isEmpty(data)) {
+            return map;
+        }
+        if (map == null) {
+            map = new HashMap<>();
+        }
+
+        int size = data.length;
+        if (size % NumberConstant.INT_TWO != NumberConstant.INT_ZERO) {
+            size--;
+        }
+
+        for (int i = 0; i < size; ) {
             map.put((String) data[i++], (V) data[i++]);
         }
         return map;
