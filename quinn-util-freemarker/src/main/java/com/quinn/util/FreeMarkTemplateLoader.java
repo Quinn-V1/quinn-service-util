@@ -1,5 +1,7 @@
 package com.quinn.util;
 
+import com.quinn.util.constant.ConfigConstant;
+import com.quinn.util.constant.NumberConstant;
 import com.quinn.util.constant.StringConstant;
 import freemarker.cache.TemplateLoader;
 import freemarker.template.Configuration;
@@ -21,6 +23,13 @@ import java.util.Map;
 public class FreeMarkTemplateLoader implements TemplateLoader {
 
     private static final String DEFAULT_TEMPLATE_KEY = "_default_template_key";
+
+    private static final String NUMBER_FORMAT;
+
+    static {
+        NUMBER_FORMAT = System.getProperty(ConfigConstant.PROP_KEY_OF_FREE_MARK_NUMBER_FORMAT,
+                ConfigConstant.DEFAULT_FREE_MARK_NUMBER_FORMAT);
+    }
 
     private Map templates = new HashMap();
 
@@ -79,6 +88,7 @@ public class FreeMarkTemplateLoader implements TemplateLoader {
         cfg.setTemplateLoader(new FreeMarkTemplateLoader(temp));
         cfg.setDefaultEncoding(StringConstant.SYSTEM_DEFAULT_CHARSET);
         cfg.setClassicCompatible(true);
+        cfg.setNumberFormat(NUMBER_FORMAT);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
         try {

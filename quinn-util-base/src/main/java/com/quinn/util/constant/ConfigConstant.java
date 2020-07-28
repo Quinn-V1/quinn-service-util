@@ -325,4 +325,14 @@ public interface ConfigConstant {
      */
     String REDIRECT_BREAK_KEY_HEADER_NAME = "083de6fad48e46a19a9f0eb6d9cf26df";
 
+    /**
+     * FreeMark数字格式配置属性
+     */
+    String PROP_KEY_OF_FREE_MARK_NUMBER_FORMAT = "com.quinn-service.free-mark.number-format";
+
+
+    /**
+     * FreeMark数字格式默认
+     */
+    String DEFAULT_FREE_MARK_NUMBER_FORMAT = "0";
 }
