@@ -35,6 +35,11 @@ public interface CommonMessageConstant {
     String DESC_RESULT_NOT_FOUND = "未找到符合条件的${" + CommonParamName.PARAM_DATA_TYPE + "}数据";
 
     /**
+     * 业务主键重复
+     */
+    String DESC_BUSINESS_KEY_REPEAT = "${" + CommonParamName.PARAM_DATA_TYPE + "}业务主键【${" + CommonParamName.PARAM_DATA_KEY + "}】重复";
+
+    /**
      * 数据未找到
      */
     String DESC_RESULT_NOT_UNIQUE = "数据${" + CommonParamName.PARAM_DATA_TYPE + "}业务主键【${"
