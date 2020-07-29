@@ -1,5 +1,6 @@
 package com.quinn.util.base.exception;
 
+import com.quinn.util.base.StringUtil;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.MessageProp;
 import lombok.Getter;
@@ -150,8 +151,11 @@ public class BaseBusinessException extends RuntimeException {
                 setI18nParams(messageProp.getI18nParams());
                 setPrevProp(messageProp.getPrevProp());
 
-                if (BaseBusinessException.this.messageProp != null) {
+                if (BaseBusinessException.this.messageProp != null &&
+                        !StringUtil.isEmpty(BaseBusinessException.this.messageProp.getMessageCode())) {
                     BaseBusinessException.this.messageProp.ofPrevProp(messageProp);
+                } else {
+                    BaseBusinessException.this.setMessageProp(this);
                 }
             }
         }
