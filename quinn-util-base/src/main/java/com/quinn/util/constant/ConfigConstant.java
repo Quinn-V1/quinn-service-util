@@ -335,4 +335,14 @@ public interface ConfigConstant {
      * FreeMark数字格式默认
      */
     String DEFAULT_FREE_MARK_NUMBER_FORMAT = "0";
+
+    /**
+     * 编码路径分隔符
+     */
+    String PROP_KEY_OF_KEY_PATH_SPLIT = "com.quinn-service.base.key-path-split";
+
+    /**
+     * 默认编码路径分隔符
+     */
+    String DEFAULT_KEY_PATH_SPLIT = StringConstant.CHAR_SLASH;
 }
