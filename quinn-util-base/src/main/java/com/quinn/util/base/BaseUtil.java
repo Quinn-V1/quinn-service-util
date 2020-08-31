@@ -6,6 +6,7 @@ import com.quinn.util.base.api.Strategy;
 import com.quinn.util.constant.ConfigConstant;
 import com.quinn.util.base.convertor.BaseConverter;
 import com.quinn.util.constant.RegexConstant;
+import com.quinn.util.constant.StringConstant;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -61,7 +62,7 @@ public final class BaseUtil {
      * @return 属性值
      */
     public static Object getFieldInstance(Object obj, String fieldPath) {
-        String[] fields = fieldPath.split("#");
+        String[] fields = fieldPath.split(StringConstant.CHAR_POUND_SIGN);
         for (String field : fields) {
             obj = getField(obj, obj.getClass(), field);
             if (obj == null) {
@@ -206,7 +207,7 @@ public final class BaseUtil {
             }
 
             if (result instanceof Map) {
-                String name = null;
+                String name;
                 Integer index = null;
                 Matcher matcher = RegexConstant.ARRAY_PATTEN.matcher(path);
                 if (matcher.find()) {

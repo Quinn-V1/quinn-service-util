@@ -14,4 +14,10 @@ public enum HttpMethodEnum {
     // GET
     GET,
 
+    // PUT
+    PUT,
+
+    // DELETE
+    DELETE,
+
 }
