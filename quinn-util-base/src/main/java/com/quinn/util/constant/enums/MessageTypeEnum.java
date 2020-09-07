@@ -20,7 +20,7 @@ public enum MessageTypeEnum implements MessageEnumFlag {
     // 邮件
     EMAIL("邮件", 1),
 
-    // 微信
+    // 微信 没有R
     WE_CHAT("微信", 2),
 
     // 站内信
