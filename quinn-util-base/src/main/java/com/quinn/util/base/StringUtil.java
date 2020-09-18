@@ -1,13 +1,13 @@
 package com.quinn.util.base;
 
 import com.quinn.util.base.api.Strategy;
-import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.base.exception.ParameterShouldNotEmpty;
 import com.quinn.util.base.exception.UnSupportedCharsetException;
 import com.quinn.util.constant.CharConstant;
 import com.quinn.util.constant.CommonParamName;
 import com.quinn.util.constant.MimeMapper;
 import com.quinn.util.constant.StringConstant;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -60,6 +60,20 @@ public final class StringUtil {
             return null;
         }
         return String.valueOf(obj);
+    }
+
+    /**
+     * 字符串分解
+     *
+     * @param str 字符串
+     * @return 数组
+     */
+    @Strategy("StringUtil.splitByComma")
+    public static String[] splitByComma(String str) {
+        if (str == null) {
+            return null;
+        }
+        return StringUtils.split(str, StringConstant.CHAR_COMMA);
     }
 
     /**
@@ -229,6 +243,16 @@ public final class StringUtil {
     public static String uuid() {
         String uuid = UUID.randomUUID().toString();
         return uuid.replace("-", "");
+    }
+
+    /**
+     * 生成UUID
+     *
+     * @return UUID
+     */
+    @Strategy("StringUtil.fullUuid")
+    public static String fullUuid() {
+        return UUID.randomUUID().toString();
     }
 
     /**
