@@ -589,4 +589,62 @@ public final class CollectionUtil {
         objects[0] = BaseConverter.staticConvert(o, clazz);
         return (T[]) objects;
     }
+
+
+    /**
+     * 对应类型脚本URL
+     *
+     * @param collection 原列表
+     * @param keyWords   关键字
+     * @param pageSize   每页显示记录数
+     * @param pageNum    页数
+     * @return 脚本URL
+     */
+    public static List<String> page(List<String> collection, String keyWords, Integer pageSize, Integer pageNum) {
+        if (CollectionUtil.isEmpty(collection)) {
+            return null;
+        }
+
+        if (pageNum == null) {
+            pageNum = NumberConstant.INT_ONE;
+        } else {
+            pageNum = Math.max(pageNum, 1);
+        }
+
+        if (pageSize == null) {
+            pageSize = NumberConstant.INT_TEN;
+        } else {
+            pageSize = Math.max(pageSize, 1);
+        }
+
+        int from = (pageNum - 1) * pageSize;
+        int to = from + pageSize;
+
+        if (from >= collection.size()) {
+            return null;
+        }
+
+        if (StringUtil.isEmpty(keyWords)) {
+            return collection.subList(from, Math.min(to, collection.size()));
+        }
+
+        List<String> result = new ArrayList<>();
+        int index = 0;
+        for (String url : collection) {
+            if (url.contains(keyWords)) {
+                index++;
+                if (index < from) {
+                    continue;
+                }
+
+                result.add(url);
+
+                if (index >= to) {
+                    return result;
+                }
+            }
+        }
+        return result;
+    }
+
 }
