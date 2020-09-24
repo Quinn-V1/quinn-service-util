@@ -2,6 +2,7 @@ package com.quinn.util.base;
 
 import com.quinn.util.base.api.Strategy;
 import com.quinn.util.base.exception.DataStyleNotMatchException;
+import com.quinn.util.constant.StringConstant;
 import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.constant.NumberConstant;
 
@@ -232,7 +233,7 @@ public final class NumberUtil {
      * @return 双精度
      */
     public static Double parseDouble(Object o) {
-        if (o == null) {
+        if (o == null || StringConstant.STRING_EMPTY.equals(o)) {
             return null;
         }
 
@@ -258,7 +259,7 @@ public final class NumberUtil {
      * @return 数字
      */
     public static BigDecimal paresBigDecimal(Object o) {
-        if (o == null) {
+        if (o == null || StringConstant.STRING_EMPTY.equals(o)) {
             return null;
         }
 
@@ -284,7 +285,7 @@ public final class NumberUtil {
      * @return 长整型
      */
     public static Long parseLong(Object o) {
-        if (o == null) {
+        if (o == null || StringConstant.STRING_EMPTY.equals(o)) {
             return null;
         }
 
@@ -311,7 +312,7 @@ public final class NumberUtil {
      * @return 整型
      */
     public static Integer parseInteger(Object o) {
-        if (o == null) {
+        if (o == null || StringConstant.STRING_EMPTY.equals(o)) {
             return null;
         }
 
@@ -338,7 +339,7 @@ public final class NumberUtil {
      * @return 短整型
      */
     public static Short parseShort(Object o) {
-        if (o == null) {
+        if (o == null || StringConstant.STRING_EMPTY.equals(o)) {
             return null;
         }
 
