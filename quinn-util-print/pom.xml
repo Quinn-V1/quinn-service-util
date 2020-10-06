@@ -7,13 +7,13 @@
     <parent>
         <artifactId>quinn-service-util</artifactId>
         <groupId>com.quinn.util</groupId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.quinn.util</groupId>
     <artifactId>quinn-util-print</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>quinn-util-print</name>
     <description>打印工具类</description>
 

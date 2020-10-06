@@ -6,13 +6,13 @@
     <parent>
         <groupId>com.quinn.util</groupId>
         <artifactId>quinn-service-util</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.quinn.util</groupId>
     <artifactId>quinn-util-constant</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>quinn-util-constant</name>
     <description>常量定义工具类</description>
 
