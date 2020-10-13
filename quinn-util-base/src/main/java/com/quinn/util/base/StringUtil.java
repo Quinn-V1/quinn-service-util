@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -336,5 +337,18 @@ public final class StringUtil {
         return srcStr.startsWith(subStr);
     }
 
-
+    /**
+     * 按字节截取制定长度
+     *
+     * @param src 源码
+     * @param len 长度
+     * @return 子串
+     */
+    public static String cutFromLeftOfByte(String src, int len) {
+        byte[] bytes = src.getBytes();
+        if (bytes.length <= len) {
+            return src;
+        }
+        return new String(Arrays.copyOf(bytes, len));
+    }
 }
