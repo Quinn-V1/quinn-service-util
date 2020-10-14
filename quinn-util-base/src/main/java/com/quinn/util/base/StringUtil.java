@@ -345,6 +345,10 @@ public final class StringUtil {
      * @return 子串
      */
     public static String cutFromLeftOfByte(String src, int len) {
+        if (StringUtil.isEmpty(src)) {
+            return src;
+        }
+
         byte[] bytes = src.getBytes();
         if (bytes.length <= len) {
             return src;
