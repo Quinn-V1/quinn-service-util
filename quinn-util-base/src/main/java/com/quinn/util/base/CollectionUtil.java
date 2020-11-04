@@ -561,33 +561,35 @@ public final class CollectionUtil {
      * @param <T>   结果泛型
      * @return 泛型数组
      */
-    public static <T> T[] toArray(Object o, Class<T> clazz) {
+    public static <T> List<T> toArray(Object o, Class<T> clazz) {
         if (o == null) {
             return null;
         }
 
         if (o instanceof Collection) {
             Collection collection = (Collection) o;
-            Object[] ts = new Object[collection.size()];
-            int i = 0;
+            List<T> ts = new ArrayList<>(collection.size());
             for (Object o1 : collection) {
-                ts[i++] = BaseConverter.staticConvert(o1, clazz);
+                ts.add(BaseConverter.staticConvert(o1, clazz));
             }
-            return (T[]) ts;
+            return ts;
         } else if (o.getClass().isArray()) {
             Object[] os = (Object[]) o;
-            Object[] ts = new Object[os.length];
+            List<T> ts = new ArrayList<>(os.length);
             for (int i = 0; i < os.length; i++) {
-                ts[i] = BaseConverter.staticConvert(os[i], clazz);
+                ts.add(BaseConverter.staticConvert(os[i], clazz));
             }
+            return ts;
         } else if (o instanceof String && clazz == String.class) {
             String[] os = ((String) o).split(StringConstant.CHAR_COMMA);
-            return (T[]) os;
+            List<T> ts = new ArrayList<>(os.length);
+            for (int i = 0; i < os.length; i++) {
+                ts.add(BaseConverter.staticConvert(os[i], clazz));
+            }
+            return ts;
         }
 
-        Object[] objects = new Object[1];
-        objects[0] = BaseConverter.staticConvert(o, clazz);
-        return (T[]) objects;
+        return Arrays.asList(BaseConverter.staticConvert(o, clazz));
     }
 
 
