@@ -121,7 +121,7 @@ public interface NumberConstant {
     /**
      * 整型-顶层数据
      */
-    long TOP_OF_DATA = INT_ZERO;
+    int TOP_OF_DATA = INT_ZERO;
 
     /**
      * 数据字典-ID-无
