@@ -3,10 +3,10 @@ package com.quinn.util.base.factory;
 import com.alibaba.fastjson.JSONObject;
 import com.quinn.util.base.FileUtil;
 import com.quinn.util.base.StringUtil;
-import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.base.model.BaseResult;
 import com.quinn.util.base.model.LicenceInfo;
 import com.quinn.util.constant.NumberConstant;
+import com.quinn.util.constant.enums.CommonMessageEnum;
 import com.quinn.util.constant.enums.LicenceExceptionType;
 import com.quinn.util.constant.enums.SystemExitTypeEnum;
 import lombok.SneakyThrows;
@@ -70,17 +70,17 @@ public class LicenceClassLoader extends URLClassLoader {
     }
 
     public LicenceClassLoader(URL[] urls, ClassLoader parent) {
-        super(urls, parent);
+        super(urls, parent.getParent());
+
         this.realParent = parent;
+        if (parent != null) {
+            this.realGrandParent = parent.getParent();
+        }
     }
 
     public LicenceClassLoader(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory) {
         super(urls, parent, factory);
         this.realParent = parent;
-    }
-
-    public static LicenceClassLoader getInstance() {
-        return instance;
     }
 
     /**
@@ -94,6 +94,27 @@ public class LicenceClassLoader extends URLClassLoader {
     private ClassLoader realGrandParent;
 
     /**
+     * 获取实例
+     *
+     * @return 获取实例
+     */
+    public static LicenceClassLoader getInstance() {
+        return instance;
+    }
+
+    /**
+     * 将this替换为指定classLoader的parent ClassLoader
+     *
+     * @param classLoader 原来的父类加载器
+     */
+    @SneakyThrows
+    private void addThisToParentClassLoader(ClassLoader classLoader) {
+        Field field = ClassLoader.class.getDeclaredField("parent");
+        field.setAccessible(true);
+        field.set(classLoader, this);
+    }
+
+    /**
      * 初始化
      *
      * @param url 初始化条件
@@ -103,9 +124,7 @@ public class LicenceClassLoader extends URLClassLoader {
         if (!LicenceClassLoader.initFlag) {
             LicenceClassLoader.licencePath = url.getPath();
 
-            instance = new LicenceClassLoader(new URL[]{url}, realParent.getParent());
-            instance.realParent = realParent;
-            instance.realGrandParent = realParent.getParent();
+            instance = new LicenceClassLoader(new URL[]{url}, realParent);
             instance.addThisToParentClassLoader(realParent);
 
             File tempFile = new File(TEMP_DIRECTORY_4_LICENCE_FILE);
@@ -188,20 +207,7 @@ public class LicenceClassLoader extends URLClassLoader {
                 }
             }
         }
-
         return BaseResult.success(licenceInfo);
-    }
-
-    /**
-     * 将this替换为指定classLoader的parent ClassLoader
-     *
-     * @param classLoader 原来的父类加载器
-     */
-    @SneakyThrows
-    private void addThisToParentClassLoader(ClassLoader classLoader) {
-        Field field = ClassLoader.class.getDeclaredField("parent");
-        field.setAccessible(true);
-        field.set(classLoader, this);
     }
 
     @SneakyThrows
@@ -216,11 +222,11 @@ public class LicenceClassLoader extends URLClassLoader {
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-        if (loadedClasses.containsKey(name)) {
-            return loadedClasses.get(name);
-        } else {
+        Class<?> result = loadedClasses.get(name);
+        if (result == null) {
             return realParent.loadClass(name);
         }
+        return result;
     }
 
 }
